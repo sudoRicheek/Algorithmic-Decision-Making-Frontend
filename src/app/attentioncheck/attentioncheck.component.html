@@ -1,0 +1,16 @@
+<div class="mat-app-background basic-container">
+  <div *ngFor="let question of questions; let i=index">
+    <label id="example-radio-group-label">{{question.question_text}}</label>
+    <mat-radio-group required aria-labelledby="example-radio-group-label" class="example-radio-group"
+      [(ngModel)]="question.answerSelected">
+      <mat-radio-button class="example-radio-button" *ngFor="let choice of question.choices" [value]="choice.id">
+        {{choice.choice_text}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>Selected ID: {{question.answerSelected}}</div>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="postAttentionAnswers()"
+    [disabled]="alreadySubmitted">Submit</button>
+  <button mat-raised-button color="accent" (click)="nextSection()">Next Section</button>
+</div>
