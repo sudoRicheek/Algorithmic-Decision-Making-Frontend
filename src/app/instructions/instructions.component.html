@@ -1,5 +1,17 @@
-<p>
-  Some random instructions go here.
-</p>
-
-<button mat-raised-button color="accent" (click)="nextSection()">Comprehension Section</button>
+<div class="basic-container">
+  <mat-card>
+    <mat-card-title>
+      <h1>Please read the instructions carefully!</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <p>Next section will contain some comprehension questions which will test your basic understanding of the
+        experimental setup.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="instructions" mat-raised-button color="primary" (click)="openInstructions()"
+        [disabled]="!attentionAttempted || !attentionPassed">Read Instructions</button>
+      <button class="next-section" mat-raised-button color="primary" (click)="nextSection()"
+        [disabled]="!attentionAttempted || !attentionPassed">Proceed to Comprehension Questions</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

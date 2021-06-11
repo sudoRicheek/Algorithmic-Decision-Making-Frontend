@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  margin-top: 5%;
+  margin-left: 16.5%;
+  margin-right: 16.5%;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  justify-content: space-evenly;
+}
+
+.home-card {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    margin-top:5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    justify-content: space-evenly;
+  }
+}

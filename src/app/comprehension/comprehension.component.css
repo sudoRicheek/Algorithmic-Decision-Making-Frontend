@@ -1,9 +1,48 @@
 .example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-  }
-  
-  .example-radio-button {
-    margin: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+h1 {
+  color: #5a37b8;
+  margin: 5px;
+  font-size: 20pt;
+}
+
+p {
+  color: #db5151e1;
+  margin: 5px;
+  font-size: large;
+}
+
+.basic-container {
+  margin-top: 10px;
+  display: flex;
+  max-width: 520px;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tp-card {
+  margin: 5px;
+}
+
+.submit {
+  margin: 5px;
+  max-width: 150px;
+}
+
+.next-section {
+  margin: 5px;
+  max-width: 150px;
+}
+
+

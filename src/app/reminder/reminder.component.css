@@ -1,0 +1,34 @@
+h1 {
+    color: #5a37b8;
+    margin: 10px;
+    font-size: 20pt;
+  }
+  
+  p {
+    color: #db5151e1;
+    margin: 10px;
+    font-size: large;
+  }
+  
+  .basic-container {
+    margin-top: 10px;
+    display: flex;
+    max-width: 520px;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .instructions {
+    margin: 5px;
+    max-width: fit-content;
+  }
+  
+  .next-section {
+    margin: 5px;
+    max-width: fit-content;
+  }
+  
+  

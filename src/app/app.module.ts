@@ -10,28 +10,57 @@ import { HeaderComponent } from './header/header.component';
 import { AttentioncheckComponent } from './attentioncheck/attentioncheck.component';
 import { StorageService } from './services/storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import {
+  DialogAttentionFail,
+  DialogAttentionNoAttempt,
+  DialogContentInstructions,
+  InstructionsComponent,
+} from './instructions/instructions.component';
+import { ComprehensionComponent } from './comprehension/comprehension.component';
+import { ReminderComponent } from './reminder/reminder.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
-import { InstructionsComponent } from './instructions/instructions.component';
-import { ComprehensionComponent } from './comprehension/comprehension.component';
-import { ReminderComponent } from './reminder/reminder.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { DialogNoWorkerFoundComponent } from './dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
+import { ComprehensionFailComponent } from './dialogs/comprehensionFail/comprehensionFail.component';
+import { ComprehensionNoAttemptComponent } from './dialogs/comprehensionNoAttempt/comprehensionNoAttempt.component';
+import { ComprehensionAlreadyAttemptedComponent } from './dialogs/comprehensionAlreadyAttempted/comprehensionAlreadyAttempted.component';
+import { AttentionAlreadyAttemptedComponent } from './dialogs/attentionAlreadyAttempted/attentionAlreadyAttempted.component';
+import { DialogContentReminderComponent } from './dialogs/dialogContentReminder/dialogContentReminder.component';
+import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitation.component';
 
 @NgModule({
-  declarations: [						
+  declarations: [	
     AppComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
     AttentioncheckComponent,
-      InstructionsComponent,
-      ComprehensionComponent,
-      ReminderComponent
+    InstructionsComponent,
+    ComprehensionComponent,
+    ReminderComponent,
+    DialogContentInstructions, 
+    DialogAttentionNoAttempt,
+    DialogAttentionFail,
+    DialogNoWorkerFoundComponent,
+    ComprehensionFailComponent,
+    ComprehensionNoAttemptComponent,
+    ComprehensionAlreadyAttemptedComponent,
+    AttentionAlreadyAttemptedComponent,
+    DialogContentReminderComponent,
+      BeliefElicitationComponent
    ],
   imports: [
     BrowserModule,
@@ -45,11 +74,18 @@ import { ReminderComponent } from './reminder/reminder.component';
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
+    MatCardModule,
+    MatListModule,
+    MatGridListModule,
+    MatDialogModule,
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always', appearance: 'fill' }},
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { floatLabel: 'always', appearance: 'fill' },
+    },
     StorageService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

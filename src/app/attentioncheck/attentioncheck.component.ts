@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AttentionAlreadyAttemptedComponent } from '../dialogs/attentionAlreadyAttempted/attentionAlreadyAttempted.component';
+import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
 
@@ -16,7 +19,8 @@ export class AttentioncheckComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.questions = [];
     this.alreadySubmitted = this.storageService.isAttentionSubmitted();
@@ -24,6 +28,7 @@ export class AttentioncheckComponent implements OnInit {
 
   ngOnInit() {
     this.getAttentionQuestions();
+    if (!this.storageService.getWorker()) this.noWorkerFound();
   }
 
   getAttentionQuestions() {
@@ -40,10 +45,12 @@ export class AttentioncheckComponent implements OnInit {
             answerSelected: any;
             choices: { id: any }[];
           }) => {
-            if (localAttentionSubmissions && localAttentionSubmissions.hasOwnProperty(question.id))
+            if (
+              localAttentionSubmissions &&
+              localAttentionSubmissions.hasOwnProperty(question.id)
+            )
               question.answerSelected = localAttentionSubmissions[question.id];
-            else 
-              question.answerSelected = question.choices[0].id;
+            else question.answerSelected = question.choices[0].id;
           }
         );
         console.log(this.questions);
@@ -58,8 +65,7 @@ export class AttentioncheckComponent implements OnInit {
     this.formData = {};
     this.formData['worker_id'] = this.storageService.getWorker();
     if (!this.formData['worker_id']) {
-      alert('No worker signed in!');
-      this.router.navigate(['/']);
+      this.noWorkerFound();
     }
 
     this.formData['answers'] = [];
@@ -74,16 +80,38 @@ export class AttentioncheckComponent implements OnInit {
     this.questionService.postAttentionAnswers(this.formData).subscribe(
       (response) => {
         console.log(response);
-        console.log()
+        console.log();
         this.storageService.storeAttentionSubmissions(this.formData['answers']);
         this.alreadySubmitted = true;
       },
       (errors) => {
         console.log(errors);
-        alert('Already Attempted Attention Check!');
+        if (errors.error.status == "alreadyAttempted") {
+          this.alreadyAttempted();
+          this.storageService.attentionSubmitted();
+          this.alreadySubmitted = true;
+        }
       }
     );
     console.log(this.formData);
+  }
+
+  alreadyAttempted() {
+    const dialogRef = this.dialog.open(AttentionAlreadyAttemptedComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigate(['instructions']);
+    });
+  }
+
+  noWorkerFound() {
+    const dialogRef = this.dialog.open(DialogNoWorkerFoundComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigate(['/']);
+    });
   }
 
   nextSection() {

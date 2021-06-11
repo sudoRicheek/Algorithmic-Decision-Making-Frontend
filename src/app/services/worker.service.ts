@@ -18,4 +18,16 @@ export class WorkerService {
     data.append('worker_id', worker_id);
     return this.http.post(baseUrl + '/api/worker/addworker/', data);
   }
+
+  getAttentionResults(worker_id: string): Observable<any> {
+    const data = new FormData();
+    data.append('worker_id', worker_id);
+    return this.http.post(baseUrl + '/api/worker/get_attention_results/',data);
+  }
+
+  getComprehensionResults(worker_id: string): Observable<any> {
+    const data = new FormData();
+    data.append('worker_id', worker_id);
+    return this.http.post(baseUrl + '/api/worker/get_comprehension_results/',data);
+  }
 }

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ComprehensionAlreadyAttemptedComponent } from '../dialogs/comprehensionAlreadyAttempted/comprehensionAlreadyAttempted.component';
+import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
+import {
+  DialogAttentionFail,
+  DialogAttentionNoAttempt,
+} from '../instructions/instructions.component';
 import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
 
@@ -16,14 +23,17 @@ export class ComprehensionComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.questions = [];
-    this.comprehensionSubmitted = this.storageService.isComprehensionSubmitted();
+    this.comprehensionSubmitted =
+      this.storageService.isComprehensionSubmitted();
   }
 
   ngOnInit() {
     this.getComprehensionQuestions();
+    if (!this.storageService.getWorker()) this.noWorkerFound();
   }
 
   getComprehensionQuestions() {
@@ -40,10 +50,13 @@ export class ComprehensionComponent implements OnInit {
             answerSelected: any;
             choices: { id: any }[];
           }) => {
-            if (localComprehensionSubmissions && localComprehensionSubmissions.hasOwnProperty(question.id))
-              question.answerSelected = localComprehensionSubmissions[question.id];
-            else 
-              question.answerSelected = question.choices[0].id;
+            if (
+              localComprehensionSubmissions &&
+              localComprehensionSubmissions.hasOwnProperty(question.id)
+            )
+              question.answerSelected =
+                localComprehensionSubmissions[question.id];
+            else question.answerSelected = question.choices[0].id;
           }
         );
         console.log(this.questions);
@@ -58,8 +71,7 @@ export class ComprehensionComponent implements OnInit {
     this.formData = {};
     this.formData['worker_id'] = this.storageService.getWorker();
     if (!this.formData['worker_id']) {
-      alert('No worker signed in!');
-      this.router.navigate(['/']);
+      this.noWorkerFound();
     }
 
     this.formData['answers'] = [];
@@ -74,13 +86,21 @@ export class ComprehensionComponent implements OnInit {
     this.questionService.postComprehensionAnswers(this.formData).subscribe(
       (response) => {
         console.log(response);
-        console.log()
-        this.storageService.storeComprehensionSubmissions(this.formData['answers']);
+        console.log();
+        this.storageService.storeComprehensionSubmissions(
+          this.formData['answers']
+        );
         this.comprehensionSubmitted = true;
       },
       (errors) => {
         console.log(errors);
-        alert('Already Attempted Comprehension Questions!');
+        if (errors.error.status == 'attentionNoAttempt') this.attentionNoAttempt();
+        else if (errors.error.status == 'attentionFailed') this.attentionFailed();
+        else if (errors.error.status == 'alreadyAttempted') {
+          this.storageService.comprehensionSubmitted();
+          this.comprehensionSubmitted = true;
+          this.alreadyAttempted();
+        }
       }
     );
     console.log(this.formData);
@@ -88,5 +108,41 @@ export class ComprehensionComponent implements OnInit {
 
   nextSection() {
     this.router.navigate(['reminder']);
+  }
+
+  noWorkerFound() {
+    const dialogRef = this.dialog.open(DialogNoWorkerFoundComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigate(['/']);
+    });
+  }
+
+  attentionNoAttempt() {
+    const dialogRef = this.dialog.open(DialogAttentionNoAttempt);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigate(['attentioncheck']);
+    });
+  }
+
+  attentionFailed() {
+    const dialogRef = this.dialog.open(DialogAttentionFail);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigate(['/']);
+    });
+  }
+
+  alreadyAttempted() {
+    const dialogRef = this.dialog.open(ComprehensionAlreadyAttemptedComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigate(['reminder']);
+    });
   }
 }

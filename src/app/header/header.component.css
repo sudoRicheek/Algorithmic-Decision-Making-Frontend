@@ -1,7 +1,19 @@
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-.example-button {
-    margin-left: 10px;
+.example-toolbar {
+    display: flex ;
+    height: 12%;
+}
+
+span {
+    font-size: larger;
+}
+
+@media only screen and (max-width: 768px){
+    .example-toolbar{
+        height: 20%;
+        font-size: medium;
+    }
 }

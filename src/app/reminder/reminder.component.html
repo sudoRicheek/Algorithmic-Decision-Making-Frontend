@@ -1,3 +1,16 @@
-<p>
-  reminder works!
-</p>
+<div class="basic-container">
+  <mat-card>
+    <mat-card-title>
+      <h1>Please read the <strong>reminder instructions</strong> carefully!</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <p>In the next section we will begin with the actual experimentation!</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="instructions" mat-raised-button color="primary" (click)="openReminder()"
+        [disabled]="!comprehensionAttempted || !comprehensionPassed">Read Instructions</button>
+      <button class="next-section" mat-raised-button color="primary" (click)="nextSection()"
+        [disabled]="!comprehensionAttempted || !comprehensionPassed">Proceed to Belief Elicitation Experiment</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

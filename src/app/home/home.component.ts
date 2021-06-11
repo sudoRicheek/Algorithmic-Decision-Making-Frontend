@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
 
@@ -13,7 +15,8 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private storage: StorageService,
-    private workerService: WorkerService
+    private workerService: WorkerService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -30,9 +33,17 @@ export class HomeComponent implements OnInit {
         }
       );
     } else if (worker_id == null && this.storage.getWorker() == null) {
-      alert('Worker not found');
+      this.noWorkerFound();
     }
     console.log(this.storage.getWorker());
+  }
+
+  noWorkerFound() {
+    const dialogRef = this.dialog.open(DialogNoWorkerFoundComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   attentionCheckPage() {

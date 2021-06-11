@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AttentioncheckComponent } from './attentioncheck/attentioncheck.component';
+import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitation.component';
 import { ComprehensionComponent } from './comprehension/comprehension.component';
 import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'attentioncheck', component: AttentioncheckComponent },
   { path: 'instructions', component: InstructionsComponent },
   { path: 'comprehension', component: ComprehensionComponent },
-  { path: 'reminder', component: ReminderComponent},
+  { path: 'reminder', component: ReminderComponent },
+  { path: 'beliefelicitation', component: BeliefElicitationComponent },
 
   // should be at the bottom.
   { path: '**', redirectTo: '/' },
