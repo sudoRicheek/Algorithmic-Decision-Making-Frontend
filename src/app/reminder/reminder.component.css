@@ -32,3 +32,29 @@ h1 {
   }
   
   
+@media only screen and (max-width: 992px) {
+  .basic-container {
+    margin-top: 10px;
+    display: flex;
+    max-width: 500px;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+.basic-container {
+  margin-top: 10px;
+  display: flex;
+  max-width: 470px;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+  

@@ -23,12 +23,11 @@ p {
 .basic-container {
   margin-top: 10px;
   display: flex;
-  max-width: 520px;
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 33%;
+  margin-right: 33%;
 }
 
 .tp-card {
@@ -46,3 +45,26 @@ p {
 }
 
 
+@media only screen and (max-width: 992px) {
+  .basic-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .basic-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}

@@ -1,3 +1,116 @@
-<p>
-  beliefElicitation works!
-</p>
+<div class="table-container">
+  <h1>Belief Elicitation for {{type_work_name}}</h1>
+  <p>You are a <strong>{{type_work_name}}</strong>. You will need to answer <strong>{{lenlist}}</strong> questions.</p>
+  <p>Make sure to answer all the questions to the best of your understanding!</p>
+
+  <h2>Reminder for the Allocations: </h2>
+  <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al1">
+      <th mat-header-cell *matHeaderCellDef> Allocation 1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al2">
+      <th mat-header-cell *matHeaderCellDef> Allocation 2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al2}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al3">
+      <th mat-header-cell *matHeaderCellDef> Allocation 3 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al3}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al4">
+      <th mat-header-cell *matHeaderCellDef> Allocation 4 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al4}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al5">
+      <th mat-header-cell *matHeaderCellDef> Allocation 5 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al5}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al6">
+      <th mat-header-cell *matHeaderCellDef> Allocation 6 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al6}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="allocationColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: allocationColumns;"></tr>
+  </table>
+
+  <h2>Belief Elicitation probabilities: </h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 beliefprobabilities">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <ngb-carousel [interval]="0">
+    <ng-template ngbSlide *ngFor="let control of questionsFormArray.controls; index as i">
+      <div class="internal-card">
+        <mat-card class="home-card">
+          <mat-card-title>
+            You are a {{type_work_name}}
+          </mat-card-title>
+          <mat-card-content>
+            <strong>Q{{i+1}}/{{lenlist}}.</strong>
+            <div *ngIf="type_work==0">
+              <p class="proposer-type">Proposer is: <strong>{{proposerType[(i-i%6)/6]}}</strong></p>
+              <p class="allocation-number"><strong>Allocation {{i%6+1}}</strong></p>
+              <p> You are required to make a decision for this allocation and proposer type </p>
+            </div>
+            <div *ngIf="type_work==1">
+              <p class="responder-type">Responder type is: Responder</p>
+              <p class="allocation-number">Allocation {{i%6+1}}</p>
+              <p> You are required to make a decision for this allocation: </p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <mat-form-field class="example-form-field">
+              <mat-label>Enter Row Number</mat-label>
+              <input matInput type="number" [formControl]="$any(questionsFormArray.controls[i])">
+              <mat-hint>Enter a number between 1 and 21(both inclusive)</mat-hint>
+              <mat-error *ngIf="questionsFormArray.controls[i].hasError('required')"> Row Number is required!
+              </mat-error>
+              <mat-error
+                *ngIf="(questionsFormArray.controls[i].hasError('min') || questionsFormArray.controls[i].hasError('max')) && !questionsFormArray.controls[i].hasError('required')">
+                Row number must be between 1 and 21 (inclusive)
+              </mat-error>
+            </mat-form-field>
+          </mat-card-actions>
+        </mat-card>
+        <pre>Rows selected: [{{questionsFormArray.value | slice:0:i}}<strong><span *ngIf="i!=0">,</span>{{questionsFormArray.value[i]}}</strong>,{{questionsFormArray.value | slice:i+1}}]</pre>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <button class="submit-belief" mat-raised-button color="primary"
+    [disabled]="questionsFormArray.status=='INVALID' || beliefSubmitted" (click)="submitBeliefs()">Submit all of your
+    predictions</button>
+  <button class="submit-belief" mat-raised-button color="accent"
+    [disabled]="beliefSubmitted" (click)="nextSection()">Next Section</button>
+</div>

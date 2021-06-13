@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AttentioncheckComponent } from './attentioncheck/attentioncheck.component';
@@ -33,6 +32,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+
 import { DialogNoWorkerFoundComponent } from './dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { ComprehensionFailComponent } from './dialogs/comprehensionFail/comprehensionFail.component';
 import { ComprehensionNoAttemptComponent } from './dialogs/comprehensionNoAttempt/comprehensionNoAttempt.component';
@@ -40,18 +42,24 @@ import { ComprehensionAlreadyAttemptedComponent } from './dialogs/comprehensionA
 import { AttentionAlreadyAttemptedComponent } from './dialogs/attentionAlreadyAttempted/attentionAlreadyAttempted.component';
 import { DialogContentReminderComponent } from './dialogs/dialogContentReminder/dialogContentReminder.component';
 import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitation.component';
+import { ComprehensionSubmitDialogComponent } from './dialogs/comprehensionSubmitDialog/comprehensionSubmitDialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserExistsService } from './services/userExists.service';
+import { BeliefAlreadyAttemptedComponent } from './dialogs/beliefAlreadyAttempted/beliefAlreadyAttempted.component';
+import { NotAllowedHereComponent } from './dialogs/notAllowedHere/notAllowedHere.component';
+import { ApproachDecisionComponent } from './approachDecision/approachDecision.component';
+import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent,
     AttentioncheckComponent,
     InstructionsComponent,
     ComprehensionComponent,
     ReminderComponent,
-    DialogContentInstructions, 
+    DialogContentInstructions,
     DialogAttentionNoAttempt,
     DialogAttentionFail,
     DialogNoWorkerFoundComponent,
@@ -60,7 +68,12 @@ import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitatio
     ComprehensionAlreadyAttemptedComponent,
     AttentionAlreadyAttemptedComponent,
     DialogContentReminderComponent,
-      BeliefElicitationComponent
+    BeliefElicitationComponent,
+    ComprehensionSubmitDialogComponent,
+    BeliefAlreadyAttemptedComponent,
+    NotAllowedHereComponent,
+      ApproachDecisionComponent,
+      PostExperimentalQuestionsComponent
    ],
   imports: [
     BrowserModule,
@@ -78,6 +91,11 @@ import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitatio
     MatListModule,
     MatGridListModule,
     MatDialogModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+
+    NgbModule,
   ],
   providers: [
     {
@@ -85,6 +103,7 @@ import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitatio
       useValue: { floatLabel: 'always', appearance: 'fill' },
     },
     StorageService,
+    UserExistsService,
   ],
   bootstrap: [AppComponent],
 })

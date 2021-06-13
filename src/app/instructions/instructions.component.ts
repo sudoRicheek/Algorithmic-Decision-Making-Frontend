@@ -26,9 +26,7 @@ export class InstructionsComponent implements OnInit {
 
   ngOnInit() {
     let worker_id = this.storageService.getWorker();
-    if (!worker_id) {
-      this.noWorkerFound();
-    } else {
+    if (worker_id) {
       this.workerService.getAttentionResults(worker_id).subscribe(
         (response) => {
           this.attentionPassed = response.passed;
@@ -63,21 +61,12 @@ export class InstructionsComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  
+
   attentionFail() {
     const dialogRef = this.dialog.open(DialogAttentionFail);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  noWorkerFound() {
-    const dialogRef = this.dialog.open(DialogNoWorkerFoundComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-      this.router.navigate(['/']);
     });
   }
 

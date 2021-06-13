@@ -1,4 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.comprehension-submit-passed-dialog > mat-dialog-container {
+  background-color: #26cf8993;
+}
+
+.comprehension-submit-failed-dialog > mat-dialog-container {
+  background-color: rgba(255, 135, 121, 0.377);
+}
+
+.carousel-control-next-icon {
+  background-image: url("assets/icons/chevron-right.svg");
+}
+.carousel-control-prev-icon {
+  background-image: url("assets/icons/chevron-left.svg");
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 5%;
+}
+
+.carousel-item {
+  transition: opacity 0.25s ease !important;
+    opacity: 0;
+}
+
+.carousel-item.active {
+  position: relative !important;
+  opacity: 1;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}

@@ -28,7 +28,6 @@ export class AttentioncheckComponent implements OnInit {
 
   ngOnInit() {
     this.getAttentionQuestions();
-    if (!this.storageService.getWorker()) this.noWorkerFound();
   }
 
   getAttentionQuestions() {
@@ -64,9 +63,6 @@ export class AttentioncheckComponent implements OnInit {
   postAttentionAnswers() {
     this.formData = {};
     this.formData['worker_id'] = this.storageService.getWorker();
-    if (!this.formData['worker_id']) {
-      this.noWorkerFound();
-    }
 
     this.formData['answers'] = [];
 
@@ -102,15 +98,6 @@ export class AttentioncheckComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       this.router.navigate(['instructions']);
-    });
-  }
-
-  noWorkerFound() {
-    const dialogRef = this.dialog.open(DialogNoWorkerFoundComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-      this.router.navigate(['/']);
     });
   }
 

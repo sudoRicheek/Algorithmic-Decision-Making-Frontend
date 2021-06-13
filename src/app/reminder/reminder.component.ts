@@ -29,8 +29,7 @@ export class ReminderComponent implements OnInit {
 
   ngOnInit() {
     let worker_id = this.storageService.getWorker();
-    if (!worker_id) this.noWorkerFound();
-    else {
+    if (worker_id){
       this.workerService.getComprehensionResults(worker_id).subscribe(
         (response) => {
           this.comprehensionPassed = response.passed;
@@ -55,15 +54,6 @@ export class ReminderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  noWorkerFound() {
-    const dialogRef = this.dialog.open(DialogNoWorkerFoundComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-      this.router.navigate(['/']);
     });
   }
 

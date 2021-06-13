@@ -1,0 +1,18 @@
+<div *ngIf="data.comprehensionSectionPassed == true">
+  <h1 mat-dialog-title>Good Job! You have passed the Comprehension Section!</h1>
+  <mat-dialog-content class="mat-typography">
+    <p>You have been assigned the role of a <strong>{{data.typeWorkAssigned}}</strong></p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>I am ready to proceed to the next section</button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="data.comprehensionSectionPassed == false">
+  <h1 mat-dialog-title>You have failed the the Comprehension Section!</h1>
+  <mat-dialog-content class="mat-typography">
+    <p>You cannot proceed with the experiment</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Go back to home screen</button>
+  </mat-dialog-actions>
+</div>
