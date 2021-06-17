@@ -34,6 +34,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { DialogNoWorkerFoundComponent } from './dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { ComprehensionFailComponent } from './dialogs/comprehensionFail/comprehensionFail.component';
@@ -50,8 +51,10 @@ import { NotAllowedHereComponent } from './dialogs/notAllowedHere/notAllowedHere
 import { ApproachDecisionComponent } from './approachDecision/approachDecision.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
@@ -72,9 +75,9 @@ import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/
     ComprehensionSubmitDialogComponent,
     BeliefAlreadyAttemptedComponent,
     NotAllowedHereComponent,
-      ApproachDecisionComponent,
-      PostExperimentalQuestionsComponent
-   ],
+    ApproachDecisionComponent,
+    PostExperimentalQuestionsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -94,8 +97,11 @@ import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSliderModule,
 
     NgbModule,
+
+    ChartsModule,
   ],
   providers: [
     {

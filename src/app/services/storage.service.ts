@@ -110,4 +110,34 @@ export class StorageService {
     if (!alreadySubmitted) return false;
     else return true;
   }
+
+  approachDecisionSubmitted() {
+    localStorage.setItem('approachDecisionSubmitted', 'true');
+  }
+
+  isApproachDecisionSubmitted() {
+    let alreadySubmitted = localStorage.getItem('approachDecisionSubmitted');
+    if (!alreadySubmitted) return false;
+    else return true;
+  }
+
+  storeApproachDecisionSubmissions(
+    approachDecision: number,
+    allocationSelected: number
+  ) {
+    let data: any;
+    data = {};
+    data['approachDecision'] = approachDecision;
+    data['allocationSelected'] = allocationSelected;
+    localStorage.setItem('approachDecisionSubmissions', JSON.stringify(data));
+  }
+
+  getApproachDecisionSubmissions() {
+    let approachDecisionSubmissions = localStorage.getItem(
+      'approachDecisionSubmissions'
+    );
+    if (approachDecisionSubmissions)
+      return JSON.parse(approachDecisionSubmissions);
+    else return null;
+  }
 }

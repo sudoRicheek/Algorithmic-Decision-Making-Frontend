@@ -3,21 +3,23 @@ table {
 }
 
 h1 {
-  color: #5a37b8;
-  margin: 5px;
+  /* color: #5a37b8; */
+  color: #3700b3;
+  margin: 10px;
   font-size: 20pt;
 }
 
 h2 {
-  color: #6d50be;
-  margin: 5px;
+  /* color: #6d50be; */
+  color: #3600b3d2;
+  margin: 10px;
   margin-top: 20px;
   font-size: 15pt;
 }
 
 p {
   color: #db5151e1;
-  margin: 5px;
+  margin: 10px;
   font-size: large;
 }
 

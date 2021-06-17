@@ -51,4 +51,8 @@ export class WorkerService {
     data['predictions'] = predictions;
     return this.http.post(baseUrl + '/api/worker/submit_worker_beliefs/', data);
   }
+
+  submitWorkerDecisions(data: any): Observable<any> {
+    return this.http.post(baseUrl + '/api/worker/submit_approach_decision_minoffer/', data);
+  }
 }

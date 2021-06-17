@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+$custom-typography: mat-typography-config($font-family: '"Open Sans", sans-serif;');
+@include mat-core($custom-typography);
 
 html,
 body {
@@ -30,8 +35,8 @@ body {
 }
 
 .carousel-item {
-  transition: opacity 0.25s ease !important;
-    opacity: 0;
+  transition: 0.2s ease !important;
+  opacity: 0;
 }
 
 .carousel-item.active {

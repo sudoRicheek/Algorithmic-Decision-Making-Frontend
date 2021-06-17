@@ -7,7 +7,7 @@
   <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} <span *ngIf="element.name == type_work_name"><strong>(You)</strong></span> </td>
     </ng-container>
 
     <ng-container matColumnDef="al1">
@@ -104,13 +104,13 @@
             </mat-form-field>
           </mat-card-actions>
         </mat-card>
-        <pre>Rows selected: [{{questionsFormArray.value | slice:0:i}}<strong><span *ngIf="i!=0">,</span>{{questionsFormArray.value[i]}}</strong>,{{questionsFormArray.value | slice:i+1}}]</pre>
+        <pre>Rows selected: [{{questionsFormArray.value | slice:0:i}}<strong><span *ngIf="i!=0">,</span>{{questionsFormArray.value[i]}}</strong><span *ngIf="i!=lenlist-1">,</span>{{questionsFormArray.value | slice:i+1}}]</pre>
       </div>
     </ng-template>
   </ngb-carousel>
   <button class="submit-belief" mat-raised-button color="primary"
     [disabled]="questionsFormArray.status=='INVALID' || beliefSubmitted" (click)="submitBeliefs()">Submit all of your
     predictions</button>
-  <button class="submit-belief" mat-raised-button color="accent"
-    [disabled]="beliefSubmitted" (click)="nextSection()">Next Section</button>
+  <button class="submit-belief" mat-raised-button color="accent" [disabled]="!beliefSubmitted"
+    (click)="nextSection()">Next Section</button>
 </div>

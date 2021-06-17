@@ -5,6 +5,7 @@
 .example-toolbar {
     display: flex ;
     height: 12%;
+    background-color: #6200EE;
 }
 
 span {
