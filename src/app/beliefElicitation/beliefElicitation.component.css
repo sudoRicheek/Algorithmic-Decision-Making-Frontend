@@ -43,7 +43,7 @@ table {
 .internal-card {
   margin-left: 4%;
   margin-right: 4%;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
 }
 
 .allocations {
@@ -95,7 +95,7 @@ table {
   .internal-card {
     margin-left: 4%;
     margin-right: 4%;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
   }
 
   .allocations th {

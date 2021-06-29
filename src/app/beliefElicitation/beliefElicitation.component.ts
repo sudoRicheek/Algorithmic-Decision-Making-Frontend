@@ -8,6 +8,7 @@ import { WorkerService } from '../services/worker.service';
 import { FormArray, FormControl, Validators } from '@angular/forms';
 import { BeliefAlreadyAttemptedComponent } from '../dialogs/beliefAlreadyAttempted/beliefAlreadyAttempted.component';
 import { NotAllowedHereComponent } from '../dialogs/notAllowedHere/notAllowedHere.component';
+import { BeliefElicitationSubmittedComponent } from '../dialogs/beliefElicitationSubmitted/beliefElicitationSubmitted.component';
 
 export interface PeriodicElement {
   name: string;
@@ -156,6 +157,7 @@ export class BeliefElicitationComponent implements OnInit {
       this.questionsFormArray.value.forEach((element: number) => {
         predictions.push(element);
       });
+      this.beliefSubmitted = true;
       let worker_id = this.storageService.getWorker();
       if (worker_id)
         this.workerService
@@ -168,6 +170,8 @@ export class BeliefElicitationComponent implements OnInit {
               this.storageService.storeBeliefElicitationSubmissions(
                 predictions
               );
+              this.beliefsSubmitted();
+
               this.type_work = response.type_work;
               if (this.type_work == 0)
                 this.router.navigate(['approachdecision']);
@@ -191,6 +195,14 @@ export class BeliefElicitationComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
       if (this.type_work == 0) this.router.navigate(['approachdecision']);
       else if (this.type_work == 1) this.router.navigate(['postexperimental']);
+    });
+  }
+
+  beliefsSubmitted() {
+    const dialogRef = this.dialog.open(BeliefElicitationSubmittedComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 

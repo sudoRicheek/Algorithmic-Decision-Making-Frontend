@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AttentionAlreadyAttemptedComponent } from '../dialogs/attentionAlreadyAttempted/attentionAlreadyAttempted.component';
+import { AttentionSucessfullySubmittedComponent } from '../dialogs/attentionSucessfullySubmitted/attentionSucessfullySubmitted.component';
 import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
@@ -15,6 +16,7 @@ export class AttentioncheckComponent implements OnInit {
   questions: any;
   formData: any;
   alreadySubmitted: boolean;
+  attentionPassed: boolean;
 
   constructor(
     private questionService: QuestionService,
@@ -24,6 +26,7 @@ export class AttentioncheckComponent implements OnInit {
   ) {
     this.questions = [];
     this.alreadySubmitted = this.storageService.isAttentionSubmitted();
+    this.attentionPassed = false;
   }
 
   ngOnInit() {
@@ -76,13 +79,14 @@ export class AttentioncheckComponent implements OnInit {
     this.questionService.postAttentionAnswers(this.formData).subscribe(
       (response) => {
         console.log(response);
-        console.log();
         this.storageService.storeAttentionSubmissions(this.formData['answers']);
         this.alreadySubmitted = true;
+        this.attentionPassed = response['attention_passed'];
+        this.attentionSubmissionDialog();
       },
       (errors) => {
         console.log(errors);
-        if (errors.error.status == "alreadyAttempted") {
+        if (errors.error.status == 'alreadyAttempted') {
           this.alreadyAttempted();
           this.storageService.attentionSubmitted();
           this.alreadySubmitted = true;
@@ -98,6 +102,14 @@ export class AttentioncheckComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       this.router.navigate(['instructions']);
+    });
+  }
+
+  attentionSubmissionDialog() {
+    this.dialog.open(AttentionSucessfullySubmittedComponent, {
+      data: {
+        attentionSectionPassed: this.attentionPassed,
+      },
     });
   }
 

@@ -1,0 +1,13 @@
+<div *ngIf="data.attentionSectionPassed">
+  <h1 mat-dialog-title>Attention Section Passed!</h1>
+  <mat-dialog-content class="mat-typography">
+      <p>You have successfully cleared this section! Proceed to the next one</p>
+  </mat-dialog-content>
+</div>
+<div *ngIf="!data.attentionSectionPassed">
+  <h1 mat-dialog-title>Attention Section Failed!</h1>
+  <mat-dialog-content class="mat-typography">
+      <p>It seems you have got one/more questions wrong in this section! You will not be eligible for the further
+          experimental rounds :(</p>
+  </mat-dialog-content>
+</div>

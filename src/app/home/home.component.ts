@@ -24,14 +24,14 @@ export class HomeComponent implements OnInit {
     console.log(worker_id);
     if (worker_id != null && worker_id != this.storage.getWorker()) {
       this.storage.addWorker(worker_id);
-      this.workerService.addWorker(worker_id).subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      // this.workerService.addWorker(worker_id).subscribe(
+      //   (response) => {
+      //     console.log(response);
+      //   },
+      //   (error) => {
+      //     console.log(error);
+      //   }
+      // );
     } else if (worker_id == null && this.storage.getWorker() == null) {
       this.noWorkerFound();
     }
