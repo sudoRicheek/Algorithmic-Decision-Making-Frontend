@@ -1,0 +1,75 @@
+<div class="dss-container">
+  <h1>Decision Support System Section</h1>
+  <p>Here you can refer to a <strong>DSS</strong> to improve/check your chances of success based on past bargains.</p>
+  <p>Select an allocation and press the "Refer to DSS(AI-System)" button to get a response from an AI-System.</p>
+  <mat-grid-list cols="5" rowHeight="3:2">
+    <mat-grid-tile [colspan]=3 [rowspan]=2>
+      <div class="chart-container">
+        <canvas baseChart [data]="chartData" [labels]="chartLabels" [chartType]="chartType" [options]="chartOptions"
+          [colors]="chartColours"></canvas>
+        <strong>Proposer: {{chartData[0]}}, Responder: {{chartData[1]}}</strong>
+      </div>
+      <mat-slider class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected" [tickInterval]=1
+        aria-labelledby="example-name-label" (input)="onInputChange($event)">
+      </mat-slider>
+      <strong>Allocation: {{allocationSelected}}</strong>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=2 [rowspan]=3>
+      <mat-card class="dss-response-card">
+        <mat-card-header>
+          <div class="progress-spinner" *ngIf="dssCalledOnce">
+            <mat-progress-spinner class="dss-progress-spinner" diameter=30 [mode]="progressmode"
+              [value]="likelihoodAcceptanceValue*100">
+            </mat-progress-spinner>
+            <p class="progress-spinner-text">{{likelihoodAcceptanceValue | number: '1.2-2'}}</p>
+          </div>
+          <div class="progress-spinner" *ngIf="dssCalledOnce">
+            <mat-progress-spinner class="dss-progress-spinner" diameter=30 [mode]="progressmode"
+              [value]="likelihoodMaximumIncome*100">
+            </mat-progress-spinner>
+            <p class="progress-spinner-text">{{likelihoodMaximumIncome | number: '1.2-2'}}</p>
+          </div>
+          <mat-card-title>Decision Support System Response</mat-card-title>
+          <mat-card-subtitle>AI-System</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="dss-response-text" *ngIf="!dssCalledOnce">
+            Description of the DSS, AI-System, etc. How DSS is made, internals.
+            Used past experiments for data generation, etc..
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet arcu convallis, bibendum libero id,
+            ornare nunc. Proin sed efficitur purus. Integer posuere lorem nisl, sed tincidunt neque aliquam id. Aenean
+            feugiat a ipsum vel elementum. Ut convallis ut ex sed efficitur. Sed sit amet mi sed urna condimentum
+            aliquet vitae eget lacus. Sed dictum magna eu suscipit consectetur.
+          </p>
+          <p class="dss-response-text" *ngIf="dssCalledOnce">
+            Allocation sent to retrieve information from DSS: <strong>{{allocationSentToDSS}}</strong>
+            <br><br>
+            Likelihood that this offer will be accepted by the Responder: <strong>{{likelihoodAcceptanceValue | number:
+              '1.2-2'}}</strong>
+            <br><br>
+            Likelihood that this offer will maximize your expected income: <strong>{{likelihoodMaximumIncome | number:
+              '1.2-2'}}</strong>
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button class="submit-decision" mat-raised-button color="primary" (click)="submitToDSS()"
+        [disabled]="dssSubmitted">Refer to DSS
+        (AI-System)</button>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <button class="submit-decision" mat-raised-button color="primary" (click)="submitFinally()"
+        [disabled]="dssSubmitted">Submit your final
+        decision after referring to the DSS</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <button class="next-section" mat-raised-button color="warn" (click)="nextSection()" [disabled]="
+    !dssSubmitted">Next Section</button>
+</div>

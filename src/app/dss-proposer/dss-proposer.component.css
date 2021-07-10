@@ -1,0 +1,50 @@
+h1 {
+  /* color: #5a37b8; */
+  color: #3700b3;
+  margin: 10px;
+  font-size: 20pt;
+}
+
+p {
+  color: #db5151e1;
+  margin: 10px;
+  font-size: large;
+}
+
+.dss-container {
+  margin-top: 5px;
+  padding-bottom: 10%;
+  margin-left: 16.5%;
+  margin-right: 16.5%;
+}
+
+.dss-progress-spinner {
+  margin: 10px;
+}
+
+.progress-spinner-text {
+    text-align: center;
+    font-size: 10pt;
+    color: #3700b3;
+}
+
+.dss-response-text {
+    margin: 15px;
+    font-size: 12pt;
+    color: #3700b3;
+}
+
+.next-section {
+    margin: 10px;
+}
+
+/* .dss-response-card {
+} */
+
+@media only screen and (max-width: 768px) {
+  .dss-container {
+    padding-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}

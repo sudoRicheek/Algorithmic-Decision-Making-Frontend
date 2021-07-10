@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NotAllowedHereComponent } from '../dialogs/notAllowedHere/notAllowedHere.component';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
-import { ChartType, ChartOptions, ChartData } from 'chart.js';
+import { ChartType, ChartOptions } from 'chart.js';
 import { MatSliderChange } from '@angular/material/slider';
 // import { Label } from 'ng2-charts';
 

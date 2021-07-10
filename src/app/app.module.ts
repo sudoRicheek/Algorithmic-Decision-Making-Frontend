@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,11 +16,14 @@ import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitatio
 import { ApproachDecisionComponent } from './approachDecision/approachDecision.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { MinofferComponent } from './minoffer/minoffer.component';
+import { UniqueCodeComponent } from './uniqueCode/uniqueCode.component';
 
 import { StorageService } from './services/storage.service';
 import { UserExistsService } from './services/userExists.service';
 
 import { LoadingScreenInterceptor } from './interceptors/loading.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import {
   DialogAttentionFail,
@@ -38,7 +42,7 @@ import { BeliefAlreadyAttemptedComponent } from './dialogs/beliefAlreadyAttempte
 import { NotAllowedHereComponent } from './dialogs/notAllowedHere/notAllowedHere.component';
 import { AttentionSucessfullySubmittedComponent } from './dialogs/attentionSucessfullySubmitted/attentionSucessfullySubmitted.component';
 import { BeliefElicitationSubmittedComponent } from './dialogs/beliefElicitationSubmitted/beliefElicitationSubmitted.component';
-
+import { PostExperimentalSubmissionComponent } from './dialogs/postExperimentalSubmission/postExperimentalSubmission.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -49,17 +53,18 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ChartsModule } from 'ng2-charts';
-
+import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +93,10 @@ import { ChartsModule } from 'ng2-charts';
     AttentionSucessfullySubmittedComponent,
     BeliefElicitationSubmittedComponent,
     LoadingScreenComponent,
+    MinofferComponent,
+    PostExperimentalSubmissionComponent,
+    UniqueCodeComponent,
+    DssProposerComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,6 +118,7 @@ import { ChartsModule } from 'ng2-charts';
     MatFormFieldModule,
     MatInputModule,
     MatSliderModule,
+    MatProgressSpinnerModule,
 
     NgbModule,
 
@@ -124,8 +134,16 @@ import { ChartsModule } from 'ng2-charts';
       useClass: LoadingScreenInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useFactory: function (router: Router, dialog: MatDialog) {
+        return new AuthInterceptor(router, dialog);
+      },
+      multi: true,
+      deps: [Router, MatDialog],
+    },
     StorageService,
-    UserExistsService
+    UserExistsService,
   ],
   bootstrap: [AppComponent],
 })

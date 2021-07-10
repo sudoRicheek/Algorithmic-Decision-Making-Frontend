@@ -140,4 +140,57 @@ export class StorageService {
       return JSON.parse(approachDecisionSubmissions);
     else return null;
   }
+
+  storePostExperimentalSubmissions(formData: any) {
+    interface mapType {
+      [key: number]: number;
+    }
+    let dictMapData: mapType;
+    dictMapData = {};
+
+    formData.forEach((element: { q_id: any; c_id: any }) => {
+      dictMapData[element.q_id] = element.c_id;
+    });
+
+    localStorage.setItem(
+      'postExperimentalSubmissions',
+      JSON.stringify(dictMapData)
+    );
+    localStorage.setItem('postExperimentalSubmitted', 'true');
+  }
+
+  getPostExperimentalSubmissions() {
+    let localPostExperimentalSubmissions = localStorage.getItem(
+      'postExperimentalSubmissions'
+    );
+    if (!localPostExperimentalSubmissions) return null;
+    else return JSON.parse(localPostExperimentalSubmissions);
+  }
+
+  postExperimentalSubmitted() {
+    localStorage.setItem('postExperimentalSubmitted', 'true');
+  }
+
+  isPostExperimentalSubmitted() {
+    let alreadySubmitted = localStorage.getItem('postExperimentalSubmitted');
+    if (!alreadySubmitted) return false;
+    else return true;
+  }
+
+  storeDSSProposerData(dssProposerAllocation: number){
+    localStorage.setItem('dssProposerSubmitted','true');
+    localStorage.setItem('dssProposerAllocation',JSON.stringify(dssProposerAllocation));
+  }
+
+  isDSSProposerSubmitted() {
+    let alreadySubmitted = localStorage.getItem('dssProposerSubmitted');
+    if (!alreadySubmitted) return false;
+    else return true;
+  }
+
+  getDSSProposerAllocation() {
+    let allocation = localStorage.getItem('dssProposerAllocation');
+    if (!allocation) return null;
+    else return JSON.parse(allocation);
+  }
 }

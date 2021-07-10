@@ -1,3 +1,19 @@
-<p>
-  postExperimentalQuestions works!
-</p>
+<div class="basic-container">
+  <h1>Post Experimental Questions</h1>
+  <p>Dummy text here</p>
+  <div *ngFor="let question of questions; let i=index">
+    <mat-card class="tp-card">
+      <label id="example-radio-group-label">{{i+1}}. {{question.question_text}}</label>
+      <mat-radio-group required aria-labelledby="example-radio-group-label" class="example-radio-group"
+        [(ngModel)]="question.answerSelected">
+        <mat-radio-button class="example-radio-button" *ngFor="let choice of question.choices" [value]="choice.id">
+          {{choice.choice_text}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="postPostExperimentalResponses()" [disabled]="postExperimentalSubmitted"
+    class="submit">Submit</button>
+  <button mat-raised-button color="accent" (click)="nextSection()" [disabled]="!postExperimentalSubmitted" class="next-section">Next Section</button>
+</div>

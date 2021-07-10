@@ -4,11 +4,13 @@ import { ApproachDecisionComponent } from './approachDecision/approachDecision.c
 import { AttentioncheckComponent } from './attentioncheck/attentioncheck.component';
 import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitation.component';
 import { ComprehensionComponent } from './comprehension/comprehension.component';
+import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
 import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { UserExistsService } from './services/userExists.service';
+import { UniqueCodeComponent } from './uniqueCode/uniqueCode.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +21,8 @@ const routes: Routes = [
   { path: 'beliefelicitation', component: BeliefElicitationComponent, canActivate: [UserExistsService] },
   { path: 'postexperimental', component: PostExperimentalQuestionsComponent, canActivate: [UserExistsService] },
   { path: 'approachdecision', component: ApproachDecisionComponent, canActivate: [UserExistsService] },
-
+  { path: 'uniquecode', component: UniqueCodeComponent, canActivate: [UserExistsService] },
+  { path: 'dssproposer', component: DssProposerComponent, canActivate: [UserExistsService] },
 
   // should be at the bottom.
   { path: '**', redirectTo: '/' },

@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AttentionAlreadyAttemptedComponent } from '../dialogs/attentionAlreadyAttempted/attentionAlreadyAttempted.component';
 import { AttentionSucessfullySubmittedComponent } from '../dialogs/attentionSucessfullySubmitted/attentionSucessfullySubmitted.component';
-import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
 

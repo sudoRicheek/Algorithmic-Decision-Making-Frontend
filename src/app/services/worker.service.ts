@@ -58,4 +58,18 @@ export class WorkerService {
       data
     );
   }
+
+  submitDSSProposerResponse(
+    worker_id: string,
+    allocationSubmitted: number
+  ): Observable<any> {
+    let formData: any;
+    formData = {};
+    formData['worker_id'] = worker_id;
+    formData['allocationSubmitted'] = allocationSubmitted;
+    return this.http.post(
+      baseUrl + '/api/worker/submit_dss_proposer_response/',
+      formData
+    );
+  }
 }

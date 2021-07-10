@@ -29,7 +29,7 @@ export class ReminderComponent implements OnInit {
 
   ngOnInit() {
     let worker_id = this.storageService.getWorker();
-    if (worker_id){
+    if (worker_id) {
       this.workerService.getComprehensionResults(worker_id).subscribe(
         (response) => {
           this.comprehensionPassed = response.passed;
@@ -64,7 +64,7 @@ export class ReminderComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  
+
   comprehensionFail() {
     const dialogRef = this.dialog.open(ComprehensionFailComponent);
 
@@ -74,6 +74,19 @@ export class ReminderComponent implements OnInit {
   }
 
   nextSection() {
-    this.router.navigate(['beliefelicitation']);
+    let localWorker = this.storageService.getWorker();
+    let type_work: number;
+    if (localWorker) {
+      this.workerService.getWorkerType(localWorker).subscribe(
+        (response) => {
+          type_work = response.type_work;
+          if (type_work == 0) this.router.navigate(['beliefelicitation']);
+          else this.router.navigate(['dssproposer']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

@@ -11,23 +11,34 @@ import { NotAllowedHereComponent } from '../dialogs/notAllowedHere/notAllowedHer
 import { BeliefElicitationSubmittedComponent } from '../dialogs/beliefElicitationSubmitted/beliefElicitationSubmitted.component';
 
 export interface PeriodicElement {
-  name: string;
   position: number;
-  weight: number;
-  symbol: string;
+  plarger: number;
+  plower: number;
+  p: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+  { position: 1, plarger: 1.0, plower: 0.0, p: 0.0 },
+  { position: 2, plarger: 0.9975, plower: 0.0975, p: 0.0975 },
+  { position: 3, plarger: 0.99, plower: 0.19, p: 0.19 },
+  { position: 4, plarger: 0.9775, plower: 0.2775, p: 0.2775 },
+  { position: 5, plarger: 0.96, plower: 0.36, p: 0.36 },
+  { position: 6, plarger: 0.9375, plower: 0.4375, p: 0.4375 },
+  { position: 7, plarger: 0.91, plower: 0.51, p: 0.51 },
+  { position: 8, plarger: 0.8775, plower: 0.5775, p: 0.5775 },
+  { position: 9, plarger: 0.84, plower: 0.64, p: 0.64 },
+  { position: 10, plarger: 0.7975, plower: 0.6975, p: 0.6975 },
+  { position: 11, plarger: 0.75, plower: 0.75, p: 0.75 },
+  { position: 12, plarger: 0.6975, plower: 0.7975, p: 0.7975 },
+  { position: 13, plarger: 0.64, plower: 0.84, p: 0.84 },
+  { position: 14, plarger: 0.5775, plower: 0.8775, p: 0.8775 },
+  { position: 15, plarger: 0.51, plower: 0.91, p: 0.91 },
+  { position: 16, plarger: 0.4375, plower: 0.9375, p: 0.9375 },
+  { position: 17, plarger: 0.36, plower: 0.96, p: 0.96 },
+  { position: 18, plarger: 0.2775, plower: 0.9775, p: 0.9775 },
+  { position: 19, plarger: 0.19, plower: 0.99, p: 0.99 },
+  { position: 20, plarger: 0.0975, plower: 0.9975, p: 0.9975 },
+  { position: 21, plarger: 0.0, plower: 1.0, p: 1.0 },
 ];
 
 export interface AllocationTable {
@@ -51,7 +62,7 @@ const ALLOCATION_DATA: AllocationTable[] = [
   styleUrls: ['./beliefElicitation.component.css'],
 })
 export class BeliefElicitationComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'plarger', 'plower', 'p'];
   dataSource = ELEMENT_DATA;
 
   allocationColumns: string[] = [
