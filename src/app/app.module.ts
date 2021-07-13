@@ -16,7 +16,6 @@ import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitatio
 import { ApproachDecisionComponent } from './approachDecision/approachDecision.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
-import { MinofferComponent } from './minoffer/minoffer.component';
 import { UniqueCodeComponent } from './uniqueCode/uniqueCode.component';
 
 import { StorageService } from './services/storage.service';
@@ -93,7 +92,6 @@ import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
     AttentionSucessfullySubmittedComponent,
     BeliefElicitationSubmittedComponent,
     LoadingScreenComponent,
-    MinofferComponent,
     PostExperimentalSubmissionComponent,
     UniqueCodeComponent,
     DssProposerComponent,

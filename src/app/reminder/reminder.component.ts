@@ -81,7 +81,8 @@ export class ReminderComponent implements OnInit {
         (response) => {
           type_work = response.type_work;
           if (type_work == 0) this.router.navigate(['beliefelicitation']);
-          else this.router.navigate(['dssproposer']);
+          else if (type_work == 1) this.router.navigate(['dssproposer']);
+          else if (type_work == -1) this.router.navigate(['/']);
         },
         (error) => {
           console.log(error);

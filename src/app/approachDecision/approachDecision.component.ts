@@ -42,7 +42,6 @@ export class ApproachDecisionComponent implements OnInit {
       this.allocationSelected =
         localApproachDecisionSubmissions['allocationSelected'];
     } else {
-      this.approachDecision = 1;
       this.allocationSelected = 2;
     }
 
