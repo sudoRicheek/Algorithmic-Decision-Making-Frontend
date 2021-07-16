@@ -69,17 +69,23 @@ export class InstructionsComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
-  nextSection() {
-    this.router.navigate(['comprehension']);
-  }
 }
 
 @Component({
   selector: 'dialog-content-instructions',
   templateUrl: 'dialog-content-instructions.html',
 })
-export class DialogContentInstructions {}
+export class DialogContentInstructions {
+  instructionsRead: boolean;
+
+  constructor(public router: Router) {
+    this.instructionsRead = false;
+  }
+
+  nextSection() {
+    this.router.navigate(['comprehension']);
+  }
+}
 
 @Component({
   selector: 'dialog-attention-noattempt',

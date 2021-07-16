@@ -15,5 +15,5 @@
 
   <button mat-raised-button color="primary" (click)="postComprehensionAnswers()" [disabled]="comprehensionSubmitted"
     class="submit">Submit</button>
-  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section">Next Section</button>
+  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section" [disabled]="!comprehensionSubmitted">Next Section</button>
 </div>

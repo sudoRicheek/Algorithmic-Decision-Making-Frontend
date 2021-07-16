@@ -16,5 +16,5 @@
 
   <button mat-raised-button color="primary" (click)="postAttentionAnswers()" [disabled]="alreadySubmitted"
     class="submit">Submit</button>
-  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section">Next Section</button>
+  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section" [disabled]="!alreadySubmitted">Next Section</button>
 </div>

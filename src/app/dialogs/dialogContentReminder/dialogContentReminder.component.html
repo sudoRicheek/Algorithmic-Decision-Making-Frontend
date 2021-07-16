@@ -12,5 +12,8 @@
         Throughout the whole task, all participants will remain anonymous.</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes, I understand the instructions</button>
+  <mat-checkbox class="example-margin" [(ngModel)]="reminderRead">
+    Yes, I understand the instructions
+  </mat-checkbox>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="nextSection()" [disabled]="!reminderRead">Proceed to the next section</button>
 </mat-dialog-actions>

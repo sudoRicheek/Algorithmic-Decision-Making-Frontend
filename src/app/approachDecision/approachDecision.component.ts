@@ -122,6 +122,8 @@ export class ApproachDecisionComponent implements OnInit {
             this.approachDecision,
             this.allocationSelected
           );
+
+          this.router.navigate(['postexperimental']);
         },
         (error) => {
           console.log(error);

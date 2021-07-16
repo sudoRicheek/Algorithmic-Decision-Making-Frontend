@@ -82,6 +82,8 @@ export class AttentioncheckComponent implements OnInit {
         this.alreadySubmitted = true;
         this.attentionPassed = response['attention_passed'];
         this.attentionSubmissionDialog();
+        if (this.attentionPassed) this.router.navigate(['instructions']);
+        else this.router.navigate(['/']);
       },
       (errors) => {
         console.log(errors);
