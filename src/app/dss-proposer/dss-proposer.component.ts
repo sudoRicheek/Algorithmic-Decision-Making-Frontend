@@ -117,6 +117,8 @@ export class DssProposerComponent implements OnInit {
             this.storageService.storeDSSProposerData(
               response.allocationSubmitted
             );
+
+            this.router.navigate(['beliefelicitation']);
           },
           (error) => {
             console.log(error);

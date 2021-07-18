@@ -73,4 +73,11 @@ export class WorkerService {
       formData
     );
   }
+
+  getUniqueCode(worker_id: string): Observable<any> {
+    let formData: any;
+    formData = {};
+    formData['worker_id'] = worker_id;
+    return this.http.post(baseUrl + '/api/worker/get_uniquecode/', formData);
+  }
 }

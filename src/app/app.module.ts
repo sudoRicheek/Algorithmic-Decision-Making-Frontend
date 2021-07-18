@@ -60,6 +60,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -119,6 +122,9 @@ import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
     MatSliderModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatTooltipModule,
+    
+    ClipboardModule,
 
     NgbModule,
 

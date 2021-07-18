@@ -1,3 +1,22 @@
-<p>
-  uniqueCode works!
-</p>
+<div class="basic-container" *ngIf="uniqueCode!=''">
+  <mat-card>
+    <mat-card-title>
+      <h1>Thanks for participating in the HIT!</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <p>Here is the unique code, which you need to post in your home website! (Prolific)</p>
+      <p><strong>Copy this and paste on your host website to receive your payment!</strong></p>
+    </mat-card-content>
+    <mat-divider [inset]="true"></mat-divider>
+    <p class="unique-code-text">{{ uniqueCode }}</p>
+    <mat-card-actions align="end">
+      <button mat-icon-button [cdkCopyToClipboard]="uniqueCode" matTooltip="Copy Code!"
+        matTooltipClass="copy-tooltip" aria-label="Copy Code!">
+        <span class="material-icons">
+          content_copy
+        </span>
+      </button>
+    </mat-card-actions>
+    <mat-divider [inset]="true"></mat-divider>
+  </mat-card>
+</div>

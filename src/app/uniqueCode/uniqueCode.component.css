@@ -1,0 +1,93 @@
+h1 {
+    /* color: #5a37b8; */
+    color: #3700b3;
+    margin: 10px;
+    font-size: 20pt;
+  }
+  
+  p {
+    color: #db5151e1;
+    margin: 10px;
+    font-size: large;
+  }
+  
+  .basic-container {
+    margin-top: 10px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 100px;
+  }
+  
+  .instructions {
+    margin: 5px;
+    max-width: fit-content;
+  }
+  
+  .next-section {
+    margin: 5px;
+    max-width: fit-content;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 5px;
+  }
+  
+
+  .unique-code-text {
+    color: #010518e5;
+    font-size: 16pt;
+  }
+
+  .mat-flat-button {
+    border-radius: 50px;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .basic-container {
+      margin-top: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      padding-bottom: 100px;
+      margin-right: auto;
+    }
+  
+    .instructions {
+      margin: 5px;
+      max-width: fit-content;
+      font-size: 9pt;
+    }
+    
+    .next-section {
+      margin: 5px;
+      max-width: fit-content;
+      font-size: 9pt;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .basic-container {
+      margin-top: 10px;
+      max-width: 400px;
+      margin-left: auto;
+      padding-bottom: 100px;
+      margin-right: auto;
+      flex-direction: column;
+    }
+  
+    .instructions {
+      margin: 5px;
+      max-width: fit-content;
+      font-size: 8pt;
+    }
+    
+    .next-section {
+      margin: 5px;
+      max-width: fit-content;
+      font-size: 8pt;
+    }
+  }
+  
