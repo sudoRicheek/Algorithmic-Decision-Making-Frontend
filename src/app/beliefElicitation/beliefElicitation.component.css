@@ -28,6 +28,10 @@ p {
   /* background-color: #6d50be; */
 }
 
+.home-card {
+  border-top: 3px solid #3700b3;
+}
+
 table {
   /* margin-top: 20px; */
   margin-bottom: 20px;
@@ -36,8 +40,8 @@ table {
 .table-container {
   margin-top: 5px;
   padding-bottom: 10%;
-  margin-left: 16.5%;
-  margin-right: 16.5%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .internal-card {
@@ -104,6 +108,11 @@ table {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+
+/* .mat-divider {
+  border-top-width: 5px;
+  border-top-color: rgba(6, 43, 73, 0.678);
+} */
 
 @media only screen and (max-width: 768px) {
   .table-container {

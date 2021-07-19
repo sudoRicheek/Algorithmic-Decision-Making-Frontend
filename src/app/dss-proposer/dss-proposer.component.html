@@ -58,7 +58,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-      <button class="submit-decision" mat-raised-button color="primary" (click)="submitToDSS()"
+      <button class="submit-decision" mat-raised-button color="warn" (click)="submitToDSS()"
         [disabled]="dssSubmitted">Refer to DSS
         (AI-System)</button>
     </mat-grid-tile>
@@ -70,6 +70,6 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <button class="next-section" mat-raised-button color="warn" (click)="nextSection()" [disabled]="
+  <button class="next-section" mat-raised-button color="accent" (click)="nextSection()" [disabled]="
     !dssSubmitted">Next Section</button>
 </div>
