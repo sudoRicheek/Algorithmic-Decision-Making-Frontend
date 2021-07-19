@@ -35,6 +35,10 @@ p {
   margin: 5px;
 }
 
+.chart-container {
+  text-align: end;
+}
+
 label {
   color: #3700b3;
   /* margin: 10px; */

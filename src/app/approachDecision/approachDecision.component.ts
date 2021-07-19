@@ -18,6 +18,8 @@ export class ApproachDecisionComponent implements OnInit {
   approachDecision: number;
   proposerTypes: string[];
 
+  approachDecisionConfirmed: boolean;
+
   allocationSelected: number;
 
   alreadySubmitted: boolean;
@@ -34,6 +36,8 @@ export class ApproachDecisionComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {
+    this.approachDecisionConfirmed = false;
+
     let localApproachDecisionSubmissions =
       this.storageService.getApproachDecisionSubmissions();
     if (localApproachDecisionSubmissions) {
@@ -41,7 +45,14 @@ export class ApproachDecisionComponent implements OnInit {
         localApproachDecisionSubmissions['approachDecision'];
       this.allocationSelected =
         localApproachDecisionSubmissions['allocationSelected'];
+      this.approachDecisionConfirmed = true;
     } else {
+      let approachDecisionConfirmed =
+        this.storageService.getApproachDecisionConfirmedSubmissions();
+      if (approachDecisionConfirmed) {
+        this.approachDecision = approachDecisionConfirmed;
+        this.approachDecisionConfirmed = true;
+      }
       this.allocationSelected = 2;
     }
 
@@ -130,6 +141,13 @@ export class ApproachDecisionComponent implements OnInit {
         }
       );
     }
+  }
+
+  confirmApproachDecision() {
+    this.approachDecisionConfirmed = true;
+    this.storageService.storeApproachDecisionConfirmedSubmissions(
+      this.approachDecision
+    );
   }
 
   nextSection() {

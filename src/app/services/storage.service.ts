@@ -132,6 +132,21 @@ export class StorageService {
     localStorage.setItem('approachDecisionSubmissions', JSON.stringify(data));
   }
 
+  storeApproachDecisionConfirmedSubmissions(approachDecision: number) {
+    localStorage.setItem(
+      'approachDecisionConfirmed',
+      JSON.stringify(approachDecision)
+    );
+  }
+
+  getApproachDecisionConfirmedSubmissions() {
+    let approachDecisionConfirmed = localStorage.getItem(
+      'approachDecisionConfirmed'
+    );
+    if (approachDecisionConfirmed) return JSON.parse(approachDecisionConfirmed);
+    else return null;
+  }
+
   getApproachDecisionSubmissions() {
     let approachDecisionSubmissions = localStorage.getItem(
       'approachDecisionSubmissions'
@@ -177,9 +192,12 @@ export class StorageService {
     else return true;
   }
 
-  storeDSSProposerData(dssProposerAllocation: number){
-    localStorage.setItem('dssProposerSubmitted','true');
-    localStorage.setItem('dssProposerAllocation',JSON.stringify(dssProposerAllocation));
+  storeDSSProposerData(dssProposerAllocation: number) {
+    localStorage.setItem('dssProposerSubmitted', 'true');
+    localStorage.setItem(
+      'dssProposerAllocation',
+      JSON.stringify(dssProposerAllocation)
+    );
   }
 
   isDSSProposerSubmitted() {

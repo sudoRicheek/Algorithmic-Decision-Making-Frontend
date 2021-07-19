@@ -3,6 +3,36 @@
   <p>You are a <strong>{{type_work_name}}</strong>. You will need to answer <strong>{{lenlist}}</strong> questions.</p>
   <p>Make sure to answer all the questions to the best of your understanding!</p>
 
+  <h2>Belief Elicitation probabilities: </h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 beliefprobabilities">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="plarger">
+      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if <span
+            *ngIf="type_work==0">Proposer</span><span *ngIf="type_work==1">Responder</span> offer is larger than your
+          proposed allocation</strong> </th>
+      <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="plower">
+      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if <span
+            *ngIf="type_work==0">Proposer</span><span *ngIf="type_work==1">Responder</span> offer is lower than your
+          proposed allocation</strong> </th>
+      <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="p">
+      <th mat-header-cell *matHeaderCellDef> <strong>p</strong> </th>
+      <td mat-cell *matCellDef="let element"> {{element.p | number: '1.4-4'}} </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns | slice:0:3;"></tr>
+  </table>
+
   <h2>Reminder for the Allocations: </h2>
   <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
     <ng-container matColumnDef="name">
@@ -45,33 +75,6 @@
     <tr mat-row *matRowDef="let row; columns: allocationColumns;"></tr>
   </table>
 
-  <h2>Belief Elicitation probabilities: </h2>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 beliefprobabilities">
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="plarger">
-      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if <span *ngIf="type_work==0">Proposer</span><span
-          *ngIf="type_work==1">Responder</span> offer is larger than your proposed allocation</strong>  </th>
-      <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="plower">
-      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if <span *ngIf="type_work==0">Proposer</span><span
-        *ngIf="type_work==1">Responder</span> offer is lower than your proposed allocation</strong>  </th>
-      <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="p">
-      <th mat-header-cell *matHeaderCellDef> <strong>p</strong> </th>
-      <td mat-cell *matCellDef="let element"> {{element.p | number: '1.4-4'}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
 
   <ngb-carousel [interval]="0">
     <ng-template ngbSlide *ngFor="let control of questionsFormArray.controls; index as i">

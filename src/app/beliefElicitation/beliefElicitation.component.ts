@@ -125,7 +125,7 @@ export class BeliefElicitationComponent implements OnInit {
           let localStoredBeliefs =
             this.storageService.getBeliefElicitationSubmissions();
           if (!localStoredBeliefs)
-            localStoredBeliefs = new Array(this.lenlist).fill(1);
+            localStoredBeliefs = new Array(this.lenlist).fill('');
 
           this.listnums.forEach((i) =>
             this.questionsFormArray.push(

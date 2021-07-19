@@ -9,7 +9,7 @@
     <mat-card-actions>
       <label id="example-radio-group-label">Pick the proposer you would prefer to bargain with</label>
       <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-        [(ngModel)]="approachDecision">
+        [(ngModel)]="approachDecision" [disabled]="approachDecisionConfirmed">
         <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i" [value]="i+1">
           {{proposer}}
         </mat-radio-button>
@@ -17,6 +17,14 @@
     </mat-card-actions>
 
     <div *ngIf="approachDecision > 0 && approachDecision <= 3">
+      <mat-card-actions align="end">
+        <button class="confirm-approach-decision" mat-raised-button color="accent" (click)="confirmApproachDecision()"
+          [disabled]="alreadySubmitted || approachDecisionConfirmed">Confirm Approach Decision</button>
+      </mat-card-actions>
+    </div>
+
+
+    <div *ngIf="approachDecision > 0 && approachDecision <= 3 && approachDecisionConfirmed">
       <mat-card-title>
         <h1>You will need to bargain with the <strong>{{proposerTypes[approachDecision-1]}}</strong> proposer in this
           section!</h1>
@@ -29,16 +37,17 @@
         <div class="chart-container">
           <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
             [options]="pieChartOptions" [colors]="pieChartColours"></canvas>
+          <strong>Proposer: {{pieChartData[0]}}, Responder: {{pieChartData[1]}}</strong>
         </div>
         <mat-slider class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected" [tickInterval]=1
-          aria-labelledby="example-name-label" (input)="onInputChange($event)">
+          aria-labelledby="example-name-label" (input)="onInputChange($event)" [disabled]="alreadySubmitted">
         </mat-slider>
         <strong>Allocation: {{allocationSelected}}</strong>
       </mat-card-actions>
     </div>
   </mat-card>
 
-  <div *ngIf="approachDecision > 0 && approachDecision <= 3">
+  <div *ngIf="approachDecision > 0 && approachDecision <= 3 && approachDecisionConfirmed">
     <button class="submit-decision" mat-raised-button color="primary" (click)="submitDecision()"
       [disabled]="alreadySubmitted">Submit your decision and
       minimum offer</button>
