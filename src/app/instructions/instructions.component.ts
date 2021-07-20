@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
-import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
 
@@ -14,6 +14,8 @@ export class InstructionsComponent implements OnInit {
   attentionAttempted: boolean;
   attentionPassed: boolean;
 
+  @ViewChild('stepper') stepper: MatStepper;
+  
   constructor(
     private router: Router,
     private workerService: WorkerService,
@@ -68,6 +70,10 @@ export class InstructionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  nextSection() {
+    this.router.navigate(['comprehension']);
   }
 }
 

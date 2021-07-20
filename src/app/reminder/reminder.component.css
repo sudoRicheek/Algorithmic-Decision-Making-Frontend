@@ -14,12 +14,11 @@ p {
 .basic-container {
   margin-top: 10px;
   display: flex;
-  max-width: 520px;
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .instructions {
@@ -27,21 +26,36 @@ p {
   max-width: fit-content;
 }
 
+.header-card {
+  border-top: 5px solid #f4511e;
+  border-bottom: none;
+}
+
 .next-section {
   margin: 5px;
   max-width: fit-content;
+}
+
+.instruction-text {
+  margin-right: 3%;
+  margin-left: 3%;
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 12pt;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
 }
 
 @media only screen and (max-width: 992px) {
   .basic-container {
     margin-top: 10px;
     display: flex;
-    max-width: 450px;
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10%;
+    margin-right: 10%;
   }
   .instructions {
     margin: 5px;
@@ -53,6 +67,11 @@ p {
     margin: 5px;
     max-width: fit-content;
     font-size: 9pt;
+  }
+
+  .instruction-text {
+    margin-right: 0%;
+    margin-left: 0%;
   }
 }
 
@@ -60,12 +79,11 @@ p {
   .basic-container {
     margin-top: 10px;
     display: flex;
-    max-width: 400px;
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 3%;
+    margin-right: 3%;
   }
 
   .instructions {
@@ -78,5 +96,10 @@ p {
     margin: 5px;
     max-width: fit-content;
     font-size: 8pt;
+  }
+
+  .instruction-text {
+    margin-right: 0%;
+    margin-left: 0%;
   }
 }

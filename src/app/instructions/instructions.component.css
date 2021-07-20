@@ -13,10 +13,14 @@ p {
 
 .basic-container {
   margin-top: 10px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 20%;
+  margin-right: 20%;
   padding-bottom: 100px;
+}
+
+.header-card {
+  border-top: 5px solid #f4511e;
+  border-bottom: none;
 }
 
 .instructions {
@@ -29,17 +33,28 @@ p {
   max-width: fit-content;
 }
 
+.instruction-text {
+  margin-right: 3%;
+  margin-left: 3%;
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 12pt;
+}
+
 mat-card-actions {
   display: flex;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
 }
 
 @media only screen and (max-width: 992px) {
   .basic-container {
     margin-top: 10px;
-    max-width: 500px;
-    margin-left: auto;
+    /* max-width: 500px; */
+    margin-left: 10%;
     padding-bottom: 100px;
-    margin-right: auto;
+    margin-right: 10%;
   }
 
   .instructions {
@@ -53,15 +68,19 @@ mat-card-actions {
     max-width: fit-content;
     font-size: 9pt;
   }
+
+  .instruction-text {
+    margin-right: 0%;
+    margin-left: 0%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .basic-container {
     margin-top: 10px;
-    max-width: 400px;
-    margin-left: auto;
+    margin-left: 3%;
     padding-bottom: 100px;
-    margin-right: auto;
+    margin-right: 3%;
     flex-direction: column;
   }
 
@@ -75,5 +94,10 @@ mat-card-actions {
     margin: 5px;
     max-width: fit-content;
     font-size: 8pt;
+  }
+
+  .instruction-text {
+    margin-right: 0%;
+    margin-left: 0%;
   }
 }

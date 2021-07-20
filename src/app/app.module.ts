@@ -61,13 +61,15 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
 
-import {ClipboardModule} from '@angular/cdk/clipboard';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ChartsModule } from 'ng2-charts';
 import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @NgModule({
   declarations: [
@@ -123,7 +125,8 @@ import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     MatTooltipModule,
-    
+    MatStepperModule,
+
     ClipboardModule,
 
     NgbModule,
@@ -131,6 +134,9 @@ import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
     ChartsModule,
   ],
   providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+    },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { floatLabel: 'always', appearance: 'fill' },

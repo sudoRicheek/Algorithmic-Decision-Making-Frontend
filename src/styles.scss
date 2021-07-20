@@ -16,7 +16,7 @@ body {
 }
 
 .comprehension-submit-passed-dialog > mat-dialog-container {
-  background-color: #26cf8993;
+  background-color: #26cf89b9;
 }
 
 .comprehension-submit-failed-dialog > mat-dialog-container {
@@ -61,4 +61,15 @@ body {
 
 .dss-progress-spinner circle {
   stroke: #3cb043 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel-control-next-icon {
+    margin-left: 5px;
+    background-size: 225%;
+  }
+  .carousel-control-prev-icon {
+    margin-right: 5px;
+    background-size: 225%;
+  }
 }

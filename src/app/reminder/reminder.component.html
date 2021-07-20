@@ -1,16 +1,139 @@
 <div class="basic-container">
-  <mat-card>
+  <mat-card class="header-card">
     <mat-card-title>
       <h1>Please read the <strong>reminder instructions</strong> carefully!</h1>
     </mat-card-title>
     <mat-card-content>
-      <p>In the next section we will begin with the actual experiment!</p>
+      <p>Next we will begin with the experiment!</p>
     </mat-card-content>
-    <mat-card-actions>
-      <button class="instructions" mat-raised-button color="primary" (click)="openReminder()"
-        [disabled]="!comprehensionAttempted || !comprehensionPassed">Read Instructions</button>
-      <!-- <button class="next-section" mat-raised-button color="primary" (click)="nextSection()"
-        [disabled]="!comprehensionAttempted || !comprehensionPassed">Proceed with the experiment</button> -->
-    </mat-card-actions>
+
+
+    <mat-stepper linear #stepper>
+      <ng-template matStepperIcon="edit">
+        <mat-icon>menu_book</mat-icon>
+      </ng-template>
+
+      <mat-step state="instruction">
+        <ng-template matStepLabel>Page 1</ng-template>
+        <br>
+        <mat-card-content align="justify">
+          <h2>
+            Page 1
+          </h2>
+
+          <p class="instruction-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa felis,
+            rhoncus non dignissim eget,
+            aliquet a orci. Interdum et ollicitudin purus ultrices consectetur. Aliquam ultrices hendrerit velit,
+            non mattis lectus feugiat in. Donec ac malesuada lacus. Proin nec placerat justo.</p>
+
+          <p class="instruction-text">Sed rutrum nulla ante, a commodo ligula aliquam eu. Suspendisse semper congue
+            sapien, in posuere ex bibendum
+            et. Cras luctus a leo non malesuada.lam sed mi a justo faucibus dignissim eu vitae dolor. Cras porttitor
+            fermentum
+            urna, at volutpat leo porta eu. Nulla vitae erat non arcu convallis volutpat ac a diam.</p>
+
+          <p class="instruction-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Proin mollis, ligula
+            eget fermentum vehicula,um nisi, a mattis velit consequat sed. Donec venenatis, libero vitae commodo
+            vulputate, nulla odio lacinia odio, ut fringilla justo nisl quis nibh. Vestibulum non felis iaculis, auctor
+            sem sed, bibendum enim. Nunc ultrices et risus eget lacinia.</p>
+
+          <p class="instruction-text">Vivamus a dignissim orci, sit amet lacinia ligula. Sed ut elit sem. Pellentesque
+            felis eros, volutpat eu
+            eleifend id, malesuada eget tellus.amcorper pharetra. Nunc nunc libero, vehicula eget rhoncus in, volutpat a
+            diam. Aliquam lacinia
+            quam felis, ut iaculis ipsum commodo euismod. Cras condimentum et tortor quis blandit. Vivamus malesuada
+            eros
+            at tristique gravida.</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperNext>
+            Next Page
+          </button>
+        </mat-card-actions>
+      </mat-step>
+
+      <mat-step state="instruction">
+        <ng-template matStepLabel>Page 2</ng-template>
+        <br>
+        <mat-card-content align="justify">
+          <h2>
+            Page 2
+          </h2>
+
+          <p class="instruction-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa felis,
+            rhoncus non dignissim eget,
+            aliquet a orci. Interdum et ollicitudin purus ultrices consectetur. Aliquam ultrices hendrerit velit,
+            non mattis lectus feugiat in. Donec ac malesuada lacus. Proin nec placerat justo.</p>
+
+          <p class="instruction-text">Sed rutrum nulla ante, a commodo ligula aliquam eu. Suspendisse semper congue
+            sapien, in posuere ex bibendum
+            et. Cras luctus a leo non malesuada.lam sed mi a justo faucibus dignissim eu vitae dolor. Cras porttitor
+            fermentum
+            urna, at volutpat leo porta eu. Nulla vitae erat non arcu convallis volutpat ac a diam.</p>
+
+          <p class="instruction-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Proin mollis, ligula
+            eget fermentum vehicula,um nisi, a mattis velit consequat sed. Donec venenatis, libero vitae commodo
+            vulputate, nulla odio lacinia odio, ut fringilla justo nisl quis nibh. Vestibulum non felis iaculis, auctor
+            sem sed, bibendum enim. Nunc ultrices et risus eget lacinia.</p>
+
+          <p class="instruction-text">Vivamus a dignissim orci, sit amet lacinia ligula. Sed ut elit sem. Pellentesque
+            felis eros, volutpat eu
+            eleifend id, malesuada eget tellus.amcorper pharetra. Nunc nunc libero, vehicula eget rhoncus in, volutpat a
+            diam. Aliquam lacinia
+            quam felis, ut iaculis ipsum commodo euismod. Cras condimentum et tortor quis blandit. Vivamus malesuada
+            eros
+            at tristique gravida.</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button color="accent" matStepperNext>Next Page</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <mat-step state="instruction">
+        <ng-template matStepLabel>Page 3</ng-template>
+        <br>
+        <mat-card-content align="justify">
+          <h2>
+            Page 3
+          </h2>
+
+          <p class="instruction-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa felis,
+            rhoncus non dignissim eget,
+            aliquet a orci. Interdum et ollicitudin purus ultrices consectetur. Aliquam ultrices hendrerit velit,
+            non mattis lectus feugiat in. Donec ac malesuada lacus. Proin nec placerat justo.</p>
+
+          <p class="instruction-text">Sed rutrum nulla ante, a commodo ligula aliquam eu. Suspendisse semper congue
+            sapien, in posuere ex bibendum
+            et. Cras luctus a leo non malesuada.lam sed mi a justo faucibus dignissim eu vitae dolor. Cras porttitor
+            fermentum
+            urna, at volutpat leo porta eu. Nulla vitae erat non arcu convallis volutpat ac a diam.</p>
+
+          <p class="instruction-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Proin mollis, ligula
+            eget fermentum vehicula,um nisi, a mattis velit consequat sed. Donec venenatis, libero vitae commodo
+            vulputate, nulla odio lacinia odio, ut fringilla justo nisl quis nibh. Vestibulum non felis iaculis, auctor
+            sem sed, bibendum enim. Nunc ultrices et risus eget lacinia.</p>
+
+          <p class="instruction-text">Vivamus a dignissim orci, sit amet lacinia ligula. Sed ut elit sem. Pellentesque
+            felis eros, volutpat eu
+            eleifend id, malesuada eget tellus.amcorper pharetra. Nunc nunc libero, vehicula eget rhoncus in, volutpat a
+            diam. Aliquam lacinia
+            quam felis, ut iaculis ipsum commodo euismod. Cras condimentum et tortor quis blandit. Vivamus malesuada
+            eros
+            at tristique gravida.</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" (click)="nextSection()">Proceed with the experiment</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <ng-template matStepperIcon="instruction">
+        <mat-icon>menu_book</mat-icon>
+      </ng-template>
+    </mat-stepper>
   </mat-card>
 </div>
