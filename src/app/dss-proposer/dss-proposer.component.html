@@ -2,8 +2,26 @@
   <h1>Decision Support System Section</h1>
   <p>Here you can refer to a <strong>DSS</strong> to improve/check your chances of success based on past bargains.</p>
   <p>Select an allocation and press the "Refer to DSS(AI-System)" button to get a response from an AI-System.</p>
-  <mat-grid-list cols="5" rowHeight="3:2">
-    <mat-grid-tile [colspan]=3 [rowspan]=2>
+
+  <mat-grid-list cols={{colSpan}} rowHeight={{rowHeight}} (window:resize)="onResize($event)">
+
+    <mat-grid-tile [colspan]=chartColSpan [rowspan]=chartRowSpan *ngIf="triggerBreakpoint">
+      <div>
+        <div class="chart-container">
+          <canvas baseChart [data]="chartData" [labels]="chartLabels" [chartType]="chartType" [options]="chartOptions"
+            [colors]="chartColours"></canvas>
+          <strong>Proposer: {{chartData[0]}}, Responder: {{chartData[1]}}</strong>
+        </div>
+        <div>
+          <mat-slider class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected" [tickInterval]=1
+            aria-labelledby="example-name-label" (input)="onInputChange($event)">
+          </mat-slider>
+          <strong>Allocation: {{allocationSelected}}</strong>
+        </div>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=chartColSpan [rowspan]=chartRowSpan *ngIf="!triggerBreakpoint">
       <div class="chart-container">
         <canvas baseChart [data]="chartData" [labels]="chartLabels" [chartType]="chartType" [options]="chartOptions"
           [colors]="chartColours"></canvas>
@@ -15,7 +33,7 @@
       <strong>Allocation: {{allocationSelected}}</strong>
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]=2 [rowspan]=3>
+    <mat-grid-tile [colspan]=responseCardColSpan [rowspan]=responseCardRowSpan>
       <mat-card class="dss-response-card">
         <mat-card-header>
           <div class="progress-spinner" *ngIf="dssCalledOnce">
@@ -54,16 +72,15 @@
           </p>
         </mat-card-content>
       </mat-card>
-
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]=1 [rowspan]=1>
+    <mat-grid-tile [colspan]=referColSpan [rowspan]=referRowSpan>
       <button class="submit-decision" mat-raised-button color="warn" (click)="submitToDSS()"
         [disabled]="dssSubmitted">Refer to DSS
         (AI-System)</button>
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]=2 [rowspan]=1>
+    <mat-grid-tile [colspan]=submitColSpan [rowspan]=submitRowSpan>
       <button class="submit-decision" mat-raised-button color="primary" (click)="submitFinally()"
         [disabled]="dssSubmitted">Submit your final
         decision after referring to the DSS</button>

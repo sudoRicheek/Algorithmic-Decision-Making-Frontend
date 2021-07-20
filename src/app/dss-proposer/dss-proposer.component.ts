@@ -23,6 +23,18 @@ export class DssProposerComponent implements OnInit {
   likelihoodAcceptanceValue: number;
   likelihoodMaximumIncome: number;
 
+  colSpan: number;
+  rowHeight: string;
+  chartColSpan: number;
+  chartRowSpan: number;
+  responseCardColSpan: number;
+  responseCardRowSpan: number;
+  referColSpan: number;
+  referRowSpan: number;
+  submitColSpan: number;
+  submitRowSpan: number;
+  triggerBreakpoint: boolean;
+
   public chartLabels: string[];
   public chartData: number[];
   public chartType: ChartType;
@@ -81,6 +93,32 @@ export class DssProposerComponent implements OnInit {
     this.dssSubmitted = this.storageService.isDSSProposerSubmitted();
     let alloc = this.storageService.getDSSProposerAllocation();
     if (alloc) this.allocationSelected = alloc;
+
+    if (window.innerWidth <= 992) {
+      this.colSpan = 5;
+      this.chartColSpan = 5;
+      this.chartRowSpan = 2;
+      this.responseCardColSpan = 5;
+      this.responseCardRowSpan = 2;
+      this.referColSpan = 2;
+      this.referRowSpan = 1;
+      this.submitColSpan = 3;
+      this.submitRowSpan = 1;
+      this.rowHeight = '3:5';
+      this.triggerBreakpoint = true;
+    } else {
+      this.colSpan = 5;
+      this.chartColSpan = 3;
+      this.chartRowSpan = 2;
+      this.responseCardColSpan = 2;
+      this.responseCardRowSpan = 3;
+      this.referColSpan = 1;
+      this.referRowSpan = 1;
+      this.submitColSpan = 2;
+      this.submitRowSpan = 1;
+      this.rowHeight = '3:2';
+      this.triggerBreakpoint = false;
+    }
   }
 
   onInputChange(event: MatSliderChange) {
@@ -129,5 +167,33 @@ export class DssProposerComponent implements OnInit {
 
   nextSection() {
     if (this.dssSubmitted) this.router.navigate(['beliefelicitation']);
+  }
+
+  onResize(event: any) {
+    if (window.innerWidth <= 992) {
+      this.colSpan = 5;
+      this.chartColSpan = 5;
+      this.chartRowSpan = 2;
+      this.responseCardColSpan = 5;
+      this.responseCardRowSpan = 2;
+      this.referColSpan = 2;
+      this.referRowSpan = 1;
+      this.submitColSpan = 3;
+      this.submitRowSpan = 1;
+      this.rowHeight = '3:5';
+      this.triggerBreakpoint = true;
+    } else {
+      this.colSpan = 5;
+      this.chartColSpan = 3;
+      this.chartRowSpan = 2;
+      this.responseCardColSpan = 2;
+      this.responseCardRowSpan = 3;
+      this.referColSpan = 1;
+      this.referRowSpan = 1;
+      this.submitColSpan = 2;
+      this.submitRowSpan = 1;
+      this.rowHeight = '3:2';
+      this.triggerBreakpoint = false;
+    }
   }
 }
