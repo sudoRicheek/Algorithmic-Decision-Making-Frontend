@@ -104,7 +104,7 @@ export class DssProposerComponent implements OnInit {
       this.referRowSpan = 1;
       this.submitColSpan = 3;
       this.submitRowSpan = 1;
-      this.rowHeight = '3:5';
+      this.rowHeight = '11:20';
       this.triggerBreakpoint = true;
     } else {
       this.colSpan = 5;
@@ -180,7 +180,7 @@ export class DssProposerComponent implements OnInit {
       this.referRowSpan = 1;
       this.submitColSpan = 3;
       this.submitRowSpan = 1;
-      this.rowHeight = '3:5';
+      this.rowHeight = '11:20';
       this.triggerBreakpoint = true;
     } else {
       this.colSpan = 5;

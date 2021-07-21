@@ -40,6 +40,8 @@ h1 {
   .unique-code-text {
     color: #010518e5;
     font-size: 16pt;
+    word-wrap: break-word;
+    word-break: break-all;
   }
 
   .mat-flat-button {

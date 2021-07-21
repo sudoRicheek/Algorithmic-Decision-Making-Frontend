@@ -13,12 +13,9 @@ p {
 
 .basic-container {
   margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
   margin-left: 20%;
   margin-right: 20%;
+  padding-bottom: 100px;
 }
 
 .instructions {
@@ -50,10 +47,6 @@ p {
 @media only screen and (max-width: 992px) {
   .basic-container {
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
     margin-left: 10%;
     margin-right: 10%;
   }
@@ -78,10 +71,6 @@ p {
 @media only screen and (max-width: 768px) {
   .basic-container {
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
     margin-left: 3%;
     margin-right: 3%;
   }
