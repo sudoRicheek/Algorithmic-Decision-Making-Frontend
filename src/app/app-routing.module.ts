@@ -12,6 +12,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { UserExistsService } from './services/userExists.service';
+import { SurveyComponent } from './survey/survey.component';
 import { UniqueCodeComponent } from './uniqueCode/uniqueCode.component';
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'approachdecision', component: ApproachDecisionComponent, canActivate: [UserExistsService] },
   { path: 'uniquecode', component: UniqueCodeComponent, canActivate: [UserExistsService] },
   { path: 'dssproposer', component: DssProposerComponent, canActivate: [UserExistsService] },
-
+  { path: 'survey', component: SurveyComponent, canActivate: [UserExistsService] },
+  
   // should be at the bottom.
   { path: '**', redirectTo: '/' },
 ];

@@ -82,7 +82,7 @@ export class AttentioncheckComponent implements OnInit {
         this.alreadySubmitted = true;
         this.attentionPassed = response['attention_passed'];
         this.attentionSubmissionDialog();
-        if (this.attentionPassed) this.router.navigate(['instructions']);
+        if (this.attentionPassed) this.router.navigate(['survey']);
         else this.router.navigate(['/']);
       },
       (error) => {
@@ -91,7 +91,7 @@ export class AttentioncheckComponent implements OnInit {
           this.alreadyAttempted();
           this.storageService.attentionSubmitted();
           this.alreadySubmitted = true;
-          this.router.navigate(['instructions']);
+          this.router.navigate(['survey']);
         }
         if (error.error.status == 'alreadyFailed') {
           this.alreadyAttempted();
@@ -121,6 +121,6 @@ export class AttentioncheckComponent implements OnInit {
   }
 
   nextSection() {
-    this.router.navigate(['instructions']);
+    this.router.navigate(['survey']);
   }
 }

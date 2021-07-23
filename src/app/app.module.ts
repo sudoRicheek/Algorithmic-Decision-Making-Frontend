@@ -73,9 +73,10 @@ import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CompBeliefComponent } from './comp-belief/comp-belief.component';
 import { ApproachDecisionReminderComponent } from './approachDecisionReminder/approachDecisionReminder.component';
+import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     HomeComponent,
     HeaderComponent,
@@ -106,7 +107,8 @@ import { ApproachDecisionReminderComponent } from './approachDecisionReminder/ap
     DssProposerComponent,
     CompBeliefComponent,
     ComprehensionBeliefPassedComponent,
-      ApproachDecisionReminderComponent
+      ApproachDecisionReminderComponent,
+      SurveyComponent
    ],
   imports: [
     BrowserModule,

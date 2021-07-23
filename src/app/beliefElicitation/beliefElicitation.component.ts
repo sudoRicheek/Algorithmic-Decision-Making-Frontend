@@ -189,7 +189,7 @@ export class BeliefElicitationComponent implements OnInit {
 
               this.type_work = response.type_work;
               if (this.type_work == 0)
-                this.router.navigate(['approachdecision']);
+                this.router.navigate(['approachdecisionreminder']);
               else if (this.type_work == 1)
                 this.router.navigate(['postexperimental']);
             },

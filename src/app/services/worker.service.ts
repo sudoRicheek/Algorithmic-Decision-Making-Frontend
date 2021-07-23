@@ -103,9 +103,32 @@ export class WorkerService {
     formData['attentioncheck'] = attentioncheck;
     formData['personality'] = personality;
     formData['mostRespondersBargainWith'] = mostRespondersBargainWith;
-    
+
     return this.http.post(
       baseUrl + '/api/worker/post_postexperimental_responder/',
+      formData
+    );
+  }
+
+  submitSurveyResponses(
+    worker_id: string,
+    nr: number[],
+    sex: string,
+    age: number,
+    employmentStatus: string,
+    highestDegree: string
+  ): Observable<any> {
+    let formData: any;
+    formData = {};
+    formData['worker_id'] = worker_id;
+    formData['nr'] = nr;
+    formData['sex'] = sex;
+    formData['age'] = age;
+    formData['employmentStatus'] = employmentStatus;
+    formData['highestDegree'] = highestDegree;
+
+    return this.http.post(
+      baseUrl + '/api/worker/post_survey_responses/',
       formData
     );
   }

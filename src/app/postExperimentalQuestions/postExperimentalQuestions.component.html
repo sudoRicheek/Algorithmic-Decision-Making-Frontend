@@ -28,8 +28,7 @@
                 human proposer with a DSS]/[the autonomous agent)</p>
               <mat-form-field class="example-full-width" appearance="fill">
                 <!-- <mat-label>Leave a comment</mat-label> -->
-                <textarea matInput [(ngModel)]="reasonApproach" placeholder="Ex. I feel..."
-                  required></textarea>
+                <textarea matInput [(ngModel)]="reasonApproach" placeholder="Ex. I feel..." required></textarea>
               </mat-form-field>
             </li>
             <li>
@@ -247,7 +246,9 @@
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-          <button mat-raised-button color="primary" (click)="nextSection()">Proceed to the Comprehension
+          <button mat-raised-button color="primary" (click)="nextSection()"
+            [disabled]="mostRespondersBargainWith==-1 || attentionCheck==-1 || personality==-1">Proceed to the
+            Comprehension
             Section</button>
         </mat-card-actions>
       </mat-step>

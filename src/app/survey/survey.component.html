@@ -1,0 +1,232 @@
+<div class="basic-container">
+  <mat-card class="header-card">
+    <mat-card-title>
+      <h1>Survey Questionnaire</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <!-- <p align="justify">To ensure your understanding, the main task will commence only after you answered three
+        comprehension questions
+        correctly. If you fail to do so twice, you will not be able to participate in the experiment.</p> -->
+    </mat-card-content>
+
+
+    <mat-stepper linear #stepper>
+      <!-- <ng-template matStepperIcon="edit">
+        <mat-icon>menu_book</mat-icon>
+      </ng-template> -->
+      <mat-step state="instruction">
+        <!-- <ng-template matStepLabel>The Task</ng-template> -->
+        <br>
+        <mat-card-content align="justify">
+          <p class="instruction-text" style="font-size: 14pt;">
+            For each of the following statements, please indicate the extent to which it is true for you.
+          </p>
+          <p class="instruction-text" style="font-size: 14pt;">
+            <em>The scale ranges from 1-7, where 1 is ‘not true for me’ and 7 is ‘very true for me’.</em>
+          </p>
+
+          <br>
+
+          <ol type="1">
+            <li>
+              <p class="list-text"><strong>If I suffer a serious wrong, I will take my revenge as soon as possible, no
+                  matter what the costs</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[0]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I am willing to invest time and effort to reciprocate an unfair
+                  action</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[1]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I am kind and nice if others behave well with me, otherwise it’s
+                  tit-for-tat</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[2]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>If somebody puts me in a difficult position, I will do the same to
+                  him/her</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[3]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>If somebody offends me, I will offend him/her back</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[4]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>If someone is unfair to me, I prefer to give him/her what s/he deserves
+                  instead of
+                  accepting his/her apologies</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[5]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I would not do a favour for somebody who behaved badly with me, even if it
+                  meant
+                  foregoing some personal gains</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[6]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>If somebody is impolite to me, I become impolite</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[7]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>The way I treat others depends much on how they treat me</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[8]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+          </ol>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <!-- <button mat-raised-button color="accent" matStepperPrevious>Back</button> -->
+          <button mat-raised-button color="accent" matStepperNext [disabled]="showElementNr()">Next Page</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <mat-step state="instruction">
+        <!-- <ng-template matStepLabel>The Task: Examples</ng-template> -->
+        <br>
+        <mat-card-content align="justify">
+          <h2>
+            <strong>Demographics</strong>
+          </h2>
+          <br>
+
+          <ol type="1">
+
+            <li>
+              <p class="instruction-text">
+                What is your sex?
+              </p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="sex"
+                required>
+                <mat-radio-button class="example-radio-button" *ngFor="let sex of sexOptions" [value]=sex>
+                  <span>{{sex}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="instruction-text">
+                What is your age?
+              </p>
+              <mat-form-field class="example-age" appearance="fill">
+                <mat-label>Age</mat-label>
+                <input matInput [(ngModel)]="age" type="number" min="1">
+              </mat-form-field>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="instruction-text">
+                Which statement best describes your current employment status?
+              </p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="employmentStatus" required>
+                <mat-radio-button class="example-radio-button" *ngFor="let employment of employmentOptions"
+                  [value]=employment>
+                  <span>{{employment}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="instruction-text">
+                What is the highest level of school you have completed or the highest degree you have received?
+              </p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="highestDegree" required>
+                <mat-radio-button class="example-radio-button" *ngFor="let degree of degreeOptions" [value]=degree>
+                  <span>{{degree}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+          </ol>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" (click)="nextSection()"
+            [disabled]="showElementDemo()">Proceed</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <ng-template matStepperIcon="instruction">
+        <mat-icon>menu_book</mat-icon>
+      </ng-template>
+    </mat-stepper>
+  </mat-card>
+</div>
