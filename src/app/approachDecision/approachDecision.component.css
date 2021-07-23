@@ -58,7 +58,7 @@ mat-card-actions {
 }
 
 .mat-slider-horizontal {
-  width: 500px;
+  width: 400px;
 }
 
 .submit-decision {
@@ -83,7 +83,7 @@ mat-card-actions {
   }
 
   .mat-slider-horizontal {
-    width: 350px;
+    width: 250px;
   }
 
   .submit-decision {
@@ -109,7 +109,7 @@ mat-card-actions {
   }
 
   .mat-slider-horizontal {
-    width: 300px;
+    width: 200px;
   }
 
   .submit-decision {

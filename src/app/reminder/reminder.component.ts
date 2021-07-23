@@ -154,20 +154,6 @@ export class ReminderComponent implements OnInit {
   }
 
   nextSection() {
-    let localWorker = this.storageService.getWorker();
-    let type_work: number;
-    if (localWorker) {
-      this.workerService.getWorkerType(localWorker).subscribe(
-        (response) => {
-          type_work = response.type_work;
-          if (type_work == 0) this.router.navigate(['beliefelicitation']);
-          else if (type_work == 1) this.router.navigate(['dssproposer']);
-          else if (type_work == -1) this.router.navigate(['/']);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    }
+    this.router.navigate(['compbelief']);
   }
 }

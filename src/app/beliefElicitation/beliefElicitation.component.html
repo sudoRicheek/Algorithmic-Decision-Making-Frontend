@@ -1,9 +1,15 @@
 <div class="table-container">
-  <h1>Belief Elicitation for {{type_work_name}}</h1>
-  <p>You are a <strong>{{type_work_name}}</strong>. You will need to answer <strong>{{lenlist}}</strong> questions.</p>
-  <p>Make sure to answer all the questions to the best of your understanding!</p>
+  <h1>Expectation task.</h1>
+  <p align="justify">You will choose a row for all <strong>18</strong> scenarios. Afterwards, you proceed to the next
+    section. You can see the Allocation
+    and Proposer Type of each respective scenario below. Remember that each of the <strong>18</strong> decisions you are
+    about to make
+    might be randomly chosen by the computer to determine the probability of receiving the fixed bonus reward of 20
+    coins.</p>
+  <!-- <p>You are a <strong>{{type_work_name}}</strong>. You will need to answer <strong>{{lenlist}}</strong> questions.</p>
+  <p>Make sure to answer all the questions to the best of your understanding!</p> -->
 
-  <h2>Belief Elicitation probabilities: </h2>
+  <h2>Table with Probabilites</h2>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 beliefprobabilities">
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
@@ -11,16 +17,14 @@
     </ng-container>
 
     <ng-container matColumnDef="plarger">
-      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if <span
-            *ngIf="type_work==0">Proposer</span><span *ngIf="type_work==1">Responder</span> offer is larger than your
-          proposed allocation</strong> </th>
+      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or greater
+          split than in Allocation #</strong> </th>
       <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="plower">
-      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if <span
-            *ngIf="type_work==0">Proposer</span><span *ngIf="type_work==1">Responder</span> offer is lower than your
-          proposed allocation</strong> </th>
+      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split than in
+          Allocation #</strong> </th>
       <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
     </ng-container>
 
@@ -83,19 +87,21 @@
       <div class="internal-card">
         <mat-card class="home-card">
           <mat-card-title>
-            You are a {{type_work_name}}
+            Decision
           </mat-card-title>
           <mat-card-content>
-            <strong>Q{{i+1}}/{{lenlist}}.</strong>
+            <p class="qs-num"><strong>Q{{i+1}}/{{lenlist}}.</strong></p>
             <div *ngIf="type_work==0">
               <p class="proposer-type">Proposer is: <strong>{{proposerType[(i-i%6)/6]}}</strong></p>
-              <p class="allocation-number"><strong>Allocation {{i%6+1}}</strong></p>
-              <p> You are required to make a decision for this allocation and proposer type </p>
+              <p class="allocation-number">Expectation regarding the Proposer’s offer in comparison to
+                <strong>Allocation {{i%6+1}}</strong>
+              </p>
             </div>
             <div *ngIf="type_work==1">
               <p class="responder-type">Responder type is: Responder</p>
-              <p class="allocation-number">Allocation {{i%6+1}}</p>
-              <p> You are required to make a decision for this allocation: </p>
+              <p class="allocation-number">Expectation regarding the Proposer’s offer in comparison to
+                <strong>Allocation {{i%6+1}}</strong>
+              </p>
             </div>
           </mat-card-content>
           <mat-card-actions align="end">
@@ -117,8 +123,8 @@
     </ng-template>
   </ngb-carousel>
   <button class="submit-belief" mat-raised-button color="primary"
-    [disabled]="questionsFormArray.status=='INVALID' || beliefSubmitted" (click)="submitBeliefs()">Submit all of your
-    predictions</button>
+    [disabled]="questionsFormArray.status=='INVALID' || beliefSubmitted" (click)="submitBeliefs()">Submit all row
+    selections</button>
   <button class="submit-belief" mat-raised-button color="accent" [disabled]="!beliefSubmitted"
     (click)="nextSection()">Next Section</button>
 </div>

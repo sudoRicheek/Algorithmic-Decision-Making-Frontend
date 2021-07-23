@@ -34,6 +34,17 @@ export class QuestionService {
     );
   }
 
+  getComprehensionBeliefQuestions(): Observable<any> {
+    return this.http.get(baseUrl + '/api/question/get_comp_belief_questions/');
+  }
+
+  postComprehensionBeliefAnswers(formData: any): Observable<any> {
+    return this.http.post(
+      baseUrl + '/api/question/post_comp_belief_response/',
+      formData
+    );
+  }
+
   getPostExperimentalQuestions(worker_id: string): Observable<any> {
     const formData = new FormData();
     formData.append('worker_id', worker_id);

@@ -85,12 +85,19 @@ export class AttentioncheckComponent implements OnInit {
         if (this.attentionPassed) this.router.navigate(['instructions']);
         else this.router.navigate(['/']);
       },
-      (errors) => {
-        console.log(errors);
-        if (errors.error.status == 'alreadyAttempted') {
+      (error) => {
+        console.log(error);
+        if (error.error.status == 'alreadyPassed') {
           this.alreadyAttempted();
           this.storageService.attentionSubmitted();
           this.alreadySubmitted = true;
+          this.router.navigate(['instructions']);
+        }
+        if (error.error.status == 'alreadyFailed') {
+          this.alreadyAttempted();
+          this.storageService.attentionSubmitted();
+          this.alreadySubmitted = true;
+          this.router.navigate(['/']);
         }
       }
     );
@@ -102,7 +109,6 @@ export class AttentioncheckComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-      this.router.navigate(['instructions']);
     });
   }
 

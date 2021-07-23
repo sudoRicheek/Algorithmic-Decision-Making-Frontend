@@ -95,7 +95,11 @@ export class BeliefElicitationComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.type_work_name = '';
-    this.proposerType = ['Human', 'Human + DSS', 'Autonomous Agent'];
+    this.proposerType = [
+      'Human',
+      'Human Proposer supported by an AI-system',
+      'AI-system deciding on behalf of a Human Proposer',
+    ];
     this.beliefSubmitted = this.storageService.isBeliefElicitationSubmitted();
   }
 
@@ -204,7 +208,7 @@ export class BeliefElicitationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-      if (this.type_work == 0) this.router.navigate(['approachdecision']);
+      if (this.type_work == 0) this.router.navigate(['approachdecisionreminder']);
       else if (this.type_work == 1) this.router.navigate(['postexperimental']);
     });
   }
@@ -227,7 +231,7 @@ export class BeliefElicitationComponent implements OnInit {
   }
 
   nextSection() {
-    if (this.type_work == 0) this.router.navigate(['approachdecision']);
+    if (this.type_work == 0) this.router.navigate(['approachdecisionreminder']);
     else if (this.type_work == 1) this.router.navigate(['postexperimental']);
   }
 }

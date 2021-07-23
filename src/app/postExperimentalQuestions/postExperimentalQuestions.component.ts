@@ -5,6 +5,7 @@ import { NotAllowedHereComponent } from '../dialogs/notAllowedHere/notAllowedHer
 import { PostExperimentalSubmissionComponent } from '../dialogs/postExperimentalSubmission/postExperimentalSubmission.component';
 import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
+import { WorkerService } from '../services/worker.service';
 
 @Component({
   selector: 'app-postExperimentalQuestions',
@@ -12,111 +13,85 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['./postExperimentalQuestions.component.css'],
 })
 export class PostExperimentalQuestionsComponent implements OnInit {
-  questions: any;
-  postExperimentalSubmitted: boolean;
-  typeWorkAssigned: number;
+  proposerTypes: string[];
+  likertOptions: string[];
+
+  reasonApproach: string;
+  rethinkApproach: number;
+
+  unfair: number[];
+  dss: number[];
+  autonomousagent: number[];
+
+  attentionCheck: number;
+  personality: number;
+  mostRespondersBargainWith: number;
 
   constructor(
-    private questionService: QuestionService,
     private storageService: StorageService,
+    private workerService: WorkerService,
     private router: Router,
     public dialog: MatDialog
   ) {
-    this.questions = [];
-    this.postExperimentalSubmitted = this.storageService.isPostExperimentalSubmitted();
-    this.typeWorkAssigned = -1;
+    this.reasonApproach = '';
+    this.rethinkApproach = -1;
+    this.proposerTypes = [
+      'Human Proposer',
+      'Human Proposer supported by an AI-system',
+      'AI-system deciding on behalf of a Human Proposer',
+    ];
+    this.likertOptions = [
+      'Strongly Disagree',
+      'Disagree',
+      'Somewhat Disagree',
+      'Neutral',
+      'Somewhat Agree',
+      'Agree',
+      'Strongly Agree',
+    ];
+
+    this.unfair = new Array(2).fill(-1);
+    this.dss = new Array(3).fill(-1);
+    this.autonomousagent = new Array(3).fill(-1);
+    this.attentionCheck = -1;
+    this.personality = -1;
+    this.mostRespondersBargainWith = -1;
   }
 
-  ngOnInit() {
-    this.getPostExperimentalQuestions();
-  }
+  ngOnInit() {}
 
-  getPostExperimentalQuestions() {
-    let worker_id = this.storageService.getWorker();
-    if (worker_id) {
-      this.questionService.getPostExperimentalQuestions(worker_id).subscribe(
-        (response) => {
-          this.questions = response.questions;
-          this.typeWorkAssigned = response.type_work;
-
-          let localPostExperimentalSubmissions =
-            this.storageService.getPostExperimentalSubmissions();
-
-          this.questions.forEach(
-            (question: {
-              id: any;
-              answerSelected: any;
-              choices: { id: any }[];
-            }) => {
-              if (
-                localPostExperimentalSubmissions &&
-                localPostExperimentalSubmissions.hasOwnProperty(question.id)
-              )
-                question.answerSelected =
-                  localPostExperimentalSubmissions[question.id];
-              else question.answerSelected = question.choices[0].id;
-            }
-          );
-          console.log(this.questions);
-        },
-        (errors) => {
-          console.log(errors);
-          if (errors.error.status == 'fail') this.notAllowedHere();
-        }
-      );
+  nextSection() {
+    let localWorker = this.storageService.getWorker();
+    if (localWorker) {
+      this.workerService
+        .submitPostExperimentalResponder(
+          localWorker,
+          this.reasonApproach,
+          this.rethinkApproach,
+          this.unfair,
+          this.dss,
+          this.autonomousagent,
+          this.attentionCheck,
+          this.personality,
+          this.mostRespondersBargainWith
+        )
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.router.navigate(['uniquecode']);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     }
   }
 
-  postPostExperimentalResponses() {
-    let formData: any;
-    formData = {};
-    formData['worker_id'] = this.storageService.getWorker();
-    formData['responses'] = [];
-
-    this.questions.forEach((question: { id: any; answerSelected: any }) => {
-      formData.responses.push({
-        q_id: question.id,
-        c_id: question.answerSelected,
-      });
-    });
-
-    this.questionService.postPostExperimentalResponses(formData).subscribe(
-      (response) => {
-        console.log(response);
-        this.storageService.storePostExperimentalSubmissions(
-          formData['responses']
-        );
-
-        this.postExperimentalSubmitted = response.postexperimental_submitted;
-        this.typeWorkAssigned = response.typeWorkAssigned;
-        this.postExperimentalSubmissionDialog();
-      },
-      (errors) => {
-        console.log(errors);
-      }
+  public showElement(): boolean {
+    return (
+      this.unfair.some((item) => item == -1) ||
+      this.dss.some((item) => item == -1) ||
+      this.autonomousagent.some((item) => item == -1)
     );
-    console.log(formData);
-  }
-
-  notAllowedHere() {
-    const dialogRef = this.dialog.open(NotAllowedHereComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-      this.router.navigate(['/']);
-    });
-  }
-
-  postExperimentalSubmissionDialog() {
-    const dialogRef = this.dialog.open(PostExperimentalSubmissionComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-      this.router.navigate(['uniquecode']);
-    });
-  }
-
-  nextSection() {
-    this.router.navigate(['uniquecode']);
   }
 }

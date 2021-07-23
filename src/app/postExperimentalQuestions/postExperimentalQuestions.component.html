@@ -1,19 +1,260 @@
 <div class="basic-container">
-  <h1>Post Experimental Questions</h1>
-  <p>Dummy text here</p>
-  <div *ngFor="let question of questions; let i=index">
-    <mat-card class="tp-card">
-      <label id="example-radio-group-label">{{i+1}}. {{question.question_text}}</label>
-      <mat-radio-group required aria-labelledby="example-radio-group-label" class="example-radio-group"
-        [(ngModel)]="question.answerSelected">
-        <mat-radio-button class="example-radio-button" *ngFor="let choice of question.choices" [value]="choice.id">
-          {{choice.choice_text}}
-        </mat-radio-button>
-      </mat-radio-group>
-    </mat-card>
-  </div>
+  <mat-card class="header-card">
+    <mat-card-title>
+      <h1>Post-Experimental Questionnaire</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <!-- <p align="justify">To ensure your understanding, the main task will commence only after you answered three
+        comprehension questions
+        correctly. If you fail to do so twice, you will not be able to participate in the experiment.</p> -->
+    </mat-card-content>
 
-  <button mat-raised-button color="primary" (click)="postPostExperimentalResponses()" [disabled]="postExperimentalSubmitted"
-    class="submit">Submit</button>
-  <button mat-raised-button color="accent" (click)="nextSection()" [disabled]="!postExperimentalSubmitted" class="next-section">Next Section</button>
+
+    <mat-stepper linear #stepper>
+      <!-- <ng-template matStepperIcon="edit">
+        <mat-icon>menu_book</mat-icon>
+      </ng-template> -->
+
+      <mat-step state="instruction">
+        <!-- <ng-template matStepLabel>Participants and Roles</ng-template> -->
+        <br>
+        <mat-card-content align="justify">
+          <br>
+
+          <ol type="1">
+            <li>
+              <p class="instruction-text">Please explain why you chose to approach [the human proposer without a
+                DSS]/[the
+                human proposer with a DSS]/[the autonomous agent)</p>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <!-- <mat-label>Leave a comment</mat-label> -->
+                <textarea matInput [(ngModel)]="reasonApproach" placeholder="Ex. I feel..."
+                  required></textarea>
+              </mat-form-field>
+            </li>
+            <li>
+              <p class="instruction-text">If you were to complete a second round of this HIT, which proposer would you
+                approach?</p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="rethinkApproach" required>
+                <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
+                  [value]="i+1">
+                  <span>{{proposer}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+          </ol>
+
+          <br>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperNext
+            [disabled]="rethinkApproach==-1 || reasonApproach==''">
+            Next Page
+          </button>
+        </mat-card-actions>
+      </mat-step>
+
+
+      <mat-step state="instruction">
+        <!-- <ng-template matStepLabel>The Task</ng-template> -->
+        <br>
+        <mat-card-content align="justify">
+          <p class="instruction-text">
+            For each of the following statements, please indicate the extent to which you agree or disagree with that
+            statement.
+          </p>
+          <p class="instruction-text">
+            <em>The scale ranges from 1-7, where 1 is ‘strongly disagree’ and 7 is ‘strongly agree.’</em>
+          </p>
+
+          <br>
+
+          <ol type="1">
+            <li>
+              <p class="list-text"><strong>I think it is unfair that …</strong></p>
+              <ol type="i">
+                <li>
+                  <p class="list-text">one proposer gets to use a decision-support system</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="unfair[0]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <p class="list-text">one proposer has an autonomous agent playing on their behalf</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="unfair[1]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+              </ol>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I think the decision-support system …</strong></p>
+              <ol type="i">
+                <li>
+                  <p class="list-text">helped the proposer make an offer that benefits both my proposer and me</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="dss[0]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <p class="list-text">helped the proposer make an offer that benefits my proposer but not me</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="dss[1]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <p class="list-text">helped the proposer make an offer that benefits me but not my proposer.</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="dss[2]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+              </ol>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I think the autonomous agent …</strong></p>
+              <ol type="i">
+                <li>
+                  <p class="list-text">helped the proposer make an offer that benefits both my proposer and me</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="autonomousagent[0]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <p class="list-text">helped the proposer make an offer that benefits my proposer but not me</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="autonomousagent[1]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <p class="list-text">helped the proposer make an offer that benefits me but not my proposer.</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="autonomousagent[2]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+              </ol>
+            </li>
+
+          </ol>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="showElement()">Next Page</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <mat-step state="instruction">
+        <!-- <ng-template matStepLabel>The Task: Examples</ng-template> -->
+        <br>
+        <mat-card-content align="justify">
+
+          <p class="instruction-text">
+            Attention Check:
+          </p>
+          <p class="instruction-text">
+            This is a question about human behavior. From the following three options, please choose the word “chair”
+          </p>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="attentionCheck" required>
+            <mat-radio-button class="example-radio-button" *ngFor="let option of ['cat','chair','ball'], index as i"
+              [value]="i+1">
+              <span>{{option}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <hr>
+
+          <p class="instruction-text">
+            Please indicate the extent to which you agree or disagree with that statement.
+          </p>
+
+          <p class="instruction-text">
+            <em>
+              The scale ranges from 1-7, where 1 is ‘strongly disagree’ and 7 is ‘strongly agree.’
+            </em>
+          </p>
+
+          <br>
+
+          <ol type="1">
+            <li>
+              <p class="list-text"><strong>I think that the information I stated at the beginning of this HIT say
+                  something about me as a person.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="personality">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>You are one of many responder and proposer participants. Which proposer type
+                  do you think most responders chose to bargain with?</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="mostRespondersBargainWith">
+                <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
+                  [value]="i+1">
+                  <span>{{proposer}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+          </ol>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" (click)="nextSection()">Proceed to the Comprehension
+            Section</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <ng-template matStepperIcon="instruction">
+        <mat-icon>menu_book</mat-icon>
+      </ng-template>
+    </mat-stepper>
+  </mat-card>
 </div>

@@ -21,6 +21,20 @@ p {
   color: #db5151e1;
   margin: 10px;
   font-size: large;
+  line-height: 1.4;
+}
+
+.proposer-type {
+  color: rgba(13, 19, 46, 0.973);
+}
+
+.allocation-number {
+  color: rgba(13, 19, 46, 0.973);
+}
+
+.qs-num {
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 12pt;
 }
 
 .home-card {

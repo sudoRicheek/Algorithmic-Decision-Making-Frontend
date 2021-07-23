@@ -42,6 +42,7 @@ import { NotAllowedHereComponent } from './dialogs/notAllowedHere/notAllowedHere
 import { AttentionSucessfullySubmittedComponent } from './dialogs/attentionSucessfullySubmitted/attentionSucessfullySubmitted.component';
 import { BeliefElicitationSubmittedComponent } from './dialogs/beliefElicitationSubmitted/beliefElicitationSubmitted.component';
 import { PostExperimentalSubmissionComponent } from './dialogs/postExperimentalSubmission/postExperimentalSubmission.component';
+import { ComprehensionBeliefPassedComponent } from './dialogs/comprehensionBeliefPassed/comprehensionBeliefPassed.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -70,9 +71,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { DssProposerComponent } from './dss-proposer/dss-proposer.component';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { CompBeliefComponent } from './comp-belief/comp-belief.component';
+import { ApproachDecisionReminderComponent } from './approachDecisionReminder/approachDecisionReminder.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     HeaderComponent,
@@ -101,7 +104,10 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     PostExperimentalSubmissionComponent,
     UniqueCodeComponent,
     DssProposerComponent,
-  ],
+    CompBeliefComponent,
+    ComprehensionBeliefPassedComponent,
+      ApproachDecisionReminderComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -135,7 +141,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
   ],
   providers: [
     {
-      provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false },
     },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

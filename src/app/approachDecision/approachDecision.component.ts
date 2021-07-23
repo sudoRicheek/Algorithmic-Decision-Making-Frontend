@@ -57,7 +57,11 @@ export class ApproachDecisionComponent implements OnInit {
     }
 
     this.type_work = -1;
-    this.proposerTypes = ['Human', 'Human + DSS', 'Autonomous Agent'];
+    this.proposerTypes = [
+      'Human Proposer',
+      'Human Proposer supported by an AI-system',
+      'AI-system deciding on behalf of a Human Proposer',
+    ];
     this.alreadySubmitted = this.storageService.isApproachDecisionSubmitted();
 
     // PIE CHART SETTINGS

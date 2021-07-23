@@ -1,0 +1,67 @@
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  h1 {
+    /* color: #5a37b8; */
+    color: #3700b3;
+    margin: 5px;
+    font-size: 20pt;
+  }
+  
+  p {
+    color: #db5151e1;
+    margin: 5px;
+    font-size: large;
+  }
+  
+  .basic-container {
+    margin-top: 10px;
+    flex-wrap: wrap;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  
+  .tp-card {
+    margin: 5px;
+  }
+  
+  .wrap-mat-radio-label {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
+  .submit {
+    margin: 5px;
+    max-width: 150px;
+  }
+  
+  .next-section {
+    margin: 5px;
+    max-width: 150px;
+  }
+  
+  
+  @media only screen and (max-width: 992px) {
+    .basic-container {
+      margin-top: 10px;
+      flex-wrap: wrap;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .basic-container {
+      margin-top: 10px;
+      flex-wrap: wrap;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }

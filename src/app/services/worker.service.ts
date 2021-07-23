@@ -80,4 +80,33 @@ export class WorkerService {
     formData['worker_id'] = worker_id;
     return this.http.post(baseUrl + '/api/worker/get_uniquecode/', formData);
   }
+
+  submitPostExperimentalResponder(
+    worker_id: string,
+    reasonApproach: string,
+    rethinkApproach: number,
+    unfair: number[],
+    dss: number[],
+    autonomousagent: number[],
+    attentioncheck: number,
+    personality: number,
+    mostRespondersBargainWith: number
+  ): Observable<any> {
+    let formData: any;
+    formData = {};
+    formData['worker_id'] = worker_id;
+    formData['reasonApproach'] = reasonApproach;
+    formData['rethinkApproach'] = rethinkApproach;
+    formData['unfair'] = unfair;
+    formData['dss'] = dss;
+    formData['autonomousagent'] = autonomousagent;
+    formData['attentioncheck'] = attentioncheck;
+    formData['personality'] = personality;
+    formData['mostRespondersBargainWith'] = mostRespondersBargainWith;
+    
+    return this.http.post(
+      baseUrl + '/api/worker/post_postexperimental_responder/',
+      formData
+    );
+  }
 }

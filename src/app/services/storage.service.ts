@@ -86,6 +86,42 @@ export class StorageService {
     else return true;
   }
 
+  storeComprehensionBeliefSubmissions(formData: any) {
+    interface mapType {
+      [key: number]: number;
+    }
+    let dictMapData: mapType;
+    dictMapData = {};
+
+    formData.forEach((element: { q_id: any; c_id: any }) => {
+      dictMapData[element.q_id] = element.c_id;
+    });
+    localStorage.setItem(
+      'comprehensionBeliefSubmissions',
+      JSON.stringify(dictMapData)
+    );
+    localStorage.setItem('comprehensionBeliefSubmitted', 'true');
+    console.log(dictMapData);
+  }
+
+  getComprehensionBeliefSubmissions() {
+    let localComprehensionSubmissions = localStorage.getItem(
+      'comprehensionBeliefSubmissions'
+    );
+    if (!localComprehensionSubmissions) return null;
+    else return JSON.parse(localComprehensionSubmissions);
+  }
+
+  comprehensionBeliefSubmitted() {
+    localStorage.setItem('comprehensionBeliefSubmitted', 'true');
+  }
+
+  isComprehensionBeliefSubmitted() {
+    let alreadySubmitted = localStorage.getItem('comprehensionBeliefSubmitted');
+    if (!alreadySubmitted) return false;
+    else return true;
+  }
+
   beliefElicitationSubmitted() {
     localStorage.setItem('beliefelicitationSubmitted', 'true');
   }

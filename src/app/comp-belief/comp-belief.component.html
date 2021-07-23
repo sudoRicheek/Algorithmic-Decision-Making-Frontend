@@ -1,0 +1,24 @@
+<div class="basic-container">
+  <h1>Comprehension Check Belief Elicitation</h1>
+
+  <p align="justify">To ensure your understanding, the main task will commence only after you answered two comprehension
+    questions
+    correctly. If you fail to do so twice, you will not be able to participate in the experiment.</p>
+
+  <div *ngFor="let question of questions; let i=index">
+    <mat-card class="tp-card">
+      <label id="example-radio-group-label"><strong>{{i+1}}. {{question.question_text}}</strong></label>
+      <mat-radio-group required aria-labelledby="example-radio-group-label" class="example-radio-group"
+        [(ngModel)]="question.answerSelected">
+        <mat-radio-button class="example-radio-button" *ngFor="let choice of question.choices" [value]="choice.id">
+          <span class="wrap-mat-radio-label">{{choice.choice_text}}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="postComprehensionBeliefAnswers()"
+    [disabled]="comprehensionBeliefSubmitted" class="submit">Submit</button>
+  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section"
+    [disabled]="!comprehensionBeliefSubmitted">Next Section</button>
+</div>
