@@ -23,16 +23,18 @@ p {
 
 .basic-container {
   margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 33%;
-  margin-right: 33%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .tp-card {
   margin: 5px;
+}
+
+.wrap-mat-radio-label {
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .submit {
@@ -49,9 +51,6 @@ p {
 @media only screen and (max-width: 992px) {
   .basic-container {
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     flex-wrap: wrap;
     margin-left: 10%;
     margin-right: 10%;
@@ -61,9 +60,6 @@ p {
 @media only screen and (max-width: 768px) {
   .basic-container {
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     flex-wrap: wrap;
     margin-left: 5%;
     margin-right: 5%;

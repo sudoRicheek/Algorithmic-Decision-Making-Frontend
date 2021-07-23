@@ -1,13 +1,16 @@
 <div class="basic-container">
   <h1>Comprehension Questions</h1>
-  <p>Make sure to answer all the questions correctly, otherwise you won't be allowed for taking the further tests!</p>
-  <div *ngFor="let question of questions; let i=index">
+  
+  <p align="justify">To ensure your understanding, the main task will commence only after you answered three comprehension questions
+    correctly. If you fail to do so twice, you will not be able to participate in the experiment.</p>
+  
+    <div *ngFor="let question of questions; let i=index">
     <mat-card class="tp-card">
-      <label id="example-radio-group-label">{{i+1}}. {{question.question_text}}</label>
+      <label id="example-radio-group-label"><strong>{{i+1}}. {{question.question_text}}</strong></label>
       <mat-radio-group required aria-labelledby="example-radio-group-label" class="example-radio-group"
         [(ngModel)]="question.answerSelected">
         <mat-radio-button class="example-radio-button" *ngFor="let choice of question.choices" [value]="choice.id">
-          {{choice.choice_text}}
+          <span class="wrap-mat-radio-label">{{choice.choice_text}}</span>
         </mat-radio-button>
       </mat-radio-group>
     </mat-card>
@@ -15,5 +18,6 @@
 
   <button mat-raised-button color="primary" (click)="postComprehensionAnswers()" [disabled]="comprehensionSubmitted"
     class="submit">Submit</button>
-  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section" [disabled]="!comprehensionSubmitted">Next Section</button>
+  <button mat-raised-button color="accent" (click)="nextSection()" class="next-section"
+    [disabled]="!comprehensionSubmitted">Next Section</button>
 </div>

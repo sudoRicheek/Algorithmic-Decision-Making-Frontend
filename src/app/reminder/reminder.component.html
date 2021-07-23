@@ -1,10 +1,13 @@
 <div class="basic-container">
   <mat-card class="header-card">
     <mat-card-title>
-      <h1>Please read the <strong>reminder instructions</strong> carefully!</h1>
+      <h1>Please read the following instructions carefully.</h1>
     </mat-card-title>
     <mat-card-content>
-      <p>Next we will begin with the experiment!</p>
+      <p align=justify>To ensure your understanding, the main task will commence only after you answered
+        <strong>two</strong> more comprehension
+        questions correctly. If you fail to do so twice, you will not be able to participate in the experiment.
+      </p>
     </mat-card-content>
 
 
@@ -14,37 +17,63 @@
       </ng-template>
 
       <mat-step state="instruction">
-        <ng-template matStepLabel>Page 1</ng-template>
+        <ng-template matStepLabel>Expectation task</ng-template>
         <br>
         <mat-card-content align="justify">
           <h2>
-            Page 1
+            Expectation task
           </h2>
 
-          <p class="instruction-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa felis,
-            rhoncus non dignissim eget,
-            aliquet a orci. Interdum et ollicitudin purus ultrices consectetur. Aliquam ultrices hendrerit velit,
-            non mattis lectus feugiat in. Donec ac malesuada lacus. Proin nec placerat justo.</p>
+          <p class="instruction-text">Before choosing to approach and subsequently interact with the Proposer, you will
+            state your expectations about how each Proposer will decide for each possible Allocation. Thus, you will
+            state your expectations for 18 different scenarios. You can earn an additional fixed bonus payment of 20
+            coins.</p>
 
-          <p class="instruction-text">Sed rutrum nulla ante, a commodo ligula aliquam eu. Suspendisse semper congue
-            sapien, in posuere ex bibendum
-            et. Cras luctus a leo non malesuada.lam sed mi a justo faucibus dignissim eu vitae dolor. Cras porttitor
-            fermentum
-            urna, at volutpat leo porta eu. Nulla vitae erat non arcu convallis volutpat ac a diam.</p>
+          <p class="instruction-text">For all 18 scenarios, you will see the same table with two columns and 21 rows
+            (see “Decision table” on the next page) . Each row shows you two possible probabilities of receiving the
+            bonus. Your job is to choose one of the 21 rows.
+          </p>
 
-          <p class="instruction-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-            curae; Proin mollis, ligula
-            eget fermentum vehicula,um nisi, a mattis velit consequat sed. Donec venenatis, libero vitae commodo
-            vulputate, nulla odio lacinia odio, ut fringilla justo nisl quis nibh. Vestibulum non felis iaculis, auctor
-            sem sed, bibendum enim. Nunc ultrices et risus eget lacinia.</p>
+          <p class="instruction-text">Which one of the two probabilities given in each row will be selected to determine
+            your bonus depends on the Proposer’s decision. If the Proposer chose a split offering you <em>more or the
+              same
+              amount of money</em> compared to the Allocation in your respective scenario, the left column will
+            determine your
+            probability of receiving the fixed reward. If the Proposer chose a split offering you less than the
+            Allocation in your respective scenario, the right column will determine your probability of receiving the
+            fixed reward.</p>
 
-          <p class="instruction-text">Vivamus a dignissim orci, sit amet lacinia ligula. Sed ut elit sem. Pellentesque
-            felis eros, volutpat eu
-            eleifend id, malesuada eget tellus.amcorper pharetra. Nunc nunc libero, vehicula eget rhoncus in, volutpat a
-            diam. Aliquam lacinia
-            quam felis, ut iaculis ipsum commodo euismod. Cras condimentum et tortor quis blandit. Vivamus malesuada
-            eros
-            at tristique gravida.</p>
+          <br>
+          <p class="instruction-text">
+            When choosing a row, note that:
+          </p>
+
+          <ul>
+            <li>
+              <p class="instruction-text">the first rows offer you a higher probability of receiving the bonus in case
+                the Proposer’s offer is higher or equal than the income according to the Allocation you are making a
+                decision for.</p>
+            </li>
+
+            <li>
+              <p class="instruction-text">the last rows offer you a higher probability of receiving the bonus in case
+                the Proposer’s offer is lower than the income according to the Allocation you are making a decision for.
+              </p>
+            </li>
+          </ul>
+          <br>
+
+          <p class="instruction-text">
+            Thus, for a given Allocation, if you think the Proposer will give you <em>at least as much money</em>, you
+            should
+            focus more on the probabilities shown in the left column.
+          </p>
+
+          <p class="instruction-text">
+            After you complete all 18 scenarios, a computer will randomly choose one of these 18 scenarios. The randomly
+            chosen scenario determines whether you receive the additional 20 coins. Thus, every scenario could be the
+            one that determines your bonus.
+          </p>
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperNext>
@@ -54,37 +83,78 @@
       </mat-step>
 
       <mat-step state="instruction">
-        <ng-template matStepLabel>Page 2</ng-template>
+        <ng-template matStepLabel>Decision table</ng-template>
         <br>
         <mat-card-content align="justify">
           <h2>
-            Page 2
+            Decision table:
           </h2>
 
-          <p class="instruction-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa felis,
-            rhoncus non dignissim eget,
-            aliquet a orci. Interdum et ollicitudin purus ultrices consectetur. Aliquam ultrices hendrerit velit,
-            non mattis lectus feugiat in. Donec ac malesuada lacus. Proin nec placerat justo.</p>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 beliefprobabilities">
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
 
-          <p class="instruction-text">Sed rutrum nulla ante, a commodo ligula aliquam eu. Suspendisse semper congue
-            sapien, in posuere ex bibendum
-            et. Cras luctus a leo non malesuada.lam sed mi a justo faucibus dignissim eu vitae dolor. Cras porttitor
-            fermentum
-            urna, at volutpat leo porta eu. Nulla vitae erat non arcu convallis volutpat ac a diam.</p>
+            <ng-container matColumnDef="plarger">
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
+                  greater split than you would receive in Allocation #</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
+            </ng-container>
 
-          <p class="instruction-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-            curae; Proin mollis, ligula
-            eget fermentum vehicula,um nisi, a mattis velit consequat sed. Donec venenatis, libero vitae commodo
-            vulputate, nulla odio lacinia odio, ut fringilla justo nisl quis nibh. Vestibulum non felis iaculis, auctor
-            sem sed, bibendum enim. Nunc ultrices et risus eget lacinia.</p>
+            <ng-container matColumnDef="plower">
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
+                  than you would receive in Allocation # </strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
+            </ng-container>
 
-          <p class="instruction-text">Vivamus a dignissim orci, sit amet lacinia ligula. Sed ut elit sem. Pellentesque
-            felis eros, volutpat eu
-            eleifend id, malesuada eget tellus.amcorper pharetra. Nunc nunc libero, vehicula eget rhoncus in, volutpat a
-            diam. Aliquam lacinia
-            quam felis, ut iaculis ipsum commodo euismod. Cras condimentum et tortor quis blandit. Vivamus malesuada
-            eros
-            at tristique gravida.</p>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns | slice:0:3;"></tr>
+          </table>
+
+          <br>
+
+          <h2>Reminder for the Allocations: </h2>
+          <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="al1">
+              <th mat-header-cell *matHeaderCellDef> Allocation 1 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al2">
+              <th mat-header-cell *matHeaderCellDef> Allocation 2 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al2}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al3">
+              <th mat-header-cell *matHeaderCellDef> Allocation 3 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al3}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al4">
+              <th mat-header-cell *matHeaderCellDef> Allocation 4 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al4}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al5">
+              <th mat-header-cell *matHeaderCellDef> Allocation 5 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al5}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al6">
+              <th mat-header-cell *matHeaderCellDef> Allocation 6 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al6}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="allocationColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: allocationColumns;"></tr>
+          </table>
+
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
@@ -93,38 +163,240 @@
       </mat-step>
 
       <mat-step state="instruction">
-        <ng-template matStepLabel>Page 3</ng-template>
+        <ng-template matStepLabel>Examples</ng-template>
         <br>
         <mat-card-content align="justify">
           <h2>
-            Page 3
+            Examples
           </h2>
 
-          <p class="instruction-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus massa felis,
-            rhoncus non dignissim eget,
-            aliquet a orci. Interdum et ollicitudin purus ultrices consectetur. Aliquam ultrices hendrerit velit,
-            non mattis lectus feugiat in. Donec ac malesuada lacus. Proin nec placerat justo.</p>
+          <table mat-table [dataSource]="dataSourceReduced" class="mat-elevation-z2 beliefprobabilities">
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
 
-          <p class="instruction-text">Sed rutrum nulla ante, a commodo ligula aliquam eu. Suspendisse semper congue
-            sapien, in posuere ex bibendum
-            et. Cras luctus a leo non malesuada.lam sed mi a justo faucibus dignissim eu vitae dolor. Cras porttitor
-            fermentum
-            urna, at volutpat leo porta eu. Nulla vitae erat non arcu convallis volutpat ac a diam.</p>
+            <ng-container matColumnDef="plarger">
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
+                  greater split than you would receive in Allocation #</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
+            </ng-container>
 
-          <p class="instruction-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-            curae; Proin mollis, ligula
-            eget fermentum vehicula,um nisi, a mattis velit consequat sed. Donec venenatis, libero vitae commodo
-            vulputate, nulla odio lacinia odio, ut fringilla justo nisl quis nibh. Vestibulum non felis iaculis, auctor
-            sem sed, bibendum enim. Nunc ultrices et risus eget lacinia.</p>
+            <ng-container matColumnDef="plower">
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
+                  than you would receive in Allocation # </strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
+            </ng-container>
 
-          <p class="instruction-text">Vivamus a dignissim orci, sit amet lacinia ligula. Sed ut elit sem. Pellentesque
-            felis eros, volutpat eu
-            eleifend id, malesuada eget tellus.amcorper pharetra. Nunc nunc libero, vehicula eget rhoncus in, volutpat a
-            diam. Aliquam lacinia
-            quam felis, ut iaculis ipsum commodo euismod. Cras condimentum et tortor quis blandit. Vivamus malesuada
-            eros
-            at tristique gravida.</p>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns | slice:0:3;"></tr>
+          </table>
+
+          <br>
+
+          <h2>Reminder for the Allocations: </h2>
+          <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="al1">
+              <th mat-header-cell *matHeaderCellDef> Allocation 1 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al2">
+              <th mat-header-cell *matHeaderCellDef> Allocation 2 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al2}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al3">
+              <th mat-header-cell *matHeaderCellDef> Allocation 3 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al3}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al4">
+              <th mat-header-cell *matHeaderCellDef> Allocation 4 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al4}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al5">
+              <th mat-header-cell *matHeaderCellDef> Allocation 5 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al5}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al6">
+              <th mat-header-cell *matHeaderCellDef> Allocation 6 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al6}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="allocationColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: allocationColumns;"></tr>
+          </table>
+
+          <br>
+
+          <p class="instruction-text">Imagine you would choose a row for Allocation 3 to state your expectations
+            regarding the Proposer’s action. Allocation 3 assigns you a split of 8 Coins. Depending on your expectation
+            regarding the Proposer’s offer, the left or right column is more likely to become relevant in determining
+            your probability to receive the bonus. Accordingly, you may want to adjust your chosen row. Assuming that
+            you are expecting the Proposer...</p>
+
+          <ul>
+            <li>
+              <p class="instruction-text">
+                to definitely offer more than the 8 coins of Allocation 3, you may want to choose a higher row, i.e. a
+                lower row number. This is because you expect the left column to be more likely and the probability of
+                reward is much higher for the lower row numbers. In case your expectation is wrong and the Proposer
+                offers you less than the 8 coins determined by Allocation 3, the right column determines your bonus, and
+                the lower row number gives you a very low probability of receiving the 20 bonus coins.
+              </p>
+            </li>
+
+            <li>
+              <p class="instruction-text">
+                to definitely offer less than the 8 coins of Allocation 3, you may want to choose a lower row, i.e. a
+                higher row number. This is because you expect the right column to be more likely and the probability of
+                reward is much higher for the higher row numbers. In case your expectation is wrong and the Proposer
+                offers you at least the 8 Coins determined by Allocation 3, the left column determines your bonus, and
+                the higher row number gives a very low probability of receiving the 20 bonus coins.
+              </p>
+            </li>
+          </ul>
+
+          <p class="instruction-text">Overall, if you are very uncertain about whether the proposer offers less than the
+            8 coins of Allocation 3, you may want to choose a row number that’s closer to the middle of the 21 rows.</p>
+
+          <p class="instruction-text">Compared to Allocation 3, for Allocation 1 it might be more likely for the
+            Proposer to offer more than the respective 0. Thus you may want to adjust your selection more in favor of
+            the left column and choose lower rows.</p>
+
+          <p class="instruction-text">Compared to Allocation 3, for Allocation 6 it might be more likely for the
+            Proposer to offer less than the respective 20 Coins. Thus you may want to adjust your selection more in
+            favor of the right column and choose higher rows.</p>
         </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button color="accent" matStepperNext>Next Page</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <mat-step state="instruction">
+        <ng-template matStepLabel>Example continued</ng-template>
+        <br>
+        <mat-card-content align="justify">
+          <h2>
+            Example continued
+          </h2>
+          <table mat-table [dataSource]="dataSourceReduced" class="mat-elevation-z2 beliefprobabilities">
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="plarger">
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
+                  greater split than you would receive in Allocation #</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="plower">
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
+                  than you would receive in Allocation # </strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns | slice:0:3;"></tr>
+          </table>
+
+          <br>
+
+          <h2>Reminder for the Allocations: </h2>
+          <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="al1">
+              <th mat-header-cell *matHeaderCellDef> Allocation 1 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al2">
+              <th mat-header-cell *matHeaderCellDef> Allocation 2 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al2}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al3">
+              <th mat-header-cell *matHeaderCellDef> Allocation 3 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al3}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al4">
+              <th mat-header-cell *matHeaderCellDef> Allocation 4 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al4}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al5">
+              <th mat-header-cell *matHeaderCellDef> Allocation 5 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al5}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="al6">
+              <th mat-header-cell *matHeaderCellDef> Allocation 6 </th>
+              <td mat-cell *matCellDef="let element"> {{element.al6}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="allocationColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: allocationColumns;"></tr>
+          </table>
+
+          <br>
+
+          <p class="instruction-text">
+            Imagine you would choose a row for the Human Proposer without access to an AI-system, for any Allocation.
+            Depending on your expectation towards the Proposer’s type, the left or right column is more likely to become
+            relevant in determining your probability to receive the bonus. Accordingly, you may want to adjust your
+            chosen row. Assuming that you are expecting the Human Proposer...
+          </p>
+
+          <ul>
+            <li>
+              <p class="instruction-text">
+                to definitely offer more than the autonomous AI-system, you may want to choose a lower row number for
+                the Human Proposer. This is because you expect the left column to become more likely and the probability
+                of reward is higher for lower row numbers in the left column.
+              </p>
+            </li>
+
+            <li>
+              <p class="instruction-text">
+                to definitely offer less than the autonomous AI-system, you may want to choose a higher row number for
+                the Human Proposer. This is because you expect the right column to become more likely and the
+                probability of reward is higher for higher row numbers in the right column.
+
+              </p>
+            </li>
+          </ul>
+          <br>
+
+          <p class="instruction-text">
+            Overall, if you are not sure whether the Human Proposer offers more or less than the AI-system, you may want
+            to choose a similar row number for both types. The same logic applies to the Proposer who gets to use an
+            AI-system, but still offers you a split themselves
+          </p>
+
+          <p class="instruction-text">
+            <strong>Note:</strong> All Proposers make an offer irrespective of whether you approach them. Thus, your decisions in this
+            expectation task determine your payoff irrespective of which proposer you decide to approach later on.
+          </p>
+
+        </mat-card-content>
+
+
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
           <button mat-raised-button color="primary" (click)="nextSection()">Proceed with the experiment</button>
