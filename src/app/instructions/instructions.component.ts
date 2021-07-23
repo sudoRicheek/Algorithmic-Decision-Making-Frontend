@@ -5,6 +5,21 @@ import { Router } from '@angular/router';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
 
+export interface AllocationTable {
+  name: string;
+  al1: number;
+  al2: number;
+  al3: number;
+  al4: number;
+  al5: number;
+  al6: number;
+}
+
+const ALLOCATION_DATA: AllocationTable[] = [
+  { name: 'Proposer', al1: 20, al2: 16, al3: 12, al4: 8, al5: 4, al6: 0 },
+  { name: 'Responder', al1: 0, al2: 4, al3: 8, al4: 12, al5: 16, al6: 20 },
+];
+
 @Component({
   selector: 'app-instructions',
   templateUrl: './instructions.component.html',
@@ -14,8 +29,19 @@ export class InstructionsComponent implements OnInit {
   attentionAttempted: boolean;
   attentionPassed: boolean;
 
+  allocationColumns: string[] = [
+    'name',
+    'al1',
+    'al2',
+    'al3',
+    'al4',
+    'al5',
+    'al6',
+  ];
+  allocationDataSource = ALLOCATION_DATA;
+
   @ViewChild('stepper') stepper: MatStepper;
-  
+
   constructor(
     private router: Router,
     private workerService: WorkerService,

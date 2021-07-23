@@ -3,7 +3,8 @@ h1 {
 }
 
 p {
-  font-size: larger;
+  font-size: 13pt;
+  line-height: 1.4;
 }
 
 .card-container {
