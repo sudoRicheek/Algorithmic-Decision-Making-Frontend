@@ -43,6 +43,7 @@ import { AttentionSucessfullySubmittedComponent } from './dialogs/attentionSuces
 import { BeliefElicitationSubmittedComponent } from './dialogs/beliefElicitationSubmitted/beliefElicitationSubmitted.component';
 import { PostExperimentalSubmissionComponent } from './dialogs/postExperimentalSubmission/postExperimentalSubmission.component';
 import { ComprehensionBeliefPassedComponent } from './dialogs/comprehensionBeliefPassed/comprehensionBeliefPassed.component';
+import { ComprehensionTryAgainComponent } from './dialogs/comprehensionTryAgain/comprehensionTryAgain.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -76,7 +77,7 @@ import { ApproachDecisionReminderComponent } from './approachDecisionReminder/ap
 import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
@@ -107,9 +108,10 @@ import { SurveyComponent } from './survey/survey.component';
     DssProposerComponent,
     CompBeliefComponent,
     ComprehensionBeliefPassedComponent,
-      ApproachDecisionReminderComponent,
-      SurveyComponent
-   ],
+    ApproachDecisionReminderComponent,
+    SurveyComponent,
+    ComprehensionTryAgainComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -20,7 +20,7 @@
       <p>Please click <strong>Proceed</strong> to start with the HIT</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent" (click)="attentionCheckPage()">Proceed</button>
+      <button mat-raised-button color="accent" (click)="attentionCheckPage()" [disabled]=failed>{{buttonText}}</button>
     </mat-card-actions>
   </mat-card>
 </div>

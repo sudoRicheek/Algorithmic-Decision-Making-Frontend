@@ -11,24 +11,25 @@ import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
 import { ReminderComponent } from './reminder/reminder.component';
+import { NotFailedService } from './services/notFailed.service';
 import { UserExistsService } from './services/userExists.service';
 import { SurveyComponent } from './survey/survey.component';
 import { UniqueCodeComponent } from './uniqueCode/uniqueCode.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'attentioncheck', component: AttentioncheckComponent, canActivate: [UserExistsService] },
-  { path: 'instructions', component: InstructionsComponent, canActivate: [UserExistsService] },
-  { path: 'comprehension', component: ComprehensionComponent, canActivate: [UserExistsService] },
-  { path: 'reminder', component: ReminderComponent, canActivate: [UserExistsService] },
-  { path: 'compbelief', component: CompBeliefComponent, canActivate: [UserExistsService] },
-  { path: 'beliefelicitation', component: BeliefElicitationComponent, canActivate: [UserExistsService] },
-  { path: 'postexperimental', component: PostExperimentalQuestionsComponent, canActivate: [UserExistsService] },
-  { path: 'approachdecisionreminder', component: ApproachDecisionReminderComponent, canActivate: [UserExistsService] },
-  { path: 'approachdecision', component: ApproachDecisionComponent, canActivate: [UserExistsService] },
-  { path: 'uniquecode', component: UniqueCodeComponent, canActivate: [UserExistsService] },
-  { path: 'dssproposer', component: DssProposerComponent, canActivate: [UserExistsService] },
-  { path: 'survey', component: SurveyComponent, canActivate: [UserExistsService] },
+  { path: 'attentioncheck', component: AttentioncheckComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'instructions', component: InstructionsComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'comprehension', component: ComprehensionComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'reminder', component: ReminderComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'compbelief', component: CompBeliefComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'beliefelicitation', component: BeliefElicitationComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'postexperimental', component: PostExperimentalQuestionsComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'approachdecisionreminder', component: ApproachDecisionReminderComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'approachdecision', component: ApproachDecisionComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'uniquecode', component: UniqueCodeComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'dssproposer', component: DssProposerComponent, canActivate: [UserExistsService, NotFailedService] },
+  { path: 'survey', component: SurveyComponent, canActivate: [UserExistsService, NotFailedService] },
   
   // should be at the bottom.
   { path: '**', redirectTo: '/' },

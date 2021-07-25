@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ComprehensionAlreadyAttemptedComponent } from '../dialogs/comprehensionAlreadyAttempted/comprehensionAlreadyAttempted.component';
 import { ComprehensionBeliefPassedComponent } from '../dialogs/comprehensionBeliefPassed/comprehensionBeliefPassed.component';
+import { ComprehensionTryAgainComponent } from '../dialogs/comprehensionTryAgain/comprehensionTryAgain.component';
 import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
@@ -17,6 +18,7 @@ export class CompBeliefComponent implements OnInit {
   formData: any;
   comprehensionBeliefSubmitted: boolean;
   comprehensionBeliefSectionPassed: boolean;
+  comprehensionBeliefFailedTimes: number;
   typeWorkAssigned: number;
 
   constructor(
@@ -86,24 +88,31 @@ export class CompBeliefComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
-          this.storageService.storeComprehensionBeliefSubmissions(
-            this.formData['answers']
-          );
 
           this.comprehensionBeliefSubmitted =
             response.comprehension_belief_all_attempted;
+          this.comprehensionBeliefFailedTimes =
+            response.comprehension_belief_failed_times;
           this.comprehensionBeliefSectionPassed =
             response.comprehension_belief_passed;
+
           this.typeWorkAssigned = response.type_work;
 
-          this.comprehensionBeliefSubmitDialog();
           if (this.comprehensionBeliefSectionPassed) {
+            this.storageService.storeComprehensionBeliefSubmissions(
+              this.formData['answers']
+            );
+            this.comprehensionBeliefSubmitDialog();
             if (this.typeWorkAssigned == 0)
               this.router.navigate(['beliefelicitation']);
             else if (this.typeWorkAssigned == 1)
               this.router.navigate(['dssproposer']);
             else if (this.typeWorkAssigned == -1) this.router.navigate(['/']);
-          } else this.router.navigate(['/']);
+          } else if (this.comprehensionBeliefFailedTimes >= 2) {
+            this.comprehensionBeliefSubmitDialog();
+            this.storageService.setFailed();
+            this.router.navigate(['/']);
+          } else this.comprehensionTryAgain();
         },
         (errors) => {
           console.log(errors);
@@ -117,6 +126,14 @@ export class CompBeliefComponent implements OnInit {
         }
       );
     console.log(this.formData);
+  }
+
+  comprehensionTryAgain() {
+    const dialogRef = this.dialog.open(ComprehensionTryAgainComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   alreadyAttempted() {

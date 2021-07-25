@@ -83,7 +83,10 @@ export class AttentioncheckComponent implements OnInit {
         this.attentionPassed = response['attention_passed'];
         this.attentionSubmissionDialog();
         if (this.attentionPassed) this.router.navigate(['survey']);
-        else this.router.navigate(['/']);
+        else {
+          this.storageService.setFailed();
+          this.router.navigate(['/']);
+        }
       },
       (error) => {
         console.log(error);

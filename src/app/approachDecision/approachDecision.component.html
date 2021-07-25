@@ -4,7 +4,7 @@
       <h1>Approach Decision - Choice</h1>
     </mat-card-title>
     <mat-card-content align=justify>
-      <p>You will need to select any one of the three proposer types you want to bargain with !</p>
+      <p>Select which one of the three proposers you want to bargain with.</p>
     </mat-card-content>
     <mat-card-actions>
       <label id="example-radio-group-label">Choose the Proposer you want to bargain with</label>
@@ -40,7 +40,7 @@
         <mat-slider class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected" [tickInterval]=1
           aria-labelledby="example-name-label" (input)="onInputChange($event)" [disabled]="alreadySubmitted">
         </mat-slider>
-        <strong>Proposer: {{pieChartData[0]}}, Responder: {{pieChartData[1]}}</strong>
+        <strong>Responder: {{pieChartData[1]}}, Proposer: {{pieChartData[0]}}</strong>
         <!-- <strong>Allocation: {{allocationSelected}}</strong> -->
       </mat-card-actions>
     </div>

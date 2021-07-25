@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ComprehensionAlreadyAttemptedComponent } from '../dialogs/comprehensionAlreadyAttempted/comprehensionAlreadyAttempted.component';
 import { ComprehensionSubmitDialogComponent } from '../dialogs/comprehensionSubmitDialog/comprehensionSubmitDialog.component';
+import { ComprehensionTryAgainComponent } from '../dialogs/comprehensionTryAgain/comprehensionTryAgain.component';
 import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import {
   DialogAttentionFail,
@@ -21,6 +22,7 @@ export class ComprehensionComponent implements OnInit {
   formData: any;
   comprehensionSubmitted: boolean;
   comprehensionSectionPassed: boolean;
+  comprehensionFailedTimes: number;
   typeWorkAssigned: number;
 
   constructor(
@@ -87,17 +89,23 @@ export class ComprehensionComponent implements OnInit {
     this.questionService.postComprehensionAnswers(this.formData).subscribe(
       (response) => {
         console.log(response);
-        this.storageService.storeComprehensionSubmissions(
-          this.formData['answers']
-        );
 
         this.comprehensionSubmitted = response.comprehension_all_attempted;
         this.comprehensionSectionPassed = response.comprehension_passed;
+        this.comprehensionFailedTimes = response.comprehension_failed_times;
         this.typeWorkAssigned = response.type_work;
-        this.comprehensionSubmissionDialog();
-        
-        if (this.comprehensionSectionPassed) this.router.navigate(['reminder']);
-        else this.router.navigate(['/']);
+
+        if (this.comprehensionSectionPassed) {
+          this.storageService.storeComprehensionSubmissions(
+            this.formData['answers']
+          );
+          this.comprehensionSubmissionDialog();
+          this.router.navigate(['reminder']);
+        } else if (this.comprehensionFailedTimes >= 2) {
+          this.comprehensionSubmissionDialog();
+          this.storageService.setFailed();
+          this.router.navigate(['/']);
+        } else this.comprehensionTryAgain();
       },
       (errors) => {
         console.log(errors);
@@ -117,6 +125,14 @@ export class ComprehensionComponent implements OnInit {
 
   nextSection() {
     this.router.navigate(['reminder']);
+  }
+
+  comprehensionTryAgain() {
+    const dialogRef = this.dialog.open(ComprehensionTryAgainComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   attentionNoAttempt() {
@@ -152,7 +168,9 @@ export class ComprehensionComponent implements OnInit {
         comprehensionSectionPassed: this.comprehensionSectionPassed,
         typeWorkAssigned: this.typeWorkAssigned == 0 ? 'Responder' : 'Proposer',
       },
-      panelClass: this.comprehensionSectionPassed? 'comprehension-submit-passed-dialog' : 'comprehension-submit-failed-dialog',
+      panelClass: this.comprehensionSectionPassed
+        ? 'comprehension-submit-passed-dialog'
+        : 'comprehension-submit-failed-dialog',
     });
   }
 }

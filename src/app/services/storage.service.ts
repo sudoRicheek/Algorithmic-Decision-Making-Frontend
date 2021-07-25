@@ -247,4 +247,13 @@ export class StorageService {
     if (!allocation) return null;
     else return JSON.parse(allocation);
   }
+
+  setFailed() {
+    localStorage.setItem('failedChecks', 'true');
+  }
+
+  hasFailed() {
+    if (localStorage.getItem('failedChecks')) return true;
+    else return false;
+  }
 }

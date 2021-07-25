@@ -13,6 +13,7 @@ import { WorkerService } from '../services/worker.service';
   styleUrls: ['./postExperimentalQuestions.component.css'],
 })
 export class PostExperimentalQuestionsComponent implements OnInit {
+  proposer: string;
   proposerTypes: string[];
   likertOptions: string[];
 
@@ -56,6 +57,20 @@ export class PostExperimentalQuestionsComponent implements OnInit {
     this.attentionCheck = -1;
     this.personality = -1;
     this.mostRespondersBargainWith = -1;
+
+    let proposerTypesFirst = [
+      'the human proposer without a DSS',
+      'the human proposer with a DSS',
+      'the autonomous agent',
+    ];
+
+    let localApproachDecisionSubmissions =
+      this.storageService.getApproachDecisionSubmissions();
+    if (localApproachDecisionSubmissions)
+      this.proposer =
+        proposerTypesFirst[
+          localApproachDecisionSubmissions['approachDecision'] - 1
+        ];
   }
 
   ngOnInit() {}

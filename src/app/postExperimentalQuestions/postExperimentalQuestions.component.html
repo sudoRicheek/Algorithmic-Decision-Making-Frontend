@@ -23,9 +23,7 @@
 
           <ol type="1">
             <li>
-              <p class="instruction-text">Please explain why you chose to approach [the human proposer without a
-                DSS]/[the
-                human proposer with a DSS]/[the autonomous agent)</p>
+              <p class="instruction-text">Please explain why you chose to approach <strong>{{proposer}}</strong></p>
               <mat-form-field class="example-full-width" appearance="fill">
                 <!-- <mat-label>Leave a comment</mat-label> -->
                 <textarea matInput [(ngModel)]="reasonApproach" placeholder="Ex. I feel..." required></textarea>
@@ -247,9 +245,7 @@
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
           <button mat-raised-button color="primary" (click)="nextSection()"
-            [disabled]="mostRespondersBargainWith==-1 || attentionCheck==-1 || personality==-1">Proceed to the
-            Comprehension
-            Section</button>
+            [disabled]="mostRespondersBargainWith==-1 || attentionCheck==-1 || personality==-1">Submit & Proceed</button>
         </mat-card-actions>
       </mat-step>
 
