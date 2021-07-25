@@ -37,6 +37,10 @@
             will influence both the amount of money you receive as well as the amount of money the other receives.
           </p>
 
+
+          <p class="instruction-text" style="font-size: 12pt; font-weight: bold;">[Note] : Move the sliders to pick your
+            preference.</p>
+
           <br>
 
           <ol type="1">
@@ -62,7 +66,8 @@
                       <div>85</div>
                       <div>85</div>
                     </div>
-                    <mat-slider thumbLabel [displayWith]="q1Label" tickInterval="1" step="1" min="1" max="9">
+                    <mat-slider thumbLabel [displayWith]="q1Label" tickInterval="1" step="1" min="1" max="9"
+                      [(ngModel)]=SVO[0]>
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -104,7 +109,8 @@
                       <div>98</div>
                       <div>100</div>
                     </div>
-                    <mat-slider thumbLabel [displayWith]="q2Label" tickInterval="1" step="1" min="1" max="9">
+                    <mat-slider thumbLabel [displayWith]="q2Label" tickInterval="1" step="1" min="1" max="9"
+                      [(ngModel)]=SVO[1]>
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -146,7 +152,8 @@
                       <div>81</div>
                       <div>85</div>
                     </div>
-                    <mat-slider thumbLabel [displayWith]="q3Label" tickInterval="1" step="1" min="1" max="9">
+                    <mat-slider thumbLabel [displayWith]="q3Label" tickInterval="1" step="1" min="1" max="9"
+                      [(ngModel)]=SVO[2]>
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -188,7 +195,8 @@
                       <div>81</div>
                       <div>85</div>
                     </div>
-                    <mat-slider thumbLabel [displayWith]="q4Label" tickInterval="1" step="1" min="1" max="9">
+                    <mat-slider thumbLabel [displayWith]="q4Label" tickInterval="1" step="1" min="1" max="9"
+                      [(ngModel)]=SVO[3]>
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -230,7 +238,8 @@
                       <div>56</div>
                       <div>50</div>
                     </div>
-                    <mat-slider thumbLabel [displayWith]="q5Label" tickInterval="1" step="1" min="1" max="9">
+                    <mat-slider thumbLabel [displayWith]="q5Label" tickInterval="1" step="1" min="1" max="9"
+                      [(ngModel)]=SVO[4]>
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -272,7 +281,8 @@
                       <div>87</div>
                       <div>85</div>
                     </div>
-                    <mat-slider thumbLabel [displayWith]="q6Label" tickInterval="1" step="1" min="1" max="9">
+                    <mat-slider thumbLabel [displayWith]="q6Label" tickInterval="1" step="1" min="1" max="9"
+                      [(ngModel)]=SVO[5]>
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -298,7 +308,7 @@
         </mat-card-content>
         <mat-card-actions align="end">
           <!-- <button mat-raised-button color="accent" matStepperPrevious>Back</button> -->
-          <button mat-raised-button color="accent" matStepperNext>Next Page</button>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="showElementSVO()">Next Page</button>
         </mat-card-actions>
       </mat-step>
 

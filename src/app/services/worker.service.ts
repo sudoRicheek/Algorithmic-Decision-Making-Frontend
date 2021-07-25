@@ -112,6 +112,7 @@ export class WorkerService {
 
   submitSurveyResponses(
     worker_id: string,
+    SVO: number[],
     nr: number[],
     sex: string,
     age: number,
@@ -121,6 +122,7 @@ export class WorkerService {
     let formData: any;
     formData = {};
     formData['worker_id'] = worker_id;
+    formData['SVO'] = SVO;
     formData['nr'] = nr;
     formData['sex'] = sex;
     formData['age'] = age;

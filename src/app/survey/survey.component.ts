@@ -9,6 +9,7 @@ import { WorkerService } from '../services/worker.service';
   styleUrls: ['./survey.component.css'],
 })
 export class SurveyComponent implements OnInit {
+  SVO: number[];
   Nr: number[]; // Negative Reciprocity
   likertOptions: string[];
 
@@ -27,6 +28,8 @@ export class SurveyComponent implements OnInit {
     private router: Router
   ) {
     this.Nr = new Array(9).fill(-1);
+    this.SVO = new Array(6).fill(-1);
+
     this.likertOptions = [
       'Very untrue of me',
       'Untrue of me',
@@ -77,6 +80,10 @@ export class SurveyComponent implements OnInit {
       this.highestDegree == '' ||
       this.age < 1
     );
+  }
+
+  showElementSVO(): boolean {
+    return this.SVO.some((item) => item == -1);
   }
 
   q1Label(value: number) {
@@ -175,6 +182,7 @@ export class SurveyComponent implements OnInit {
       this.workerService
         .submitSurveyResponses(
           localWorker,
+          this.SVO,
           this.Nr,
           this.sex,
           this.age,
