@@ -1,67 +1,206 @@
 h1 {
-    /* color: #5a37b8; */
-    color: #3700b3;
-    margin: 10px;
-    font-size: 20pt;
+  /* color: #5a37b8; */
+  color: #3700b3;
+  margin: 10px;
+  font-size: 20pt;
+}
+
+p {
+  color: #db5151e1;
+  margin: 10px;
+  font-size: large;
+}
+
+.basic-container {
+  margin-top: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-bottom: 100px;
+}
+
+.header-card {
+  border-top: 5px solid #f4511e;
+  border-bottom: none;
+}
+
+.example-age {
+  margin-left: 5%;
+}
+
+.instructions {
+  margin: 5px;
+  max-width: fit-content;
+}
+
+.next-section {
+  margin: 5px;
+  max-width: fit-content;
+}
+
+.instruction-text {
+  margin-right: 3%;
+  margin-left: 3%;
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 12pt;
+  line-height: 1.4;
+}
+
+ul {
+  margin-left: 10%;
+  margin-right: 15%;
+}
+
+.instructions-subtext {
+  margin-right: 3%;
+  margin-left: 3%;
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 12pt;
+}
+
+.label-text {
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.list-text {
+  color: rgba(13, 19, 46, 0.973);
+  font-size: 13pt;
+}
+
+table {
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
+  border-top: 2px solid #3700b3;
+  /* overflow: hidden; */
+}
+
+mat-card-actions {
+  display: flex;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  font-size: 12pt;
+  color: #283747;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.likert-scale {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+  font-size: 12pt;
+  color: #283747;
+}
+
+span {
+  font-size: 11pt;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-left: 3%;
+  padding-right: 3%;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+
+mat-slider {
+  width: 100%;
+}
+
+::ng-deep .mat-slider-thumb-label {
+  transform: rotate(45deg) !important;
+  border-radius: 50% 50% 0 !important;
+  background-size: 100px;
+}
+::ng-deep .mat-slider-thumb {
+  transform: scale(0) !important;
+}
+::ng-deep .mat-slider-thumb-label-text {
+  opacity: 1 !important;
+}
+
+::ng-deep
+  .mat-slider-wrapper
+  .mat-slider-thumb-container
+  .mat-slider-thumb-label {
+  width: 50px;
+  height: 50px;
+  top: -62px;
+  right: -25px;
+}
+
+
+
+ol {
+  counter-reset: item;
+}
+
+ol > li {
+  list-style-type: none;
+  counter-increment: item;
+}
+
+ol > li:before {
+  display: inline-block;
+  font-weight: bold;
+  content: counter(item) ".";
+}
+
+
+@media only screen and (max-width: 1300px) {
+  .likert-scale {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    font-size: 12pt;
+    color: #283747;
   }
-  
-  p {
-    color: #db5151e1;
-    margin: 10px;
-    font-size: large;
-  }
-  
+}
+
+@media only screen and (max-width: 992px) {
   .basic-container {
     margin-top: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
+    /* max-width: 500px; */
+    margin-left: 10%;
     padding-bottom: 100px;
-  }
-  
-  .header-card {
-    border-top: 5px solid #f4511e;
-    border-bottom: none;
+    margin-right: 10%;
   }
 
-  .example-age {
-      margin-left: 5%;
-  }
-  
   .instructions {
     margin: 5px;
     max-width: fit-content;
+    font-size: 9pt;
   }
-  
+
   .next-section {
     margin: 5px;
     max-width: fit-content;
+    font-size: 9pt;
   }
-  
+
   .instruction-text {
-    margin-right: 3%;
-    margin-left: 3%;
-    color: rgba(13, 19, 46, 0.973);
-    font-size: 12pt;
-    line-height: 1.4;
+    margin-right: 0%;
+    margin-left: 0%;
   }
-  
+
   ul {
     margin-left: 10%;
-    margin-right: 15%;
+    margin-right: 8%;
   }
-  
-  .instructions-subtext {
-    margin-right: 3%;
-    margin-left: 3%;
-    color: rgba(13, 19, 46, 0.973);
-    font-size: 12pt;
-  }
-  
-  .list-text {
-    color: rgba(13, 19, 46, 0.973);
-    font-size: 13pt;
-  }
-  
+
   table {
     width: 94%;
     margin-left: 3%;
@@ -69,138 +208,48 @@ h1 {
     border-top: 2px solid #3700b3;
     /* overflow: hidden; */
   }
-  
-  mat-card-actions {
-    display: flex;
-  }
-  
-  .example-radio-group {
-    display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .basic-container {
+    margin-top: 10px;
+    margin-left: 1%;
+    padding-bottom: 100px;
+    margin-right: 1%;
     flex-direction: column;
-    margin-left: 5%;
-    font-size: 12pt;
-    color: #283747;
   }
-  
-  .example-radio-button {
+
+  .instructions {
     margin: 5px;
+    max-width: fit-content;
+    font-size: 8pt;
   }
-  
-  .likert-scale {
-    display: flex;
-    flex-direction: row;
-    margin-left: 5%;
-    font-size: 12pt;
-    color: #283747;
+
+  .next-section {
+    margin: 5px;
+    max-width: fit-content;
+    font-size: 8pt;
   }
-  
-  span {
-    font-size: 11pt;
-    word-wrap: break-word;
-    white-space: normal;
+
+  .instruction-text {
+    margin-right: 0%;
+    margin-left: 0%;
   }
-  
-  .example-full-width {
+
+  ul {
+    margin-left: 10%;
+    margin-right: 6%;
+  }
+
+  .allocations th {
+    font-size: 7pt;
+  }
+
+  table {
     width: 100%;
-    margin-left: 3%;
-    padding-right: 3%;
+    margin-left: 0%;
+    margin-right: 0%;
+    border-top: 2px solid #3700b3;
+    /* overflow: hidden; */
   }
-  
-  ::ng-deep .mat-horizontal-stepper-header {
-    pointer-events: none !important;
-  }
-  
-  @media only screen and (max-width: 1300px) {
-    .likert-scale {
-      display: flex;
-      flex-direction: column;
-      margin-left: 5%;
-      font-size: 12pt;
-      color: #283747;
-    }
-  }
-  
-  @media only screen and (max-width: 992px) {
-    .basic-container {
-      margin-top: 10px;
-      /* max-width: 500px; */
-      margin-left: 10%;
-      padding-bottom: 100px;
-      margin-right: 10%;
-    }
-  
-    .instructions {
-      margin: 5px;
-      max-width: fit-content;
-      font-size: 9pt;
-    }
-  
-    .next-section {
-      margin: 5px;
-      max-width: fit-content;
-      font-size: 9pt;
-    }
-  
-    .instruction-text {
-      margin-right: 0%;
-      margin-left: 0%;
-    }
-  
-    ul {
-      margin-left: 10%;
-      margin-right: 8%;
-    }
-  
-    table {
-      width: 94%;
-      margin-left: 3%;
-      margin-right: 3%;
-      border-top: 2px solid #3700b3;
-      /* overflow: hidden; */
-    }
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .basic-container {
-      margin-top: 10px;
-      margin-left: 1%;
-      padding-bottom: 100px;
-      margin-right: 1%;
-      flex-direction: column;
-    }
-  
-    .instructions {
-      margin: 5px;
-      max-width: fit-content;
-      font-size: 8pt;
-    }
-  
-    .next-section {
-      margin: 5px;
-      max-width: fit-content;
-      font-size: 8pt;
-    }
-  
-    .instruction-text {
-      margin-right: 0%;
-      margin-left: 0%;
-    }
-  
-    ul {
-      margin-left: 10%;
-      margin-right: 6%;
-    }
-  
-    .allocations th {
-      font-size: 7pt;
-    }
-  
-    table {
-      width: 100%;
-      margin-left: 0%;
-      margin-right: 0%;
-      border-top: 2px solid #3700b3;
-      /* overflow: hidden; */
-    }
-  }
-  
+}

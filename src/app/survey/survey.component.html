@@ -17,6 +17,295 @@
         <!-- <ng-template matStepLabel>The Task</ng-template> -->
         <br>
         <mat-card-content align="justify">
+          <h2>
+            <strong>Instructions</strong>
+          </h2>
+          <p class="instruction-text">
+            In this task you have been randomly paired with another person, whom we will refer to as the
+            <strong>other</strong>. This
+            other person is someone you do not know and will remain mutually anonymous. All of your choices are
+            completely confidential. You will be making a series of decisions about allocating resources between you and
+            this other person. For each of the following questions, please indicate the distribution you prefer most by
+            marking the respective position along the midline. You can only make one mark for each question.
+            Your decisions will yield money for both yourself and the other person. In the example below, a person has
+            chosen to distribute money so that he/she receives 50 points, while the anonymous other person receives 40
+            points.
+          </p>
+          <p class="instruction-text">
+            There are no right or wrong answers, this is all about personal preferences. After you have made your
+            decision, write the resulting distribution of money on the spaces on the right. As you can see, your choices
+            will influence both the amount of money you receive as well as the amount of money the other receives.
+          </p>
+
+          <br>
+
+          <ol type="1">
+            <li>
+              <mat-grid-list cols=5>
+                <mat-grid-tile [colspan]=1>
+                  <div>
+                    <p class="label-text">You Receive</p>
+                    <p class="label-text">Other Receives</p>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=4>
+                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                      <div>85</div>
+                    </div>
+                    <mat-slider thumbLabel [displayWith]="q1Label" tickInterval="1" step="1" min="1" max="9">
+                    </mat-slider>
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>85</div>
+                      <div>76</div>
+                      <div>68</div>
+                      <div>59</div>
+                      <div>50</div>
+                      <div>41</div>
+                      <div>33</div>
+                      <div>24</div>
+                      <div>15</div>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </li>
+            <br>
+
+            <li>
+              <mat-grid-list cols=5>
+                <mat-grid-tile [colspan]=1>
+                  <div>
+                    <p class="label-text">You Receive</p>
+                    <p class="label-text">Other Receives</p>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=4>
+                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>85</div>
+                      <div>87</div>
+                      <div>89</div>
+                      <div>91</div>
+                      <div>93</div>
+                      <div>94</div>
+                      <div>96</div>
+                      <div>98</div>
+                      <div>100</div>
+                    </div>
+                    <mat-slider thumbLabel [displayWith]="q2Label" tickInterval="1" step="1" min="1" max="9">
+                    </mat-slider>
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>15</div>
+                      <div>19</div>
+                      <div>24</div>
+                      <div>28</div>
+                      <div>33</div>
+                      <div>37</div>
+                      <div>41</div>
+                      <div>46</div>
+                      <div>50</div>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </li>
+            <br>
+
+            <li>
+              <mat-grid-list cols=5>
+                <mat-grid-tile [colspan]=1>
+                  <div>
+                    <p class="label-text">You Receive</p>
+                    <p class="label-text">Other Receives</p>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=4>
+                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>50</div>
+                      <div>54</div>
+                      <div>59</div>
+                      <div>63</div>
+                      <div>68</div>
+                      <div>72</div>
+                      <div>76</div>
+                      <div>81</div>
+                      <div>85</div>
+                    </div>
+                    <mat-slider thumbLabel [displayWith]="q3Label" tickInterval="1" step="1" min="1" max="9">
+                    </mat-slider>
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>100</div>
+                      <div>98</div>
+                      <div>96</div>
+                      <div>94</div>
+                      <div>93</div>
+                      <div>91</div>
+                      <div>89</div>
+                      <div>87</div>
+                      <div>85</div>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </li>
+            <br>
+
+            <li>
+              <mat-grid-list cols=5>
+                <mat-grid-tile [colspan]=1>
+                  <div>
+                    <p class="label-text">You Receive</p>
+                    <p class="label-text">Other Receives</p>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=4>
+                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>50</div>
+                      <div>54</div>
+                      <div>59</div>
+                      <div>63</div>
+                      <div>68</div>
+                      <div>72</div>
+                      <div>76</div>
+                      <div>81</div>
+                      <div>85</div>
+                    </div>
+                    <mat-slider thumbLabel [displayWith]="q4Label" tickInterval="1" step="1" min="1" max="9">
+                    </mat-slider>
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>100</div>
+                      <div>89</div>
+                      <div>79</div>
+                      <div>68</div>
+                      <div>58</div>
+                      <div>47</div>
+                      <div>36</div>
+                      <div>26</div>
+                      <div>15</div>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </li>
+            <br>
+
+            <li>
+              <mat-grid-list cols=5>
+                <mat-grid-tile [colspan]=1>
+                  <div>
+                    <p class="label-text">You Receive</p>
+                    <p class="label-text">Other Receives</p>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=4>
+                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>100</div>
+                      <div>94</div>
+                      <div>88</div>
+                      <div>81</div>
+                      <div>75</div>
+                      <div>69</div>
+                      <div>63</div>
+                      <div>56</div>
+                      <div>50</div>
+                    </div>
+                    <mat-slider thumbLabel [displayWith]="q5Label" tickInterval="1" step="1" min="1" max="9">
+                    </mat-slider>
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>50</div>
+                      <div>56</div>
+                      <div>63</div>
+                      <div>69</div>
+                      <div>75</div>
+                      <div>81</div>
+                      <div>88</div>
+                      <div>94</div>
+                      <div>100</div>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </li>
+            <br>
+
+            <li>
+              <mat-grid-list cols=5>
+                <mat-grid-tile [colspan]=1>
+                  <div>
+                    <p class="label-text">You Receive</p>
+                    <p class="label-text">Other Receives</p>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]=4>
+                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>100</div>
+                      <div>98</div>
+                      <div>96</div>
+                      <div>94</div>
+                      <div>93</div>
+                      <div>91</div>
+                      <div>89</div>
+                      <div>87</div>
+                      <div>85</div>
+                    </div>
+                    <mat-slider thumbLabel [displayWith]="q6Label" tickInterval="1" step="1" min="1" max="9">
+                    </mat-slider>
+                    <div class="slider-labels"
+                      style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <div>50</div>
+                      <div>54</div>
+                      <div>59</div>
+                      <div>63</div>
+                      <div>68</div>
+                      <div>72</div>
+                      <div>76</div>
+                      <div>81</div>
+                      <div>85</div>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </li>
+            <br>
+
+          </ol>
+
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <!-- <button mat-raised-button color="accent" matStepperPrevious>Back</button> -->
+          <button mat-raised-button color="accent" matStepperNext>Next Page</button>
+        </mat-card-actions>
+      </mat-step>
+
+      <mat-step state="instruction">
+        <!-- <ng-template matStepLabel>The Task</ng-template> -->
+        <br>
+        <mat-card-content align="justify">
           <p class="instruction-text" style="font-size: 14pt;">
             For each of the following statements, please indicate the extent to which it is true for you.
           </p>
@@ -145,7 +434,7 @@
 
         </mat-card-content>
         <mat-card-actions align="end">
-          <!-- <button mat-raised-button color="accent" matStepperPrevious>Back</button> -->
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
           <button mat-raised-button color="accent" matStepperNext [disabled]="showElementNr()">Next Page</button>
         </mat-card-actions>
       </mat-step>

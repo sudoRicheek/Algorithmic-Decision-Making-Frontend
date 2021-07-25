@@ -79,6 +79,96 @@ export class SurveyComponent implements OnInit {
     );
   }
 
+  q1Label(value: number) {
+    let qlabels = [
+      '85:85',
+      '85:76',
+      '85:68',
+      '85:59',
+      '85:50',
+      '85:41',
+      '85:33',
+      '85:24',
+      '85:15',
+    ];
+    return qlabels[value - 1];
+  }
+
+  q2Label(value: number) {
+    let qlabels = [
+      '85:15',
+      '87:19',
+      '89:24',
+      '91:28',
+      '93:33',
+      '94:37',
+      '96:41',
+      '98:46',
+      '100:50',
+    ];
+    return qlabels[value - 1];
+  }
+
+  q3Label(value: number) {
+    let qlabels = [
+      '50:100',
+      '54:98',
+      '59:96',
+      '63:94',
+      '68:93',
+      '72:91',
+      '76:89',
+      '81:87',
+      '85:85',
+    ];
+    return qlabels[value - 1];
+  }
+
+  q4Label(value: number) {
+    let qlabels = [
+      '50:100',
+      '54:89',
+      '59:79',
+      '63:68',
+      '68:58',
+      '72:47',
+      '76:36',
+      '81:26',
+      '85:15',
+    ];
+    return qlabels[value - 1];
+  }
+
+  q5Label(value: number) {
+    let qlabels = [
+      '100:50',
+      '94:56',
+      '88:63',
+      '81:69',
+      '75:75',
+      '69:81',
+      '63:88',
+      '56:94',
+      '50:100',
+    ];
+    return qlabels[value - 1];
+  }
+
+  q6Label(value: number) {
+    let qlabels = [
+      '100:50',
+      '98:54',
+      '96:59',
+      '94:63',
+      '93:68',
+      '91:72',
+      '89:76',
+      '87:81',
+      '85:85',
+    ];
+    return qlabels[value - 1];
+  }
+
   nextSection() {
     let localWorker = this.storageService.getWorker();
     if (localWorker) {
