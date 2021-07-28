@@ -8,12 +8,32 @@ import { QuestionService } from '../services/question.service';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
 
+export interface ReducedData {
+  position: any;
+  plarger: any;
+  plower: any;
+  p: any;
+}
+
+const ReducedDataSource: ReducedData[] = [
+  { position: 1, plarger: 1.0, plower: 0.0, p: 0.0 },
+  { position: 2, plarger: 0.9975, plower: 0.0975, p: 0.0975 },
+  { position: 3, plarger: 0.99, plower: 0.19, p: 0.19 },
+  { position: "...", plarger: "...", plower: "...", p: "..." },
+  { position: 19, plarger: 0.19, plower: 0.99, p: 0.99 },
+  { position: 20, plarger: 0.0975, plower: 0.9975, p: 0.9975 },
+  { position: 21, plarger: 0.0, plower: 1.0, p: 1.0 },
+];
+
 @Component({
   selector: 'app-comp-belief',
   templateUrl: './comp-belief.component.html',
   styleUrls: ['./comp-belief.component.css'],
 })
 export class CompBeliefComponent implements OnInit {
+  displayedColumns: string[] = ['position', 'plarger', 'plower', 'p'];
+  dataSourceReduced = ReducedDataSource;
+
   questions: any;
   formData: any;
   comprehensionBeliefSubmitted: boolean;
@@ -186,5 +206,9 @@ export class CompBeliefComponent implements OnInit {
         }
       );
     }
+  }
+
+  goToInstructions() {
+    this.router.navigate(['reminder']);
   }
 }

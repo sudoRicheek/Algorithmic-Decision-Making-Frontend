@@ -5,6 +5,35 @@
     questions
     correctly. If you fail to do so twice, you will not be able to participate in the experiment.</p>
 
+  <br>
+
+  <h2 style="margin: 5px;">Table with Probabilites</h2>
+  <table mat-table [dataSource]="dataSourceReduced" class="mat-elevation-z2 beliefprobabilities">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> <strong>Row No.</strong> </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="plarger">
+      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
+          greater split than you would receive in Allocation #</strong> </th>
+      <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
+          *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="plower">
+      <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
+          than you would receive in Allocation # </strong> </th>
+      <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
+          *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns | slice:0:3;"></tr>
+  </table>
+
+  <br>
+
   <div *ngFor="let question of questions; let i=index">
     <mat-card class="tp-card">
       <label id="example-radio-group-label"><strong>{{i+1}}. {{question.question_text}}</strong></label>
@@ -17,6 +46,7 @@
     </mat-card>
   </div>
 
+  <button mat-raised-button color="primary" (click)="goToInstructions()"> Re-read Instructions</button>
   <button mat-raised-button color="primary" (click)="postComprehensionBeliefAnswers()"
     [disabled]="comprehensionBeliefSubmitted" class="submit">Submit</button>
   <button mat-raised-button color="accent" (click)="nextSection()" class="next-section"

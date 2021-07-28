@@ -1,5 +1,8 @@
+import { NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
 import { Router } from '@angular/router';
+import { ChartOptions, ChartType } from 'chart.js';
 import { StorageService } from '../services/storage.service';
 import { WorkerService } from '../services/worker.service';
 
@@ -21,6 +24,20 @@ export class SurveyComponent implements OnInit {
   sexOptions: string[];
   employmentOptions: string[];
   degreeOptions: string[];
+
+  public ChartLabels: string[];
+  public ChartType: ChartType;
+  public ChartOptions: ChartOptions;
+  public ChartColours: [
+    { backgroundColor: string[]; borderColor: string[]; borderWidth: number }
+  ];
+
+  public ChartData1: number[];
+  public ChartData2: number[];
+  public ChartData3: number[];
+  public ChartData4: number[];
+  public ChartData5: number[];
+  public ChartData6: number[];
 
   constructor(
     private workerService: WorkerService,
@@ -65,6 +82,48 @@ export class SurveyComponent implements OnInit {
     this.sex = '';
     this.employmentStatus = '';
     this.highestDegree = '';
+
+    // CHART SETTINGS
+    this.ChartLabels = ['You Receive', 'Other Receives'];
+    this.ChartType = 'horizontalBar';
+    this.ChartOptions = {
+      responsive: true,
+      maintainAspectRatio: true,
+      legend: {
+        display: false,
+        labels: {
+          fontSize: 14,
+        },
+      },
+      scales: {
+        xAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              max: 100,
+              min: 0,
+            },
+          },
+        ],
+      },
+    };
+    this.ChartColours = [
+      {
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+        ],
+        borderColor: ['rgb(255, 99, 132)', 'rgb(153, 102, 255)'],
+        borderWidth: 1,
+      },
+    ];
+
+    this.ChartData1 = [0, 0];
+    this.ChartData2 = [0, 0];
+    this.ChartData3 = [0, 0];
+    this.ChartData4 = [0, 0];
+    this.ChartData5 = [0, 0];
+    this.ChartData6 = [0, 0];
   }
 
   ngOnInit() {}
@@ -176,6 +235,61 @@ export class SurveyComponent implements OnInit {
     return qlabels[value - 1];
   }
 
+  onInputChange1(event: MatSliderChange) {
+    this.ChartData1.length = 0;
+
+    if (event.value != null) {
+      let data = this.q1Label(event.value);
+      this.ChartData1 = data.split(":",2).map(Number);
+    }
+  }
+
+  onInputChange2(event: MatSliderChange) {
+    this.ChartData2.length = 0;
+
+    if (event.value != null) {
+      let data = this.q2Label(event.value);
+      this.ChartData2 = data.split(":",2).map(Number);
+    }
+  }
+
+  onInputChange3(event: MatSliderChange) {
+    this.ChartData3.length = 0;
+
+    if (event.value != null) {
+      let data = this.q3Label(event.value);
+      this.ChartData3 = data.split(":",2).map(Number);
+    }
+  }
+
+  onInputChange4(event: MatSliderChange) {
+    this.ChartData4.length = 0;
+
+    if (event.value != null) {
+      let data = this.q4Label(event.value);
+      this.ChartData4 = data.split(":",2).map(Number);
+    }
+  }
+
+  onInputChange5(event: MatSliderChange) {
+    this.ChartData5.length = 0;
+
+    if (event.value != null) {
+      let data = this.q5Label(event.value);
+      this.ChartData5 = data.split(":",2).map(Number);
+    }
+  }
+
+  onInputChange6(event: MatSliderChange) {
+    this.ChartData6.length = 0;
+
+    if (event.value != null) {
+      let data = this.q6Label(event.value);
+      this.ChartData6 = data.split(":",2).map(Number);
+    }
+  }
+
+
   nextSection() {
     let localWorker = this.storageService.getWorker();
     if (localWorker) {
@@ -200,4 +314,6 @@ export class SurveyComponent implements OnInit {
         );
     }
   }
+
+
 }

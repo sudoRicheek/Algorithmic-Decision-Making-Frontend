@@ -24,12 +24,12 @@ body {
 }
 
 .carousel-control-next-icon {
-  background-image: url("assets/icons/chevron-right.svg");
-  background-size: 150%;
+  background-image: url("assets/icons/right-chevron.png");
+  background-size: 160%;
 }
 .carousel-control-prev-icon {
-  background-image: url("assets/icons/chevron-left.svg");
-  background-size: 150%;
+  background-image: url("assets/icons/left-chevron.png");
+  background-size: 160%;
 }
 
 .carousel-control-next,
@@ -65,11 +65,11 @@ body {
 
 @media only screen and (max-width: 768px) {
   .carousel-control-next-icon {
-    margin-left: 5px;
-    background-size: 225%;
+    margin-left: 0px;
+    background-size: 175%;
   }
   .carousel-control-prev-icon {
-    margin-right: 5px;
-    background-size: 225%;
+    margin-right: 0px;
+    background-size: 175%;
   }
 }

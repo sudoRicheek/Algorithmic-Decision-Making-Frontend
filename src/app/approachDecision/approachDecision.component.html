@@ -40,7 +40,9 @@
         <mat-slider class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected" [tickInterval]=1
           aria-labelledby="example-name-label" (input)="onInputChange($event)" [disabled]="alreadySubmitted">
         </mat-slider>
-        <strong>Responder: {{pieChartData[1]}}, Proposer: {{pieChartData[0]}}</strong>
+        <span *ngIf="allocationSelected!=-1"><strong>Responder: {{pieChartData[1]}}, Proposer:
+            {{pieChartData[0]}}</strong></span>
+        <span><strong><pre style="white-space: normal; font-size: 12pt;">[Please choose the minimum offer you are still willing to accept by positioning the slider under the pie chart.]</pre></strong></span>
         <!-- <strong>Allocation: {{allocationSelected}}</strong> -->
       </mat-card-actions>
     </div>
@@ -48,7 +50,7 @@
 
   <div *ngIf="approachDecision > 0 && approachDecision <= 3 && approachDecisionConfirmed">
     <button class="submit-decision" mat-raised-button color="primary" (click)="submitDecision()"
-      [disabled]="alreadySubmitted">Submit your decision and
+      [disabled]="alreadySubmitted || allocationSelected<0">Submit your decision and
       minimum offer</button>
     <button class="submit-decision" mat-raised-button color="accent" (click)="nextSection()"
       [disabled]="!alreadySubmitted">Next Section</button>

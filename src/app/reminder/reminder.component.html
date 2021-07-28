@@ -179,13 +179,15 @@
             <ng-container matColumnDef="plarger">
               <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
                   greater split than you would receive in Allocation #</strong> </th>
-              <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
+              <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
+                  *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
             </ng-container>
 
             <ng-container matColumnDef="plower">
               <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
                   than you would receive in Allocation # </strong> </th>
-              <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
+              <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
+                  *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
@@ -298,13 +300,15 @@
             <ng-container matColumnDef="plarger">
               <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
                   greater split than you would receive in Allocation #</strong> </th>
-              <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
+              <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
+                  *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
             </ng-container>
-
+        
             <ng-container matColumnDef="plower">
               <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
                   than you would receive in Allocation # </strong> </th>
-              <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
+              <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
+                  *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
@@ -390,7 +394,8 @@
           </p>
 
           <p class="instruction-text">
-            <strong>Note:</strong> All Proposers make an offer irrespective of whether you approach them. Thus, your decisions in this
+            <strong>Note:</strong> All Proposers make an offer irrespective of whether you approach them. Thus, your
+            decisions in this
             expectation task determine your payoff irrespective of which proposer you decide to approach later on.
           </p>
 

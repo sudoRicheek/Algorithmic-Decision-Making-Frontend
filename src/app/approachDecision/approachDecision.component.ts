@@ -53,7 +53,7 @@ export class ApproachDecisionComponent implements OnInit {
         this.approachDecision = approachDecisionConfirmed;
         this.approachDecisionConfirmed = true;
       }
-      this.allocationSelected = 2;
+      this.allocationSelected = -1;
     }
 
     this.type_work = -1;
@@ -66,10 +66,7 @@ export class ApproachDecisionComponent implements OnInit {
 
     // PIE CHART SETTINGS
     this.pieChartLabels = ['Proposer', 'Responder'];
-    this.pieChartData = [
-      24 - this.allocationSelected * 4,
-      this.allocationSelected * 4 - 4,
-    ];
+    this.pieChartData = [20, 0];
     this.pieChartType = 'doughnut';
     this.pieChartOptions = {
       responsive: true,
@@ -116,6 +113,7 @@ export class ApproachDecisionComponent implements OnInit {
 
     if (event.value != null) {
       this.pieChartData = [24 - event.value * 4, event.value * 4 - 4];
+      this.allocationSelected = event.value
     }
   }
 
@@ -156,5 +154,9 @@ export class ApproachDecisionComponent implements OnInit {
 
   nextSection() {
     this.router.navigate(['postexperimental']);
+  }
+
+  blankFn(value: number): string {
+    return '';
   }
 }

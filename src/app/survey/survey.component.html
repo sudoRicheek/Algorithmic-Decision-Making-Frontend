@@ -45,6 +45,8 @@
 
           <ol type="1">
             <li>
+              <canvas baseChart [data]="ChartData1" [labels]="ChartLabels" [chartType]="ChartType"
+              [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
               <mat-grid-list cols=5>
                 <mat-grid-tile [colspan]=1>
                   <div>
@@ -67,7 +69,7 @@
                       <div>85</div>
                     </div>
                     <mat-slider thumbLabel [displayWith]="q1Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[0]>
+                      [(ngModel)]=SVO[0] (input)="onInputChange1($event)">
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -88,6 +90,8 @@
             <br>
 
             <li>
+              <canvas baseChart [data]="ChartData2" [labels]="ChartLabels" [chartType]="ChartType"
+              [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
               <mat-grid-list cols=5>
                 <mat-grid-tile [colspan]=1>
                   <div>
@@ -110,7 +114,7 @@
                       <div>100</div>
                     </div>
                     <mat-slider thumbLabel [displayWith]="q2Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[1]>
+                      [(ngModel)]=SVO[1] (input)="onInputChange2($event)">
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -131,6 +135,8 @@
             <br>
 
             <li>
+              <canvas baseChart [data]="ChartData3" [labels]="ChartLabels" [chartType]="ChartType"
+              [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
               <mat-grid-list cols=5>
                 <mat-grid-tile [colspan]=1>
                   <div>
@@ -153,7 +159,7 @@
                       <div>85</div>
                     </div>
                     <mat-slider thumbLabel [displayWith]="q3Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[2]>
+                      [(ngModel)]=SVO[2] (input)="onInputChange3($event)">
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -174,6 +180,8 @@
             <br>
 
             <li>
+              <canvas baseChart [data]="ChartData4" [labels]="ChartLabels" [chartType]="ChartType"
+              [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
               <mat-grid-list cols=5>
                 <mat-grid-tile [colspan]=1>
                   <div>
@@ -196,7 +204,7 @@
                       <div>85</div>
                     </div>
                     <mat-slider thumbLabel [displayWith]="q4Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[3]>
+                      [(ngModel)]=SVO[3] (input)="onInputChange4($event)">
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -217,6 +225,8 @@
             <br>
 
             <li>
+              <canvas baseChart [data]="ChartData5" [labels]="ChartLabels" [chartType]="ChartType"
+              [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
               <mat-grid-list cols=5>
                 <mat-grid-tile [colspan]=1>
                   <div>
@@ -239,7 +249,7 @@
                       <div>50</div>
                     </div>
                     <mat-slider thumbLabel [displayWith]="q5Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[4]>
+                      [(ngModel)]=SVO[4] (input)="onInputChange5($event)">
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -260,6 +270,8 @@
             <br>
 
             <li>
+              <canvas baseChart [data]="ChartData6" [labels]="ChartLabels" [chartType]="ChartType"
+              [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
               <mat-grid-list cols=5>
                 <mat-grid-tile [colspan]=1>
                   <div>
@@ -282,7 +294,7 @@
                       <div>85</div>
                     </div>
                     <mat-slider thumbLabel [displayWith]="q6Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[5]>
+                      [(ngModel)]=SVO[5] (input)="onInputChange6($event)">
                     </mat-slider>
                     <div class="slider-labels"
                       style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -478,7 +490,7 @@
               <p class="instruction-text">
                 What is your age?
               </p>
-              <mat-form-field class="example-age" appearance="fill">
+              <mat-form-field class="example-age" appearance="outline" required>
                 <mat-label>Age</mat-label>
                 <input matInput [(ngModel)]="age" type="number" min="1">
               </mat-form-field>
