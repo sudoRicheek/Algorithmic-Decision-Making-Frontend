@@ -66,7 +66,7 @@ export class ApproachDecisionComponent implements OnInit {
 
     // PIE CHART SETTINGS
     this.pieChartLabels = ['Proposer', 'Responder'];
-    this.pieChartData = [20, 0];
+    this.pieChartData = [500, 0];
     this.pieChartType = 'doughnut';
     this.pieChartOptions = {
       responsive: true,
@@ -112,7 +112,7 @@ export class ApproachDecisionComponent implements OnInit {
     this.pieChartData.length = 0;
 
     if (event.value != null) {
-      this.pieChartData = [24 - event.value * 4, event.value * 4 - 4];
+      this.pieChartData = [600 - event.value * 100, event.value * 100 - 100];
       this.allocationSelected = event.value
     }
   }

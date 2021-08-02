@@ -66,11 +66,15 @@ export interface AllocationTable {
   al6: number;
 }
 
-const ALLOCATION_DATA: AllocationTable[] = [
-  { name: 'Proposer', al1: 20, al2: 16, al3: 12, al4: 8, al5: 4, al6: 0 },
-  { name: 'Responder', al1: 0, al2: 4, al3: 8, al4: 12, al5: 16, al6: 20 },
-];
+// const ALLOCATION_DATA: AllocationTable[] = [
+//   { name: 'Proposer', al1: 20, al2: 16, al3: 12, al4: 8, al5: 4, al6: 0 },
+//   { name: 'Responder', al1: 0, al2: 4, al3: 8, al4: 12, al5: 16, al6: 20 },
+// ];
 
+const ALLOCATION_DATA: AllocationTable[] = [
+  { name: 'Proposer', al1: 500, al2: 400, al3: 300, al4: 200, al5: 100, al6: 0 },
+  { name: 'Responder', al1: 0, al2: 100, al3: 200, al4: 300, al5: 400, al6: 500 },
+];
 
 @Component({
   selector: 'app-reminder',

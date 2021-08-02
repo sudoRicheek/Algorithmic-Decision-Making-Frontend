@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    const worker_id = this.route.snapshot.queryParamMap.get('worker_id');
+    const worker_id = this.route.snapshot.queryParamMap.get('PROLIFIC_PID');
     console.log(worker_id);
     if (worker_id != null && worker_id != this.storage.getWorker()) {
       this.storage.addWorker(worker_id);
