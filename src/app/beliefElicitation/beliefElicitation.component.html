@@ -88,35 +88,39 @@
         <mat-card class="home-card">
           <mat-card-title>
             Decision
-          </mat-card-title>
-          <mat-card-content>
-            <p class="qs-num"><strong>Q{{i+1}}/{{lenlist}}.</strong></p>
-            <div *ngIf="type_work==0">
-              <p class="proposer-type">Proposer is: <strong>{{proposerType[(i-i%6)/6]}}</strong></p>
-              <p class="allocation-number">Expectation regarding the Proposer’s offer in comparison to
-                <strong>Allocation {{i%6+1}}</strong>
-              </p>
-            </div>
-            <div *ngIf="type_work==1">
-              <p class="responder-type">Responder type is: Responder</p>
-              <p class="allocation-number">Expectation regarding the Proposer’s offer in comparison to
-                <strong>Allocation {{i%6+1}}</strong>
-              </p>
-            </div>
-          </mat-card-content>
-          <mat-card-actions align="end">
-            <mat-form-field class="example-form-field" appearance="outline">
-              <mat-label>Enter Row Number</mat-label>
-              <input matInput type="number" [formControl]="$any(questionsFormArray.controls[i])">
-              <mat-hint>Enter a number between 1 and 21(both inclusive)</mat-hint>
-              <mat-error *ngIf="questionsFormArray.controls[i].hasError('required')"> Row Number is required!
-              </mat-error>
-              <mat-error
-                *ngIf="(questionsFormArray.controls[i].hasError('min') || questionsFormArray.controls[i].hasError('max')) && !questionsFormArray.controls[i].hasError('required')">
-                Row number must be between 1 and 21 (inclusive)
-              </mat-error>
-            </mat-form-field>
-          </mat-card-actions>
+          </mat-card-title> <br>
+          <mat-card-subtitle style="color: #3700b3; font-weight: bold; font-size: medium; margin: 5px;">
+            [Click on the right arrow to move onto the next scenario. You can use the left arrow (<) to go back to a
+              previous scenario.] </mat-card-subtitle>
+              <br>
+              <mat-card-content>
+                <p class="qs-num"><strong>Q{{i+1}}/{{lenlist}}.</strong></p>
+                <div *ngIf="type_work==0">
+                  <p class="proposer-type">Proposer is: <strong>{{proposerType[(i-i%6)/6]}}</strong></p>
+                  <p class="allocation-number">Expectation regarding the Proposer’s offer in comparison to
+                    <strong>Allocation {{i%6+1}}</strong>
+                  </p>
+                </div>
+                <div *ngIf="type_work==1">
+                  <p class="responder-type">Responder type is: Responder</p>
+                  <p class="allocation-number">Expectation regarding the Proposer’s offer in comparison to
+                    <strong>Allocation {{i%6+1}}</strong>
+                  </p>
+                </div>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <mat-form-field class="example-form-field" appearance="outline">
+                  <mat-label>Enter Row Number</mat-label>
+                  <input matInput type="number" [formControl]="$any(questionsFormArray.controls[i])">
+                  <mat-hint>Enter a number between 1 and 21(both inclusive)</mat-hint>
+                  <mat-error *ngIf="questionsFormArray.controls[i].hasError('required')"> Row Number is required!
+                  </mat-error>
+                  <mat-error
+                    *ngIf="(questionsFormArray.controls[i].hasError('min') || questionsFormArray.controls[i].hasError('max')) && !questionsFormArray.controls[i].hasError('required')">
+                    Row number must be between 1 and 21 (inclusive)
+                  </mat-error>
+                </mat-form-field>
+              </mat-card-actions>
         </mat-card>
         <pre>Rows selected: [{{questionsFormArray.value | slice:0:i}}<strong><span *ngIf="i!=0">,</span>{{questionsFormArray.value[i]}}</strong><span *ngIf="i!=lenlist-1">,</span>{{questionsFormArray.value | slice:i+1}}]</pre>
       </div>

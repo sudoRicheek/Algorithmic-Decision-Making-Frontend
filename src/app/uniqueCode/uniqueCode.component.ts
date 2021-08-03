@@ -12,6 +12,7 @@ import { WorkerService } from '../services/worker.service';
 })
 export class UniqueCodeComponent implements OnInit {
   uniqueCode: string;
+  redirection_url: string;
 
 
   constructor(
@@ -29,6 +30,11 @@ export class UniqueCodeComponent implements OnInit {
       this.workerService.getUniqueCode(localWorker).subscribe(
         (response) => {
           this.uniqueCode = response.unique_code;
+          this.redirection_url = response.redirection_url;
+
+          console.log(this.redirection_url);
+
+          window.location.href = this.redirection_url;
         },
         (errors) => {
           this.notAllowedHere();

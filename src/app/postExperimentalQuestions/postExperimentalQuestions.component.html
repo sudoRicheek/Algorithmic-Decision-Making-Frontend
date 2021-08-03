@@ -30,7 +30,7 @@
               </mat-form-field>
             </li>
             <li>
-              <p class="instruction-text">If you were to complete a second round of this HIT, which proposer would you
+              <p class="instruction-text">If you were to complete a second round of this task, which proposer would you
                 approach?</p>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                 [(ngModel)]="rethinkApproach" required>
@@ -215,7 +215,7 @@
 
           <ol type="1">
             <li>
-              <p class="list-text"><strong>I think that the information I stated at the beginning of this HIT say
+              <p class="list-text"><strong> I think that the information I stated at the beginning of this task says
                   something about me as a person.</strong></p>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                 [(ngModel)]="personality">
@@ -245,7 +245,8 @@
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
           <button mat-raised-button color="primary" (click)="nextSection()"
-            [disabled]="mostRespondersBargainWith==-1 || attentionCheck==-1 || personality==-1">Submit & Proceed</button>
+            [disabled]="mostRespondersBargainWith==-1 || attentionCheck==-1 || personality==-1">Submit &
+            Proceed</button>
         </mat-card-actions>
       </mat-step>
 

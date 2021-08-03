@@ -19,10 +19,41 @@ const ReducedDataSource: ReducedData[] = [
   { position: 1, plarger: 1.0, plower: 0.0, p: 0.0 },
   { position: 2, plarger: 0.9975, plower: 0.0975, p: 0.0975 },
   { position: 3, plarger: 0.99, plower: 0.19, p: 0.19 },
-  { position: "...", plarger: "...", plower: "...", p: "..." },
+  { position: '...', plarger: '...', plower: '...', p: '...' },
   { position: 19, plarger: 0.19, plower: 0.99, p: 0.99 },
   { position: 20, plarger: 0.0975, plower: 0.9975, p: 0.9975 },
   { position: 21, plarger: 0.0, plower: 1.0, p: 1.0 },
+];
+
+export interface AllocationTable {
+  name: string;
+  al1: number;
+  al2: number;
+  al3: number;
+  al4: number;
+  al5: number;
+  al6: number;
+}
+
+const ALLOCATION_DATA: AllocationTable[] = [
+  {
+    name: 'Proposer',
+    al1: 500,
+    al2: 400,
+    al3: 300,
+    al4: 200,
+    al5: 100,
+    al6: 0,
+  },
+  {
+    name: 'Responder',
+    al1: 0,
+    al2: 100,
+    al3: 200,
+    al4: 300,
+    al5: 400,
+    al6: 500,
+  },
 ];
 
 @Component({
@@ -33,6 +64,17 @@ const ReducedDataSource: ReducedData[] = [
 export class CompBeliefComponent implements OnInit {
   displayedColumns: string[] = ['position', 'plarger', 'plower', 'p'];
   dataSourceReduced = ReducedDataSource;
+
+  allocationColumns: string[] = [
+    'name',
+    'al1',
+    'al2',
+    'al3',
+    'al4',
+    'al5',
+    'al6',
+  ];
+  allocationDataSource = ALLOCATION_DATA;
 
   questions: any;
   formData: any;

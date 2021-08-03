@@ -3,7 +3,7 @@
 
   <p align="justify">To ensure your understanding, the main task will commence only after you answered two comprehension
     questions
-    correctly. If you fail to do so twice, you will not be able to participate in the experiment.</p>
+    correctly. If you fail to do so <strong>twice</strong>, you will not be able to participate in the experiment.</p>
 
   <br>
 
@@ -24,13 +24,57 @@
     <ng-container matColumnDef="plower">
       <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
           than you would receive in Allocation # </strong> </th>
-      <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
-          *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
+      <td mat-cell *matCellDef="let element"> <span *ngIf="element.plower=='...'">...</span><span
+          *ngIf="element.plower!='...'">{{element.plower | number: '1.4-4'}}</span> </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns | slice:0:3"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns | slice:0:3;"></tr>
   </table>
+
+  <br>
+
+  <h2>Reminder for the Allocations: </h2>
+  <table mat-table [dataSource]="allocationDataSource" class="mat-elevation-z1 allocations">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="al1">
+      <th mat-header-cell *matHeaderCellDef> Allocation 1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al2">
+      <th mat-header-cell *matHeaderCellDef> Allocation 2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al2}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al3">
+      <th mat-header-cell *matHeaderCellDef> Allocation 3 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al3}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al4">
+      <th mat-header-cell *matHeaderCellDef> Allocation 4 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al4}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al5">
+      <th mat-header-cell *matHeaderCellDef> Allocation 5 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al5}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="al6">
+      <th mat-header-cell *matHeaderCellDef> Allocation 6 </th>
+      <td mat-cell *matCellDef="let element"> {{element.al6}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="allocationColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: allocationColumns;"></tr>
+  </table>
+
 
   <br>
 

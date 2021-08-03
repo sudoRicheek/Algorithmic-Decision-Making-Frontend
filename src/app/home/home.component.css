@@ -10,8 +10,8 @@ p {
 .card-container {
   display: flex;
   margin-top: 5%;
-  margin-left: 16.5%;
-  margin-right: 16.5%;
+  margin-left: 16%;
+  margin-right: 16%;
   grid-template-columns: auto auto;
   grid-template-rows: auto;
   justify-content: space-evenly;
