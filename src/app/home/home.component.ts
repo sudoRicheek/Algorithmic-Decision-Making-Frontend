@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogNoWorkerFoundComponent } from '../dialogs/dialogNoWorkerFound/dialogNoWorkerFound.component';
 import { StorageService } from '../services/storage.service';
+import { WorkerService } from '../services/worker.service';
 
 @Component({
   selector: 'app-home',
@@ -16,18 +17,19 @@ export class HomeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private storage: StorageService,
+    private storageService: StorageService,
+    private workerService: WorkerService,
     public dialog: MatDialog
   ) {
-    this.failed = this.storage.hasFailed();
-    this.buttonText = this.failed ? "FAILED" : "Proceed";
+    this.failed = this.storageService.hasFailed();
+    this.buttonText = this.failed ? 'FAILED' : 'Proceed';
   }
 
   ngOnInit() {
     const worker_id = this.route.snapshot.queryParamMap.get('PROLIFIC_PID');
     console.log(worker_id);
-    if (worker_id != null && worker_id != this.storage.getWorker()) {
-      this.storage.addWorker(worker_id);
+    if (worker_id != null && worker_id != this.storageService.getWorker()) {
+      this.storageService.addWorker(worker_id);
       // this.workerService.addWorker(worker_id).subscribe(
       //   (response) => {
       //     console.log(response);
@@ -36,10 +38,10 @@ export class HomeComponent implements OnInit {
       //     console.log(error);
       //   }
       // );
-    } else if (worker_id == null && this.storage.getWorker() == null) {
+    } else if (worker_id == null && this.storageService.getWorker() == null) {
       this.noWorkerFound();
     }
-    console.log(this.storage.getWorker());
+    // console.log(this.storageService.getWorker());
   }
 
   noWorkerFound() {
@@ -50,7 +52,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  attentionCheckPage() {
-    this.router.navigate(['/attentioncheck']);
+  instructionsPage() {
+    let localWorker = this.storageService.getWorker();
+    if (localWorker) {
+      this.workerService.addWorker(localWorker).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    this.router.navigate(['instructions']);
   }
 }

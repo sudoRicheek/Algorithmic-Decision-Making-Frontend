@@ -12,16 +12,16 @@ const baseUrl = 'https://adm-django-backend.herokuapp.com';
 export class QuestionService {
   constructor(private http: HttpClient) {}
 
-  getAttentionCheckQuestions(): Observable<any> {
-    return this.http.get(baseUrl + '/api/question/get_attchk_questions/');
-  }
+  // getAttentionCheckQuestions(): Observable<any> {
+  //   return this.http.get(baseUrl + '/api/question/get_attchk_questions/');
+  // }
 
-  postAttentionAnswers(formData: any): Observable<any> {
-    return this.http.post(
-      baseUrl + '/api/question/post_attchk_response/',
-      formData
-    );
-  }
+  // postAttentionAnswers(formData: any): Observable<any> {
+  //   return this.http.post(
+  //     baseUrl + '/api/question/post_attchk_response/',
+  //     formData
+  //   );
+  // }
 
   getComprehensionQuestions(): Observable<any> {
     return this.http.get(baseUrl + '/api/question/get_comp_questions/');

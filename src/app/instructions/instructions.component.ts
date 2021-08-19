@@ -31,8 +31,8 @@ const ALLOCATION_DATA: AllocationTable[] = [
   styleUrls: ['./instructions.component.css'],
 })
 export class InstructionsComponent implements OnInit {
-  attentionAttempted: boolean;
-  attentionPassed: boolean;
+  // attentionAttempted: boolean;
+  // attentionPassed: boolean;
 
   allocationColumns: string[] = [
     'name',
@@ -49,34 +49,34 @@ export class InstructionsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private workerService: WorkerService,
-    private storageService: StorageService,
+    // private workerService: WorkerService,
+    // private storageService: StorageService,
     public dialog: MatDialog
   ) {
-    this.attentionAttempted = false;
-    this.attentionPassed = false;
+    // this.attentionAttempted = false;
+    // this.attentionPassed = false;
   }
 
   ngOnInit() {
-    let worker_id = this.storageService.getWorker();
-    if (worker_id) {
-      this.workerService.getAttentionResults(worker_id).subscribe(
-        (response) => {
-          this.attentionPassed = response.passed;
-          this.attentionAttempted = response.attempted;
-          if (!this.attentionAttempted) {
-            this.attentionNoAttempt();
-            this.router.navigate(['attentioncheck']);
-          } else if (!this.attentionPassed) {
-            this.attentionFail();
-            this.router.navigate(['/']);
-          }
-        },
-        (errors) => {
-          console.log(errors);
-        }
-      );
-    }
+    // let worker_id = this.storageService.getWorker();
+    // if (worker_id) {
+    //   this.workerService.getAttentionResults(worker_id).subscribe(
+    //     (response) => {
+    //       this.attentionPassed = response.passed;
+    //       this.attentionAttempted = response.attempted;
+    //       if (!this.attentionAttempted) {
+    //         this.attentionNoAttempt();
+    //         this.router.navigate(['attentioncheck']);
+    //       } else if (!this.attentionPassed) {
+    //         this.attentionFail();
+    //         this.router.navigate(['/']);
+    //       }
+    //     },
+    //     (errors) => {
+    //       console.log(errors);
+    //     }
+    //   );
+    // }
   }
 
   openInstructions() {
@@ -87,21 +87,21 @@ export class InstructionsComponent implements OnInit {
     });
   }
 
-  attentionNoAttempt() {
-    const dialogRef = this.dialog.open(DialogAttentionNoAttempt);
+  // attentionNoAttempt() {
+  //   const dialogRef = this.dialog.open(DialogAttentionNoAttempt);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
 
-  attentionFail() {
-    const dialogRef = this.dialog.open(DialogAttentionFail);
+  // attentionFail() {
+  //   const dialogRef = this.dialog.open(DialogAttentionFail);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
 
   nextSection() {
     this.router.navigate(['comprehension']);

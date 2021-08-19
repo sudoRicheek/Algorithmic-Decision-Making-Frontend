@@ -21,11 +21,11 @@ export class WorkerService {
     return this.http.post(baseUrl + '/api/worker/addworker/', data);
   }
 
-  getAttentionResults(worker_id: string): Observable<any> {
-    const data = new FormData();
-    data.append('worker_id', worker_id);
-    return this.http.post(baseUrl + '/api/worker/get_attention_results/', data);
-  }
+  // getAttentionResults(worker_id: string): Observable<any> {
+  //   const data = new FormData();
+  //   data.append('worker_id', worker_id);
+  //   return this.http.post(baseUrl + '/api/worker/get_attention_results/', data);
+  // }
 
   getComprehensionResults(worker_id: string): Observable<any> {
     const data = new FormData();
@@ -112,8 +112,12 @@ export class WorkerService {
 
   submitSurveyResponses(
     worker_id: string,
-    SVO: number[],
-    nr: number[],
+    trustauto: number[],
+    respondersTakeDSSForDecidingProposer: number,
+    whichProposerYouChooseToBe: number,
+    asAResponderWhichProposerWouldYouApproach: number,
+    proposerMostRespondersApproach: number,
+    iThinkResponders: number[],
     sex: string,
     age: number,
     employmentStatus: string,
@@ -122,8 +126,12 @@ export class WorkerService {
     let formData: any;
     formData = {};
     formData['worker_id'] = worker_id;
-    formData['SVO'] = SVO;
-    formData['nr'] = nr;
+    formData['trustauto'] = trustauto;
+    formData['do_responders_consider_dss_while_deciding_proposers'] = respondersTakeDSSForDecidingProposer;
+    formData['which_proposer_you_would_choose_tobe'] = whichProposerYouChooseToBe;
+    formData['if_resp_which_proposer_would_you_approach'] = asAResponderWhichProposerWouldYouApproach;
+    formData['proposer_most_responders_approach'] = proposerMostRespondersApproach;
+    formData['i_think_responders'] = iThinkResponders;
     formData['sex'] = sex;
     formData['age'] = age;
     formData['employmentStatus'] = employmentStatus;

@@ -17,331 +17,295 @@
         <!-- <ng-template matStepLabel>The Task</ng-template> -->
         <br>
         <mat-card-content align="justify">
-          <h2>
-            <strong>Instructions</strong>
-          </h2>
-          <p class="instruction-text">
-            In this task you have been randomly paired with another person, whom we will refer to as the
-            <strong>other</strong>. This
-            other person is someone you do not know and will remain mutually anonymous. All of your choices are
-            completely confidential. You will be making a series of decisions about allocating resources between you and
-            this other person. For each of the following questions, please indicate the distribution you prefer most by
-            marking the respective position along the midline. You can only make one mark for each question.
-            Your decisions will yield money for both yourself and the other person. You will allocate points, where 100
-            points equal 1 Coin.
+          <p class="instruction-text" style="font-size: 14pt;">
+            For each of the following statements, please indicate the extent to which you agree with it.
           </p>
-          <p class="instruction-text">
-            There are no right or wrong answers, this is all about personal preferences. Your choices will influence
-            both the amount of money you receive as well as the amount of money the other receives.
+          <p class="instruction-text" style="font-size: 14pt;">
+            <em>The scale ranges from 1-5, where 1 is ‘strongly disagree’ and 5 is ‘strongly agree’. 6 is 'no
+              response'</em>
           </p>
-
-          <p class="instruction-text" style="font-size: 12pt; font-weight: bold;">[Note] : Move the sliders to pick your
-            preference.</p>
 
           <br>
 
           <ol type="1">
             <li>
-              <canvas baseChart [data]="ChartData1" [labels]="ChartLabels" [chartType]="ChartType"
-                [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
-              <mat-grid-list cols=5>
-                <mat-grid-tile [colspan]=1>
-                  <div>
-                    <p class="label-text">You Receive</p>
-                    <p class="label-text">Other Receives</p>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]=4>
-                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                      <div>85</div>
-                    </div>
-                    <mat-slider thumbLabel [displayWith]="q1Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[0] (input)="onInputChange1($event)">
-                    </mat-slider>
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>85</div>
-                      <div>76</div>
-                      <div>68</div>
-                      <div>59</div>
-                      <div>50</div>
-                      <div>41</div>
-                      <div>33</div>
-                      <div>24</div>
-                      <div>15</div>
-                    </div>
-                  </div>
-                </mat-grid-tile>
-              </mat-grid-list>
+              <p class="list-text"><strong>The system is capable of interpreting situations correctly.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[0]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
             </li>
+
             <br>
 
             <li>
-              <canvas baseChart [data]="ChartData2" [labels]="ChartLabels" [chartType]="ChartType"
-                [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
-              <mat-grid-list cols=5>
-                <mat-grid-tile [colspan]=1>
-                  <div>
-                    <p class="label-text">You Receive</p>
-                    <p class="label-text">Other Receives</p>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]=4>
-                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>85</div>
-                      <div>87</div>
-                      <div>89</div>
-                      <div>91</div>
-                      <div>93</div>
-                      <div>94</div>
-                      <div>96</div>
-                      <div>98</div>
-                      <div>100</div>
-                    </div>
-                    <mat-slider thumbLabel [displayWith]="q2Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[1] (input)="onInputChange2($event)">
-                    </mat-slider>
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>15</div>
-                      <div>19</div>
-                      <div>24</div>
-                      <div>28</div>
-                      <div>33</div>
-                      <div>37</div>
-                      <div>41</div>
-                      <div>46</div>
-                      <div>50</div>
-                    </div>
-                  </div>
-                </mat-grid-tile>
-              </mat-grid-list>
+              <p class="list-text"><strong>The system state was always clear to me.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[1]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
             </li>
+
             <br>
 
             <li>
-              <canvas baseChart [data]="ChartData3" [labels]="ChartLabels" [chartType]="ChartType"
-                [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
-              <mat-grid-list cols=5>
-                <mat-grid-tile [colspan]=1>
-                  <div>
-                    <p class="label-text">You Receive</p>
-                    <p class="label-text">Other Receives</p>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]=4>
-                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>50</div>
-                      <div>54</div>
-                      <div>59</div>
-                      <div>63</div>
-                      <div>68</div>
-                      <div>72</div>
-                      <div>76</div>
-                      <div>81</div>
-                      <div>85</div>
-                    </div>
-                    <mat-slider thumbLabel [displayWith]="q3Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[2] (input)="onInputChange3($event)">
-                    </mat-slider>
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>100</div>
-                      <div>98</div>
-                      <div>96</div>
-                      <div>94</div>
-                      <div>93</div>
-                      <div>91</div>
-                      <div>89</div>
-                      <div>87</div>
-                      <div>85</div>
-                    </div>
-                  </div>
-                </mat-grid-tile>
-              </mat-grid-list>
+              <p class="list-text"><strong>I already know similar systems.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[2]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
             </li>
+
             <br>
 
             <li>
-              <canvas baseChart [data]="ChartData4" [labels]="ChartLabels" [chartType]="ChartType"
-                [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
-              <mat-grid-list cols=5>
-                <mat-grid-tile [colspan]=1>
-                  <div>
-                    <p class="label-text">You Receive</p>
-                    <p class="label-text">Other Receives</p>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]=4>
-                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>50</div>
-                      <div>54</div>
-                      <div>59</div>
-                      <div>63</div>
-                      <div>68</div>
-                      <div>72</div>
-                      <div>76</div>
-                      <div>81</div>
-                      <div>85</div>
-                    </div>
-                    <mat-slider thumbLabel [displayWith]="q4Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[3] (input)="onInputChange4($event)">
-                    </mat-slider>
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>100</div>
-                      <div>89</div>
-                      <div>79</div>
-                      <div>68</div>
-                      <div>58</div>
-                      <div>47</div>
-                      <div>36</div>
-                      <div>26</div>
-                      <div>15</div>
-                    </div>
-                  </div>
-                </mat-grid-tile>
-              </mat-grid-list>
+              <p class="list-text"><strong>The developers are trustworthy.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[3]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
             </li>
+
             <br>
 
             <li>
-              <canvas baseChart [data]="ChartData5" [labels]="ChartLabels" [chartType]="ChartType"
-                [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
-              <mat-grid-list cols=5>
-                <mat-grid-tile [colspan]=1>
-                  <div>
-                    <p class="label-text">You Receive</p>
-                    <p class="label-text">Other Receives</p>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]=4>
-                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>100</div>
-                      <div>94</div>
-                      <div>88</div>
-                      <div>81</div>
-                      <div>75</div>
-                      <div>69</div>
-                      <div>63</div>
-                      <div>56</div>
-                      <div>50</div>
-                    </div>
-                    <mat-slider thumbLabel [displayWith]="q5Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[4] (input)="onInputChange5($event)">
-                    </mat-slider>
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>50</div>
-                      <div>56</div>
-                      <div>63</div>
-                      <div>69</div>
-                      <div>75</div>
-                      <div>81</div>
-                      <div>88</div>
-                      <div>94</div>
-                      <div>100</div>
-                    </div>
-                  </div>
-                </mat-grid-tile>
-              </mat-grid-list>
+              <p class="list-text"><strong>One should be careful with unfamiliar automated systems.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[4]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
             </li>
+
             <br>
 
             <li>
-              <canvas baseChart [data]="ChartData6" [labels]="ChartLabels" [chartType]="ChartType"
-                [options]="ChartOptions" [colors]="ChartColours" height="50px"></canvas>
-              <mat-grid-list cols=5>
-                <mat-grid-tile [colspan]=1>
-                  <div>
-                    <p class="label-text">You Receive</p>
-                    <p class="label-text">Other Receives</p>
-                  </div>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]=4>
-                  <div style="width: 100%; padding-right: 4%; padding-left: 4%;">
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>100</div>
-                      <div>98</div>
-                      <div>96</div>
-                      <div>94</div>
-                      <div>93</div>
-                      <div>91</div>
-                      <div>89</div>
-                      <div>87</div>
-                      <div>85</div>
-                    </div>
-                    <mat-slider thumbLabel [displayWith]="q6Label" tickInterval="1" step="1" min="1" max="9"
-                      [(ngModel)]=SVO[5] (input)="onInputChange6($event)">
-                    </mat-slider>
-                    <div class="slider-labels"
-                      style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <div>50</div>
-                      <div>54</div>
-                      <div>59</div>
-                      <div>63</div>
-                      <div>68</div>
-                      <div>72</div>
-                      <div>76</div>
-                      <div>81</div>
-                      <div>85</div>
-                    </div>
-                  </div>
-                </mat-grid-tile>
-              </mat-grid-list>
+              <p class="list-text"><strong>The system works reliably.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[5]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
             </li>
+
             <br>
+
+            <li>
+              <p class="list-text"><strong>The system reacts unpredictably.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[6]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>The developers take my well-being seriously.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[7]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I trust the system.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[8]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>A system malfunction is likely.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[9]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I was able to understand why things happened.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[10]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I rather trust a system than I mistrust it.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[11]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>The system is capable of taking over complicated tasks.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[12]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I can rely on the system.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[13]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>The system might make sporadic errors.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[14]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>It’s difficult to identify what the system will do next.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[15]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I have already used similar systems.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[16]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>Automated systems generally work well.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[17]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text"><strong>I am confident about the system’s capabilities.</strong></p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="trustauto[18]">
+                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+                  [value]="i+1">
+                  <span>{{likert}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </li>
 
           </ol>
 
-
         </mat-card-content>
         <mat-card-actions align="end">
-          <!-- <button mat-raised-button color="accent" matStepperPrevious>Back</button> -->
-          <button mat-raised-button color="accent" matStepperNext [disabled]="showElementSVO()">Next Page</button>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="showElementTrustAuto()">Next Page</button>
         </mat-card-actions>
       </mat-step>
 
       <mat-step state="instruction">
-        <!-- <ng-template matStepLabel>The Task</ng-template> -->
+        <!-- <ng-template matStepLabel>The Task: Examples</ng-template> -->
         <br>
         <mat-card-content align="justify">
-          <p class="instruction-text" style="font-size: 14pt;">
-            For each of the following statements, please indicate the extent to which it is true for you.
-          </p>
-          <p class="instruction-text" style="font-size: 14pt;">
-            <em>The scale ranges from 1-7, where 1 is ‘not true for me’ and 7 is ‘very true for me’.</em>
-          </p>
-
-          <br>
 
           <ol type="1">
             <li>
-              <p class="list-text"><strong>If I suffer a serious wrong, I will take my revenge as soon as possible, no
-                  matter what the costs</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[0]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+              <p class="list-text">Do you think responders will take the availability of a decision-support system or an
+                autonomous agent into consideration when deciding which proposer to approach?</p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="respondersTakeDSSForDecidingProposer">
+                <mat-radio-button class="example-radio-button" value=1>Yes</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value=0>No</mat-radio-button>
+              </mat-radio-group>
+            </li>
+
+            <br>
+
+            <li>
+              <p class="list-text">If you had the choice, which type of proposer would you choose to be?</p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="whichProposerYouChooseToBe">
+                <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
                   [value]="i+1">
-                  <span>{{likert}}</span>
+                  <span>{{proposer}}</span>
                 </mat-radio-button>
               </mat-radio-group>
             </li>
@@ -349,12 +313,12 @@
             <br>
 
             <li>
-              <p class="list-text"><strong>I am willing to invest time and effort to reciprocate an unfair
-                  action</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[1]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+              <p class="list-text">If you were a responder, which proposer would you approach? </p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="asAResponderWhichProposerWouldYouApproach">
+                <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
                   [value]="i+1">
-                  <span>{{likert}}</span>
+                  <span>{{proposer}}</span>
                 </mat-radio-button>
               </mat-radio-group>
             </li>
@@ -362,12 +326,12 @@
             <br>
 
             <li>
-              <p class="list-text"><strong>I am kind and nice if others behave well with me, otherwise it’s
-                  tit-for-tat</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[2]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
+              <p class="list-text">Which proposer do you think most responders approach?</p>
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                [(ngModel)]="proposerMostRespondersApproach">
+                <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
                   [value]="i+1">
-                  <span>{{likert}}</span>
+                  <span>{{proposer}}</span>
                 </mat-radio-button>
               </mat-radio-group>
             </li>
@@ -375,88 +339,52 @@
             <br>
 
             <li>
-              <p class="list-text"><strong>If somebody puts me in a difficult position, I will do the same to
-                  him/her</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[3]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
-                  [value]="i+1">
-                  <span>{{likert}}</span>
-                </mat-radio-button>
-              </mat-radio-group>
+              <p class="instruction-text">
+                For each of the following statements, please indicate the extent to which you agree or disagree with
+                that
+                statement.
+              </p>
+              <p class="instruction-text">
+                <em>The scale ranges from 1-7, where 1 is ‘strongly disagree’ and 7 is ‘strongly agree.’</em>
+              </p>
+
+              <br>
+
+              <p class="list-text"><strong>I think responders ...</strong></p>
+              <ol type="i">
+                <li>
+                  <p class="list-text">find the fact that one proposer uses a decision-support system unfair</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="iThinkResponders[0]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of otherlikertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+                <li>
+                  <p class="list-text">find the fact that one proposer has an autonomous agent that plays on their
+                    behalf unfair</p>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
+                    [(ngModel)]="iThinkResponders[1]">
+                    <mat-radio-button class="example-radio-button" *ngFor="let likert of otherlikertOptions, index as i"
+                      [value]="i+1">
+                      <span>{{likert}}</span>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </li>
+              </ol>
             </li>
-
-            <br>
-
-            <li>
-              <p class="list-text"><strong>If somebody offends me, I will offend him/her back</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[4]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
-                  [value]="i+1">
-                  <span>{{likert}}</span>
-                </mat-radio-button>
-              </mat-radio-group>
-            </li>
-
-            <br>
-
-            <li>
-              <p class="list-text"><strong>If someone is unfair to me, I prefer to give him/her what s/he deserves
-                  instead of
-                  accepting his/her apologies</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[5]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
-                  [value]="i+1">
-                  <span>{{likert}}</span>
-                </mat-radio-button>
-              </mat-radio-group>
-            </li>
-
-            <br>
-
-            <li>
-              <p class="list-text"><strong>I would not do a favour for somebody who behaved badly with me, even if it
-                  meant
-                  foregoing some personal gains</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[6]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
-                  [value]="i+1">
-                  <span>{{likert}}</span>
-                </mat-radio-button>
-              </mat-radio-group>
-            </li>
-
-            <br>
-
-            <li>
-              <p class="list-text"><strong>If somebody is impolite to me, I become impolite</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[7]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
-                  [value]="i+1">
-                  <span>{{likert}}</span>
-                </mat-radio-button>
-              </mat-radio-group>
-            </li>
-
-            <br>
-
-            <li>
-              <p class="list-text"><strong>The way I treat others depends much on how they treat me</strong></p>
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale" [(ngModel)]="Nr[8]">
-                <mat-radio-button class="example-radio-button" *ngFor="let likert of likertOptions, index as i"
-                  [value]="i+1">
-                  <span>{{likert}}</span>
-                </mat-radio-button>
-              </mat-radio-group>
-            </li>
-
           </ol>
 
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-          <button mat-raised-button color="accent" matStepperNext [disabled]="showElementNr()">Next Page</button>
+          <button mat-raised-button color="accent" matStepperNext
+            [disabled]="secondPageButton()">Next Page</button>
         </mat-card-actions>
       </mat-step>
+
 
       <mat-step state="instruction">
         <!-- <ng-template matStepLabel>The Task: Examples</ng-template> -->

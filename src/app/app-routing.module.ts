@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ApproachDecisionComponent } from './approachDecision/approachDecision.component';
 import { ApproachDecisionReminderComponent } from './approachDecisionReminder/approachDecisionReminder.component';
-import { AttentioncheckComponent } from './attentioncheck/attentioncheck.component';
 import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitation.component';
 import { CompBeliefComponent } from './comp-belief/comp-belief.component';
 import { ComprehensionComponent } from './comprehension/comprehension.component';
@@ -18,7 +17,6 @@ import { UniqueCodeComponent } from './uniqueCode/uniqueCode.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'attentioncheck', component: AttentioncheckComponent, canActivate: [UserExistsService, NotFailedService] },
   { path: 'instructions', component: InstructionsComponent, canActivate: [UserExistsService, NotFailedService] },
   { path: 'comprehension', component: ComprehensionComponent, canActivate: [UserExistsService, NotFailedService] },
   { path: 'reminder', component: ReminderComponent, canActivate: [UserExistsService, NotFailedService] },

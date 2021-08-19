@@ -57,8 +57,24 @@ export interface AllocationTable {
 // ];
 
 const ALLOCATION_DATA: AllocationTable[] = [
-  { name: 'Proposer', al1: 500, al2: 400, al3: 300, al4: 200, al5: 100, al6: 0 },
-  { name: 'Responder', al1: 0, al2: 100, al3: 200, al4: 300, al5: 400, al6: 500 },
+  {
+    name: 'Proposer',
+    al1: 500,
+    al2: 400,
+    al3: 300,
+    al4: 200,
+    al5: 100,
+    al6: 0,
+  },
+  {
+    name: 'Responder',
+    al1: 0,
+    al2: 100,
+    al3: 200,
+    al4: 300,
+    al5: 400,
+    al6: 500,
+  },
 ];
 
 @Component({
@@ -193,10 +209,8 @@ export class BeliefElicitationComponent implements OnInit {
               this.beliefsSubmitted();
 
               this.type_work = response.type_work;
-              if (this.type_work == 0)
+              if (this.type_work == 0 || this.type_work == 1)
                 this.router.navigate(['approachdecisionreminder']);
-              else if (this.type_work == 1)
-                this.router.navigate(['postexperimental']);
             },
             (error) => {
               if (error.error.status == 'alreadyAttempted')
@@ -213,7 +227,8 @@ export class BeliefElicitationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-      if (this.type_work == 0) this.router.navigate(['approachdecisionreminder']);
+      if (this.type_work == 0)
+        this.router.navigate(['approachdecisionreminder']);
       else if (this.type_work == 1) this.router.navigate(['postexperimental']);
     });
   }
@@ -236,7 +251,7 @@ export class BeliefElicitationComponent implements OnInit {
   }
 
   nextSection() {
-    if (this.type_work == 0) this.router.navigate(['approachdecisionreminder']);
-    else if (this.type_work == 1) this.router.navigate(['postexperimental']);
+    if (this.type_work == 0 || this.type_work == 1)
+      this.router.navigate(['approachdecisionreminder']);
   }
 }

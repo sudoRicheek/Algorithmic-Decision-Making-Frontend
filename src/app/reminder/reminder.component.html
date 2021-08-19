@@ -24,24 +24,24 @@
             Expectation task
           </h2>
 
-          <p class="instruction-text">Before choosing to approach and subsequently interact with the Proposer, you will
-            state your expectations about how each Proposer will decide for each possible Allocation. Thus, you will
-            state your expectations for 18 different scenarios. You can earn an additional fixed bonus payment of 250
-            coins.</p>
+          <p class="instruction-text">Before learning about your proposer type (Alone, AI-System assistance, Autonomous
+            AI-System) and making an offer to your Responder, you will state your expectations about how your Responder
+            will decide for each possible Allocation and proposer type. Thus, you will state your expectations for 18
+            different scenarios. You can earn an additional fixed bonus payment of 250 coins.</p>
 
           <p class="instruction-text">For all 18 scenarios, you will see the same table with two columns and 21 rows
-            (see “Decision table” on the next page) . Each row shows you two possible probabilities of receiving the
+            (see “Decision table” on the next page). Each row shows you two possible probabilities of receiving the
             bonus. Your job is to choose one of the 21 rows.
           </p>
 
           <p class="instruction-text">Which one of the two probabilities given in each row will be selected to determine
-            your bonus depends on the Proposer’s decision. If the Proposer chose a split offering you <em>more or the
-              same
-              amount of money</em> compared to the Allocation in your respective scenario, the left column will
-            determine your
-            probability of receiving the fixed reward. If the Proposer chose a split offering you less than the
-            Allocation in your respective scenario, the right column will determine your probability of receiving the
-            fixed reward.</p>
+            your bonus depends on the Responder’s decision. If the Responder chose a minimum split accepting <em>less or
+              the
+              same amount of money</em> compared to the Allocation in your respective scenario, the left column will
+            determine
+            your probability of receiving the fixed reward. If the Responder chose a minimum split only accepting more
+            than the Allocation in your respective scenario, the right column will determine your probability of
+            receiving the fixed reward.</p>
 
           <br>
           <p class="instruction-text">
@@ -51,28 +51,28 @@
           <ul>
             <li>
               <p class="instruction-text">the first rows offer you a higher probability of receiving the bonus in case
-                the Proposer’s offer is higher or equal than the income according to the Allocation you are making a
-                decision for.</p>
+                the Responder’s minimum offer is lower or equal to their income according to the Allocation you are
+                making a decision for.</p>
             </li>
 
             <li>
               <p class="instruction-text">the last rows offer you a higher probability of receiving the bonus in case
-                the Proposer’s offer is lower than the income according to the Allocation you are making a decision for.
+                the Responder’s minimum offer is higher than their income according to the Allocation you are making a
+                decision for.
               </p>
             </li>
           </ul>
           <br>
 
           <p class="instruction-text">
-            Thus, for a given Allocation, if you think the Proposer will give you <em>at least as much money</em>, you
-            should
-            focus more on the probabilities shown in the left column.
+            Thus, for a given Allocation, if you think the Responder will ask for at most as much money as indicated in
+            the Allocation, you should focus more on the probabilities shown in the left column.
           </p>
 
           <p class="instruction-text">
-            After you complete all 18 scenarios, a computer will randomly choose one of these 18 scenarios. The randomly
-            chosen scenario determines whether you receive the additional 250 coins. Thus, every scenario could be the
-            one that determines your bonus.
+            At the end of the experiment, a computer will randomly choose one of the six scenarios that correspond to
+            your proposer type. The randomly chosen scenario determines whether you receive the additional 250 coins.
+            Thus, right now, every scenario could be the one that determines your bonus.
           </p>
         </mat-card-content>
         <mat-card-actions align="end">
@@ -97,14 +97,14 @@
             </ng-container>
 
             <ng-container matColumnDef="plarger">
-              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
-                  greater split than you would receive in Allocation #</strong> </th>
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if Responder accepts Allocation
+                  #</strong> </th>
               <td mat-cell *matCellDef="let element"> {{element.plarger | number: '1.4-4'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="plower">
-              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
-                  than you would receive in Allocation # </strong> </th>
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if Responder rejects Allocation
+                  #</strong> </th>
               <td mat-cell *matCellDef="let element"> {{element.plower | number: '1.4-4'}} </td>
             </ng-container>
 
@@ -177,15 +177,15 @@
             </ng-container>
 
             <ng-container matColumnDef="plarger">
-              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
-                  greater split than you would receive in Allocation #</strong> </th>
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if Responder accepts Allocation
+                  #</strong> </th>
               <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
                   *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
             </ng-container>
 
             <ng-container matColumnDef="plower">
-              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
-                  than you would receive in Allocation # </strong> </th>
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if Responder rejects Allocation
+                  #</strong> </th>
               <td mat-cell *matCellDef="let element"> <span *ngIf="element.plower=='...'">...</span><span
                   *ngIf="element.plower!='...'">{{element.plower | number: '1.4-4'}}</span> </td>
             </ng-container>
@@ -240,43 +240,47 @@
           <br>
 
           <p class="instruction-text">Imagine you would choose a row for Allocation 3 to state your expectations
-            regarding the Proposer’s action. Allocation 3 assigns you a split of 200 Coins. Depending on your expectation
-            regarding the Proposer’s offer, the left or right column is more likely to become relevant in determining
-            your probability to receive the bonus. Accordingly, you may want to adjust your chosen row. Assuming that
-            you are expecting the Proposer...</p>
+            regarding the Responder’s action. Allocation 3 assigns you a split of 300 Coins. Depending on your
+            expectation regarding the Responder’s minimum offer (demand), the left or right column is more likely to
+            become relevant in determining your probability to receive the bonus. Accordingly, you may want to adjust
+            your chosen row. Assuming that you are expecting the Responder ...
+          </p>
 
           <ul>
             <li>
               <p class="instruction-text">
-                to definitely offer more than the 200 coins of Allocation 3, you may want to choose a higher row, i.e. a
-                lower row number. This is because you expect the left column to be more likely and the probability of
-                reward is much higher for the lower row numbers. In case your expectation is wrong and the Proposer
-                offers you less than the 200 coins determined by Allocation 3, the right column determines your bonus, and
-                the lower row number gives you a very low probability of receiving the 250 bonus coins.
+                to definitely ask for at most the 200 coins of Allocation 3 (i.e. 200 or less), you may want to choose a
+                higher row, i.e. a lower row number. This is because you expect the left column to be more likely and
+                the probability of reward is much higher for the lower row numbers. In case your expectation is wrong
+                and the Responder asks for more than the 200 Coins determined by Allocation 3, the right column
+                determines your bonus, and the lower row number gives you a very low probability of receiving the 250
+                bonus coins.
               </p>
             </li>
 
             <li>
               <p class="instruction-text">
-                to definitely offer less than the 200 coins of Allocation 3, you may want to choose a lower row, i.e. a
-                higher row number. This is because you expect the right column to be more likely and the probability of
-                reward is much higher for the higher row numbers. In case your expectation is wrong and the Proposer
-                offers you at least the 200 Coins determined by Allocation 3, the left column determines your bonus, and
-                the higher row number gives a very low probability of receiving the 250 bonus coins.
+                to definitely ask for more than the 200 coins of Allocation 3, you may want to choose a lower row, i.e.
+                a higher row number. This is because you expect the right column to be more likely and the probability
+                of reward is much higher for the higher row numbers. In case your expectation is wrong and the Responder
+                asks for at most the 200 Coins determined by Allocation 3 (i.e. 200 or less), the left column determines
+                your bonus, and the higher row number gives a very low probability of receiving the 250 bonus coins.
               </p>
             </li>
           </ul>
 
-          <p class="instruction-text">Overall, if you are very uncertain about whether the proposer offers less than the
-            200 coins of Allocation 3, you may want to choose a row number that’s closer to the middle of the 21 rows.</p>
+          <p class="instruction-text">Overall, if you are very uncertain about whether the Responder asks for more, less
+            or exactly the 200 Coins of Allocation 3, you may want to choose a row number that’s closer to the middle of
+            the 21 rows.
+          </p>
 
           <p class="instruction-text">Compared to Allocation 3, for Allocation 1 it might be more likely for the
-            Proposer to offer more than the respective 0. Thus you may want to adjust your selection more in favor of
-            the left column and choose lower rows.</p>
+            Responder to ask more than the respective 0 Coins. Thus you may want to adjust your selection more in favor
+            of the right column and choose higher row numbers.</p>
 
           <p class="instruction-text">Compared to Allocation 3, for Allocation 6 it might be more likely for the
-            Proposer to offer less than the respective 500 Coins. Thus you may want to adjust your selection more in
-            favor of the right column and choose higher rows.</p>
+            Responder to ask for 500 Coins or less. Thus you may want to adjust your selection more in favor of the left
+            column and choose higher rows.</p>
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
@@ -298,15 +302,15 @@
             </ng-container>
 
             <ng-container matColumnDef="plarger">
-              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you an equal or
-                  greater split than you would receive in Allocation #</strong> </th>
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if Responder accepts Allocation
+                  #</strong> </th>
               <td mat-cell *matCellDef="let element"> <span *ngIf="element.plarger=='...'">...</span><span
                   *ngIf="element.plarger!='...'">{{element.plarger | number: '1.4-4'}}</span> </td>
             </ng-container>
-        
+
             <ng-container matColumnDef="plower">
-              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if proposer offers you a lower split
-                  than you would receive in Allocation # </strong> </th>
+              <th mat-header-cell *matHeaderCellDef> <strong>Probability of reward if Responder rejects Allocation
+                  #</strong> </th>
               <td mat-cell *matCellDef="let element"> <span *ngIf="element.plower=='...'">...</span><span
                   *ngIf="element.plower!='...'">{{element.plower | number: '1.4-4'}}</span> </td>
             </ng-container>
@@ -361,42 +365,45 @@
           <br>
 
           <p class="instruction-text">
-            Imagine you would choose a row for the Human Proposer without access to an AI-system, for any Allocation.
-            Depending on your expectation towards the Proposer’s type, the left or right column is more likely to become
-            relevant in determining your probability to receive the bonus. Accordingly, you may want to adjust your
-            chosen row. Assuming that you are expecting the Human Proposer...
+            Imagine you would choose a row for the Responder’s decision (for any Allocation) when the Responder
+            interacts with the Human Proposer without access to an AI-system. Depending on your expectation about the
+            Responder’s behavior when interacting with that specific Proposer, the left or right column is more likely
+            to become relevant in determining your probability to receive the bonus. Accordingly, you may want to adjust
+            your chosen row. Assuming that you are expecting the Responder ...
           </p>
 
           <ul>
             <li>
               <p class="instruction-text">
-                to definitely offer more than the autonomous AI-system, you may want to choose a lower row number for
-                the Human Proposer. This is because you expect the left column to become more likely and the probability
-                of reward is higher for lower row numbers in the left column.
+                to definitely ask for less from the Human Proposer without an AI-System than they would from the
+                autonomous AI-System, you may want to choose a lower row number for the Human Proposer. This is because
+                you expect the Responder to be more likely to accept a given Allocation and the left column thus becomes
+                more likely to determine your bonus. Remember that in the left column, the reward is higher for lower
+                row numbers.
               </p>
             </li>
 
             <li>
               <p class="instruction-text">
-                to definitely offer less than the autonomous AI-system, you may want to choose a higher row number for
-                the Human Proposer. This is because you expect the right column to become more likely and the
-                probability of reward is higher for higher row numbers in the right column.
-
+                to definitely ask for more from the Human Proposer without an AI-System than they would from the
+                autonomous AI-System, you may want to choose a higher row number for the Human Proposer. This is because
+                you expect the Responder to be less likely to accept a given Allocation and the right column thus
+                becomes more likely to determine your bonus. Remember that in the right column, the reward is higher for
+                higher row numbers.
               </p>
             </li>
           </ul>
           <br>
 
           <p class="instruction-text">
-            Overall, if you are not sure whether the Human Proposer offers more or less than the AI-system, you may want
-            to choose a similar row number for both types. The same logic applies to the Proposer who gets to use an
-            AI-system, but still offers you a split themselves
+            Overall, if you are not sure whether the Responder demands more or less from the Human Proposer than from
+            the autonomous AI-System, you may want to choose a similar row number for both types. The same logic applies
+            to the Proposer who gets to use an AI-system, but still offers you a split themselves.
           </p>
 
           <p class="instruction-text">
-            <strong>Note:</strong> All Proposers make an offer irrespective of whether you approach them. Thus, your
-            decisions in this
-            expectation task determine your payoff irrespective of which proposer you decide to approach later on.
+            <strong>Note:</strong> You will learn about your Proposer type after you indicate your beliefs for all 18
+            scenarios. Thus, any decision in this expectation task could be the one determining your payoff.
           </p>
 
         </mat-card-content>

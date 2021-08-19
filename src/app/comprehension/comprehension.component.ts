@@ -109,15 +109,15 @@ export class ComprehensionComponent implements OnInit {
       },
       (errors) => {
         console.log(errors);
-        if (errors.error.status == 'attentionNoAttempt')
-          this.attentionNoAttempt();
-        else if (errors.error.status == 'attentionFailed')
-          this.attentionFailed();
-        else if (errors.error.status == 'alreadyAttempted') {
-          this.storageService.comprehensionSubmitted();
-          this.comprehensionSubmitted = true;
-          this.alreadyAttempted();
-        }
+        // if (errors.error.status == 'attentionNoAttempt')
+        //   this.attentionNoAttempt();
+        // else if (errors.error.status == 'attentionFailed')
+        //   this.attentionFailed();
+        // else if (errors.error.status == 'alreadyAttempted') {
+        //   this.storageService.comprehensionSubmitted();
+        //   this.comprehensionSubmitted = true;
+        //   this.alreadyAttempted();
+        // }
       }
     );
     console.log(this.formData);

@@ -1,7 +1,7 @@
 <div *ngIf="data.comprehensionSectionPassed == true">
   <h1 mat-dialog-title>You have passed the Comprehension Check.</h1>
   <mat-dialog-content class="mat-typography">
-    <p>You can proceed to the next section.</p>
+    <p><strong>{{ data.proposer_type }}</strong></p>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Proceed</button>

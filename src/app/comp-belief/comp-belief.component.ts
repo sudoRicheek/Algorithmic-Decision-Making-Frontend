@@ -82,6 +82,7 @@ export class CompBeliefComponent implements OnInit {
   comprehensionBeliefSectionPassed: boolean;
   comprehensionBeliefFailedTimes: number;
   typeWorkAssigned: number;
+  proposerType: number;
 
   constructor(
     private questionService: QuestionService,
@@ -95,6 +96,7 @@ export class CompBeliefComponent implements OnInit {
       this.storageService.isComprehensionBeliefSubmitted();
     this.comprehensionBeliefSectionPassed = false;
     this.typeWorkAssigned = -1;
+    this.proposerType = -1;
   }
 
   ngOnInit() {
@@ -159,16 +161,15 @@ export class CompBeliefComponent implements OnInit {
             response.comprehension_belief_passed;
 
           this.typeWorkAssigned = response.type_work;
+          this.proposerType = response.proposer_type;
 
           if (this.comprehensionBeliefSectionPassed) {
             this.storageService.storeComprehensionBeliefSubmissions(
               this.formData['answers']
             );
             this.comprehensionBeliefSubmitDialog();
-            if (this.typeWorkAssigned == 0)
+            if (this.typeWorkAssigned == 0 || this.typeWorkAssigned == 1)
               this.router.navigate(['beliefelicitation']);
-            else if (this.typeWorkAssigned == 1)
-              this.router.navigate(['dssproposer']);
             else if (this.typeWorkAssigned == -1) this.router.navigate(['/']);
           } else if (this.comprehensionBeliefFailedTimes >= 2) {
             this.comprehensionBeliefSubmitDialog();
@@ -225,6 +226,10 @@ export class CompBeliefComponent implements OnInit {
     this.dialog.open(ComprehensionBeliefPassedComponent, {
       data: {
         comprehensionSectionPassed: this.comprehensionBeliefSectionPassed,
+        proposer_type:
+          this.proposerType == 1
+            ? 'You are a Proposer who makes the bargaining decision alone and without any help'
+            : 'You are a Proposer who can use the AI-System for the bargaining decision',
       },
       panelClass: this.comprehensionBeliefSectionPassed
         ? 'comprehension-submit-passed-dialog'
@@ -239,8 +244,8 @@ export class CompBeliefComponent implements OnInit {
       this.workerService.getWorkerType(localWorker).subscribe(
         (response) => {
           type_work = response.type_work;
-          if (type_work == 0) this.router.navigate(['beliefelicitation']);
-          else if (type_work == 1) this.router.navigate(['dssproposer']);
+          if (type_work == 0 || type_work == 1)
+            this.router.navigate(['beliefelicitation']);
           else if (type_work == -1) this.router.navigate(['/']);
         },
         (error) => {

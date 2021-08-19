@@ -17,10 +17,13 @@ export class DssProposerComponent implements OnInit {
   dssSubmitted: boolean;
   allocationSentToDSS: number;
 
+  type_work: number;
+  proposer_type: number;
+
   allocationSelected: number;
 
   progressmode: ProgressSpinnerMode = 'determinate';
-  likelihoodAcceptanceValue: number;
+  likelihoodRejection: number;
   likelihoodMaximumIncome: number;
 
   colSpan: number;
@@ -31,6 +34,8 @@ export class DssProposerComponent implements OnInit {
   responseCardRowSpan: number;
   referColSpan: number;
   referRowSpan: number;
+  textColSpan: number;
+  textRowSpan: number;
   submitColSpan: number;
   submitRowSpan: number;
   triggerBreakpoint: boolean;
@@ -47,20 +52,19 @@ export class DssProposerComponent implements OnInit {
     private workerService: WorkerService,
     private router: Router
   ) {
+    this.proposer_type = -1;
+    this.type_work = -1;
+
     this.dssCalledOnce = false;
     this.dssSubmitted = false;
     this.allocationSentToDSS = -1;
 
-    this.likelihoodAcceptanceValue = 0.5;
+    this.likelihoodRejection = 0.5;
     this.likelihoodMaximumIncome = 0.5;
-    this.allocationSelected = 2;
+    this.allocationSelected = -1;
 
     // PIE CHART SETTINGS
     this.chartLabels = ['Proposer', 'Responder'];
-    this.chartData = [
-      24 - this.allocationSelected * 4,
-      this.allocationSelected * 4 - 4,
-    ];
     this.chartType = 'doughnut';
     this.chartOptions = {
       responsive: true,
@@ -84,8 +88,9 @@ export class DssProposerComponent implements OnInit {
     if (localWorker)
       this.workerService.getWorkerType(localWorker).subscribe(
         (response) => {
-          let type_work = response.type_work;
-          if (type_work != 1) this.router.navigate(['/']);
+          this.type_work = response.type_work;
+          this.proposer_type = response.proposer_type;
+          if (this.type_work != 1) this.router.navigate(['/']);
         },
         (error) => {}
       );
@@ -93,6 +98,9 @@ export class DssProposerComponent implements OnInit {
     this.dssSubmitted = this.storageService.isDSSProposerSubmitted();
     let alloc = this.storageService.getDSSProposerAllocation();
     if (alloc) this.allocationSelected = alloc;
+
+    if (alloc == -1) this.chartData = [500, 0];
+    else this.chartData = [600 - alloc * 100, alloc * 100 - 100];
 
     if (window.innerWidth <= 992) {
       this.colSpan = 5;
@@ -111,12 +119,14 @@ export class DssProposerComponent implements OnInit {
       this.chartColSpan = 3;
       this.chartRowSpan = 2;
       this.responseCardColSpan = 2;
-      this.responseCardRowSpan = 3;
+      this.responseCardRowSpan = 4;
+      this.textColSpan = 3;
+      this.textRowSpan = 1;
       this.referColSpan = 1;
       this.referRowSpan = 1;
       this.submitColSpan = 2;
       this.submitRowSpan = 1;
-      this.rowHeight = '3:2';
+      this.rowHeight = '1.75:1';
       this.triggerBreakpoint = false;
     }
   }
@@ -125,23 +135,21 @@ export class DssProposerComponent implements OnInit {
     this.chartData.length = 0;
 
     if (event.value != null) {
-      this.chartData = [24 - event.value * 4, event.value * 4 - 4];
+      this.chartData = [600 - event.value * 100, event.value * 100 - 100];
+      this.allocationSelected = event.value;
     }
   }
 
   submitToDSS() {
+    let rejectionProbability: number[] = [96.4, 73, 13.5, 2.7, 0.9, 0];
+    let maximizingProbability: number[] = [3.6, 23.4, 59.5, 10.8, 1.8, 0.9];
     this.dssCalledOnce = true;
     this.allocationSentToDSS = this.allocationSelected;
 
-    this.questionService.getDSSResponse(this.allocationSentToDSS).subscribe(
-      (response) => {
-        this.likelihoodAcceptanceValue = response.likelihoodAcceptanceValue;
-        this.likelihoodMaximumIncome = response.likelihoodMaximumIncome;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.likelihoodRejection =
+      rejectionProbability[this.allocationSentToDSS - 1];
+    this.likelihoodMaximumIncome =
+      maximizingProbability[this.allocationSentToDSS - 1];
   }
 
   submitFinally() {
@@ -156,7 +164,7 @@ export class DssProposerComponent implements OnInit {
               response.allocationSubmitted
             );
 
-            this.router.navigate(['beliefelicitation']);
+            this.router.navigate(['survey']);
           },
           (error) => {
             console.log(error);
@@ -166,7 +174,7 @@ export class DssProposerComponent implements OnInit {
   }
 
   nextSection() {
-    if (this.dssSubmitted) this.router.navigate(['beliefelicitation']);
+    if (this.dssSubmitted) this.router.navigate(['survey']);
   }
 
   onResize(event: any) {
@@ -187,12 +195,14 @@ export class DssProposerComponent implements OnInit {
       this.chartColSpan = 3;
       this.chartRowSpan = 2;
       this.responseCardColSpan = 2;
-      this.responseCardRowSpan = 3;
+      this.responseCardRowSpan = 4;
       this.referColSpan = 1;
       this.referRowSpan = 1;
+      this.textColSpan = 3;
+      this.textRowSpan = 1;
       this.submitColSpan = 2;
       this.submitRowSpan = 1;
-      this.rowHeight = '3:2';
+      this.rowHeight = '1.75:1';
       this.triggerBreakpoint = false;
     }
   }

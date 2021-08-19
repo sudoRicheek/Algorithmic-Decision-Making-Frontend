@@ -1,7 +1,7 @@
 <div class="basic-container">
   <mat-card class="header-card">
     <mat-card-title>
-      <h1>Approach Decision and Minimum Offer - Reminder</h1>
+      <h1>Your Role and Your Bargaining Offer - Reminder</h1>
     </mat-card-title>
     <!-- <mat-card-content>
       <p align="justify">To ensure your understanding, the main task will commence only after you answered three
@@ -17,47 +17,33 @@
 
 
       <mat-step state="instruction">
-        <ng-template matStepLabel>Approach Decision and Bargain - Reminder</ng-template>
+        <ng-template matStepLabel>Your Role and Your Bargaining Offer - Reminder</ng-template>
         <br>
         <mat-card-content align="justify">
-          <h2>
-            Approach Decision and Bargain - Reminder
-          </h2>
+          <div *ngIf="proposer_type == 1">
+            <h2>You are a Proposer who makes the bargaining decision alone and without any help from the DSS.</h2>
+          </div>
+          <div *ngIf="proposer_type == 2">
+            <h2>You are a Proposer who can use the AI-System for the bargaining decision</h2>
 
-          <h2>
-            You will now choose which Proposer to approach and to bargain with.
-          </h2>
+            <p style="color: #3700b3; font-weight: bold; font-size: medium; margin: 5px;">
+              [The AI-System (Machine-Learning) was trained using prior interactions of comparable bargaining situations
+              and participant personality data.] </p>
+          </div>
 
           <p class="instruction-text"><strong>Remember:</strong></p>
-
-          <ul>
-            <li>
-              <p class="instruction-text">One Proposer completes this task alone and without any help</p>
-            </li>
-
-            <li>
-              <p class="instruction-text">One Proposer has an AI-System to assist them in making a decision</p>
-            </li>
-
-            <li>
-              <p class="instruction-text">One Proposer is substituted by the AI-System that makes a decision on their
-                behalf. The Proposer still receives the potential payoff from this task, but the decision is made
-                autonomously by the AI-System.</p>
-            </li>
-          </ul>
-
-          <br>
-
-          <p class="instruction-text">The AI-System (Machine-Learning) was trained using prior interactions of
-            comparable bargaining situations and participant personality data.</p>
+          <p class="instruction-text">You will now bargain with your Responder. You will make an offer to the Responder
+            on how to split the 500 Coins. If the Responder demands a minimum offer that is higher than your offer, both
+            of you receive nothing. If the Responder demands a minimum offer that is equal to or lower than your offer,
+            the 500 Coins are split according to your offer.</p>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-raised-button color="accent" matStepperNext>Next Page</button>
+          <button mat-raised-button color="primary" (click)="nextSection()">Proceed to the Bargaining Task</button>
         </mat-card-actions>
       </mat-step>
 
 
-      <mat-step state="instruction">
+      <!-- <mat-step state="instruction">
         <ng-template matStepLabel>Minimum Offer Decision- Reminder</ng-template>
         <br>
         <mat-card-content align="justify">
@@ -76,7 +62,7 @@
           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
           <button mat-raised-button color="primary" (click)="nextSection()">Proceed to the Bargaining Task</button>
         </mat-card-actions>
-      </mat-step>
+      </mat-step> -->
 
       <ng-template matStepperIcon="instruction">
         <mat-icon>menu_book</mat-icon>

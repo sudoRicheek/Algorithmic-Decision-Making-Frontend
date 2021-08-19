@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { ComprehensionComponent } from './comprehension/comprehension.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { HeaderComponent } from './header/header.component';
-import { AttentioncheckComponent } from './attentioncheck/attentioncheck.component';
 import { BeliefElicitationComponent } from './beliefElicitation/beliefElicitation.component';
 import { ApproachDecisionComponent } from './approachDecision/approachDecision.component';
 import { PostExperimentalQuestionsComponent } from './postExperimentalQuestions/postExperimentalQuestions.component';
@@ -81,7 +80,6 @@ import { SurveyComponent } from './survey/survey.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    AttentioncheckComponent,
     InstructionsComponent,
     ComprehensionComponent,
     ReminderComponent,
