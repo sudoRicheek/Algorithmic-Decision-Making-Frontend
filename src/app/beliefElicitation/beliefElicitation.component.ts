@@ -140,8 +140,8 @@ export class BeliefElicitationComponent implements OnInit {
             this.listnums = new Array(18).fill(0).map((x, i) => i);
           } else if (this.type_work == 1) {
             this.type_work_name = 'Proposer';
-            this.lenlist = 6;
-            this.listnums = new Array(6).fill(0).map((x, i) => i);
+            this.lenlist = 18;
+            this.listnums = new Array(18).fill(0).map((x, i) => i);
           } else if (this.type_work == -1) {
             this.typeWorkNotAssignedDialog();
             this.router.navigate(['/']);
@@ -229,7 +229,7 @@ export class BeliefElicitationComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
       if (this.type_work == 0)
         this.router.navigate(['approachdecisionreminder']);
-      else if (this.type_work == 1) this.router.navigate(['postexperimental']);
+      else if (this.type_work == 1) this.router.navigate(['approachdecisionreminder']);
     });
   }
 

@@ -4,7 +4,7 @@
       <h1>Survey Questionnaire</h1>
     </mat-card-title>
     <mat-card-content>
-      <p align="justify">To proceed with this task, please first answer the following questions about yourself to the
+      <p align="justify">To proceed with this task, please first answer the following questions to the
         best of your ability</p>
     </mat-card-content>
 
@@ -288,8 +288,8 @@
 
           <ol type="1">
             <li>
-              <p class="list-text">Do you think responders will take the availability of a decision-support system or an
-                autonomous agent into consideration when deciding which proposer to approach?</p>
+              <p class="list-text"><strong>Do you think responders will take the availability of a decision-support system or an
+                autonomous agent into consideration when deciding which proposer to approach?</strong></p>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                 [(ngModel)]="respondersTakeDSSForDecidingProposer">
                 <mat-radio-button class="example-radio-button" value=1>Yes</mat-radio-button>
@@ -300,7 +300,7 @@
             <br>
 
             <li>
-              <p class="list-text">If you had the choice, which type of proposer would you choose to be?</p>
+              <p class="list-text"><strong>If you had the choice, which type of proposer would you choose to be?</strong></p>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                 [(ngModel)]="whichProposerYouChooseToBe">
                 <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
@@ -313,7 +313,7 @@
             <br>
 
             <li>
-              <p class="list-text">If you were a responder, which proposer would you approach? </p>
+              <p class="list-text"><strong>If you were a responder, which proposer would you approach?</strong></p>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                 [(ngModel)]="asAResponderWhichProposerWouldYouApproach">
                 <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
@@ -326,7 +326,7 @@
             <br>
 
             <li>
-              <p class="list-text">Which proposer do you think most responders approach?</p>
+              <p class="list-text"><strong>Which proposer do you think most responders approach?</strong></p>
               <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                 [(ngModel)]="proposerMostRespondersApproach">
                 <mat-radio-button class="example-radio-button" *ngFor="let proposer of proposerTypes, index as i"
@@ -340,11 +340,10 @@
 
             <li>
               <p class="instruction-text">
-                For each of the following statements, please indicate the extent to which you agree or disagree with
-                that
-                statement.
+                <strong>For each of the following statements, please indicate the extent to which you agree or disagree with
+                that statement.</strong>
               </p>
-              <p class="instruction-text">
+              <p class="instruction-text" style="font-size: 13pt;">
                 <em>The scale ranges from 1-7, where 1 is ‘strongly disagree’ and 7 is ‘strongly agree.’</em>
               </p>
 
@@ -353,7 +352,7 @@
               <p class="list-text"><strong>I think responders ...</strong></p>
               <ol type="i">
                 <li>
-                  <p class="list-text">find the fact that one proposer uses a decision-support system unfair</p>
+                  <p class="list-text"><strong>find the fact that one proposer uses a decision-support system unfair</strong></p>
                   <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                     [(ngModel)]="iThinkResponders[0]">
                     <mat-radio-button class="example-radio-button" *ngFor="let likert of otherlikertOptions, index as i"
@@ -363,8 +362,8 @@
                   </mat-radio-group>
                 </li>
                 <li>
-                  <p class="list-text">find the fact that one proposer has an autonomous agent that plays on their
-                    behalf unfair</p>
+                  <p class="list-text"><strong>find the fact that one proposer has an autonomous agent that plays on their
+                    behalf unfair</strong></p>
                   <mat-radio-group aria-labelledby="example-radio-group-label" class="likert-scale"
                     [(ngModel)]="iThinkResponders[1]">
                     <mat-radio-button class="example-radio-button" *ngFor="let likert of otherlikertOptions, index as i"

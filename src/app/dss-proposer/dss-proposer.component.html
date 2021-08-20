@@ -5,8 +5,10 @@
     <p>You are a Proposer who makes the bargaining decision alone and without any help from the DSS.</p>
   </div>
   <div *ngIf="proposer_type == 2">
-    <p>Here you can refer to a <strong>DSS</strong> to improve/check your chances of success based on past bargains.</p>
-    <p>Select an allocation and press the "Refer to DSS(AI-System)" button to get a response from an AI-System.</p>
+    <p style="line-height: 1.5em;">Indicate the amount of money you (The Proposer) want to offer the Responder by
+      choosing one Allocation. You can inquire the AI-System to receive information about a specific offer. To use the
+      system, select an Allocation and press the "Refer to DSS
+      (AI-System) button."</p>
   </div>
 
   <mat-grid-list cols={{colSpan}} rowHeight={{rowHeight}} (window:resize)="onResize($event)">
@@ -33,8 +35,8 @@
           [colors]="chartColours"></canvas>
         <strong>Proposer: {{chartData[0]}}, Responder: {{chartData[1]}}</strong>
       </div>
-      <mat-slider thumbLabel class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected" [tickInterval]=1
-        aria-labelledby="example-name-label" (input)="onInputChange($event)" [disabled]="dssSubmitted">
+      <mat-slider thumbLabel class="example-margin" [max]=6 [min]=1 [step]=1 [(ngModel)]="allocationSelected"
+        [tickInterval]=1 aria-labelledby="example-name-label" (input)="onInputChange($event)" [disabled]="dssSubmitted">
       </mat-slider>
     </mat-grid-tile>
 
@@ -58,13 +60,8 @@
         </mat-card-header>
         <mat-card-content>
           <p class="dss-response-text" *ngIf="!dssCalledOnce && proposer_type == 2">
-            Description of the DSS, AI-System, etc. How DSS is made, internals.
-            Used past experiments for data generation, etc..
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet arcu convallis, bibendum libero id,
-            ornare nunc. Proin sed efficitur purus. Integer posuere lorem nisl, sed tincidunt neque aliquam id. Aenean
-            feugiat a ipsum vel elementum. Ut convallis ut ex sed efficitur. Sed sit amet mi sed urna condimentum
-            aliquet vitae eget lacus. Sed dictum magna eu suscipit consectetur.
+            The AI-System (Machine-Learning) was trained using prior interactions of comparable bargaining situations
+            and participant personality data.
           </p>
           <p class="dss-response-text" *ngIf="!dssCalledOnce && proposer_type == 1" style="font-weight: bold;">
             Not available
@@ -74,7 +71,8 @@
             <br><br>
             Probability of rejection: <strong>{{likelihoodRejection}}%</strong>
             <br><br>
-            Probability that it is the Allocation maximizing expected income: <strong>{{likelihoodMaximumIncome}}%</strong>
+            Probability that it is the Allocation maximizing expected income:
+            <strong>{{likelihoodMaximumIncome}}%</strong>
           </p>
         </mat-card-content>
       </mat-card>
@@ -83,20 +81,21 @@
     <mat-grid-tile [colspan]=textColSpan [rowspan]=textRowSpan>
       <strong>
         <pre
-          style="white-space: normal; font-size: 12pt;">[Indicate the amount of money you want to offer the Responder by choosing one Allocation by positioning the slider under the pie chart.]</pre>
+          style="white-space: normal; font-size: 12pt;">[Indicate the amount of money you want to offer the Responder by choosing one Allocation by positioning the slider beside the pie chart.]</pre>
       </strong>
     </mat-grid-tile>
-    
+
     <mat-grid-tile [colspan]=referColSpan [rowspan]=referRowSpan>
-      <button class="submit-decision" mat-raised-button color="warn" (click)="submitToDSS()"
-        [disabled]="dssSubmitted || proposer_type != 2 ||allocationSelected == -1">Refer to DSS
-        (AI-System)</button>
+      <button class="submit-decision" style="white-space: normal; word-wrap: break-word; line-height: 1.6em;" mat-raised-button color="warn" (click)="submitToDSS()"
+        [disabled]="dssSubmitted || proposer_type != 2 || allocationSelected == -1"><span *ngIf="proposer_type==1">Refer
+          to DSS (AI-System) [Not Available]</span><span *ngIf="proposer_type==2">Refer to DSS
+          (AI-System)</span></button>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]=submitColSpan [rowspan]=submitRowSpan>
       <button class="submit-decision" mat-raised-button color="primary" (click)="submitFinally()"
-        [disabled]="dssSubmitted"><span *ngIf="proposer_type==1">Submit your final offer</span><span
-          *ngIf="proposer_type==2">Submit your final
+        [disabled]="dssSubmitted || allocationSelected == -1"><span *ngIf="proposer_type==1">Submit your final
+          offer</span><span *ngIf="proposer_type==2">Submit your final
           offer after referring to the DSS</span></button>
     </mat-grid-tile>
   </mat-grid-list>

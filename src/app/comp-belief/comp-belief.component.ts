@@ -226,10 +226,10 @@ export class CompBeliefComponent implements OnInit {
     this.dialog.open(ComprehensionBeliefPassedComponent, {
       data: {
         comprehensionSectionPassed: this.comprehensionBeliefSectionPassed,
-        proposer_type:
-          this.proposerType == 1
-            ? 'You are a Proposer who makes the bargaining decision alone and without any help'
-            : 'You are a Proposer who can use the AI-System for the bargaining decision',
+        // proposer_type:
+        //   this.proposerType == 1
+        //     ? 'You are a Proposer who makes the bargaining decision alone and without any help'
+        //     : 'You are a Proposer who can use the AI-System for the bargaining decision',
       },
       panelClass: this.comprehensionBeliefSectionPassed
         ? 'comprehension-submit-passed-dialog'

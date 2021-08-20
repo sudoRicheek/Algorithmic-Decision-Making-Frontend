@@ -1,9 +1,9 @@
 <div class="table-container">
   <h1>Expectation task.</h1>
-  <p align="justify">You will choose a row for all <strong>6</strong> scenarios. Afterwards, you proceed to the next
-    section. You can see the Allocation of each respective scenario below. Remember that each of the <strong>6</strong> decisions you are
-    about to make might be randomly chosen by the computer to determine the probability of receiving the fixed bonus reward of 250
-    coins.</p>
+  <p align="justify">You will choose a row for all <strong>18</strong> scenarios. Afterwards, you proceed to the next section. You can
+    see the Allocation and Proposer Type of each respective scenario below. Remember that each of the 18 decisions you
+    are about to make might be randomly chosen by the computer to determine the probability of receiving the fixed bonus
+    reward of 250 coins.</p>
   <!-- <p>You are a <strong>{{type_work_name}}</strong>. You will need to answer <strong>{{lenlist}}</strong> questions.</p>
   <p>Make sure to answer all the questions to the best of your understanding!</p> -->
 
@@ -88,7 +88,7 @@
             Decision
           </mat-card-title> <br>
           <mat-card-subtitle style="color: #3700b3; font-weight: bold; font-size: medium; margin: 5px;">
-            [Click on the right arrow to move onto the next scenario. You can use the left arrow (<) to go back to a
+            [Click on the right arrow (>) to move onto the next scenario. You can use the left arrow (<) to go back to a
               previous scenario.] </mat-card-subtitle>
               <br>
               <mat-card-content>
@@ -100,10 +100,10 @@
                   </p>
                 </div>
                 <div *ngIf="type_work==1"> -->
-                  <!-- <p class="responder-type">Responder type is: Responder</p> -->
-                  <p class="allocation-number">Expectation regarding the Responder's minimum offer (acceptance) for
-                    <strong>Allocation {{i%6+1}}</strong>
-                  </p>
+                <p class="proposer-type">Proposer is: <strong>{{proposerType[(i-i%6)/6]}}</strong></p>
+                <p class="allocation-number">Expectation regarding the Responder's minimum offer (acceptance) for
+                  <strong>Allocation {{i%6+1}}</strong>
+                </p>
                 <!-- </div> -->
               </mat-card-content>
               <mat-card-actions align="end">

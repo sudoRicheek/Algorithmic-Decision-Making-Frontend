@@ -99,8 +99,8 @@ export class DssProposerComponent implements OnInit {
     let alloc = this.storageService.getDSSProposerAllocation();
     if (alloc) this.allocationSelected = alloc;
 
-    if (alloc == -1) this.chartData = [500, 0];
-    else this.chartData = [600 - alloc * 100, alloc * 100 - 100];
+    if (this.allocationSelected == -1) this.chartData = [500, 0];
+    else this.chartData = [600 - this.allocationSelected * 100, this.allocationSelected * 100 - 100];
 
     if (window.innerWidth <= 992) {
       this.colSpan = 5;
