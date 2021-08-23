@@ -32,6 +32,8 @@ export class SurveyComponent implements OnInit {
   proposerTypes: string[];
   otherlikertOptions: string[];
 
+  proposerType: number;
+
   constructor(
     private workerService: WorkerService,
     private storageService: StorageService,
@@ -94,9 +96,23 @@ export class SurveyComponent implements OnInit {
     this.asAResponderWhichProposerWouldYouApproach = -1;
     this.proposerMostRespondersApproach = -1;
     this.iThinkResponders = new Array(2).fill(-1);
+
+    this.proposerType = -1;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let localWorker = this.storageService.getWorker();
+    if (localWorker) {
+      this.workerService.getWorkerType(localWorker).subscribe(
+        (response) => {
+          this.proposerType = response.proposer_type;
+        },
+        (errors) => {
+          console.log(errors);
+        }
+      );
+    }
+  }
 
   showElementTrustAuto(): boolean {
     return this.trustauto.some((item) => item == -1);

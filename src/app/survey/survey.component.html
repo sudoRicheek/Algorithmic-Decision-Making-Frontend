@@ -13,7 +13,7 @@
       <!-- <ng-template matStepperIcon="edit">
         <mat-icon>menu_book</mat-icon>
       </ng-template> -->
-      <mat-step state="instruction">
+      <mat-step state="instruction" *ngIf="proposerType == 2">
         <!-- <ng-template matStepLabel>The Task</ng-template> -->
         <br>
         <mat-card-content align="justify">

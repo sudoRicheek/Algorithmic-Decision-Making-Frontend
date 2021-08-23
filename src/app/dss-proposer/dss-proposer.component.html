@@ -86,7 +86,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]=referColSpan [rowspan]=referRowSpan>
-      <button class="submit-decision" style="white-space: normal; word-wrap: break-word; line-height: 1.6em;" mat-raised-button color="warn" (click)="submitToDSS()"
+      <button class="submit-decision" style="white-space: normal; word-wrap: break-word; line-height: 1.6em; min-height: 40px;" mat-raised-button color="warn" (click)="submitToDSS()"
         [disabled]="dssSubmitted || proposer_type != 2 || allocationSelected == -1"><span *ngIf="proposer_type==1">Refer
           to DSS (AI-System) [Not Available]</span><span *ngIf="proposer_type==2">Refer to DSS
           (AI-System)</span></button>
